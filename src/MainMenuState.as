@@ -14,7 +14,12 @@ package
 			title = new FlxText(300, 0, 100, "Amnesident!!");
 			add(title);
 		}
-		
-	}
 
+		override public function update():void
+		{
+			if (FlxG.keys.ONE) {
+				FlxG.switchState(new Level());
+			}
+		}
+	}
 }
