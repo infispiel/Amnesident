@@ -13,11 +13,16 @@ package
 		public function chooseRandomItems(itemlist:Array):Array
 		{
 			var numItems:int = int(Math.random() * 4);
-			var resultingItems:Array
-			for each (var item:Item in itemlist) {
-				if(item != null){
-					
-				}
+			var resultingItems:Array = new Array();
+			
+			var randomIndexes:Array = new Array();
+			
+			for (var i:Number = 0; i < numItems; i ++) {
+				randomIndexes.push(int(Math.random() * itemlist.length) + 1);
+			}
+			
+			for each (var index:int in randomIndexes) {
+				resultingItems.push(itemlist[index]);
 			}
 			
 			return resultingItems;
@@ -25,8 +30,11 @@ package
 		
 		public function Level(item0:Item = null, item1:Item = null,
                               item2:Item = null, item3:Item = null)
-		{
-			items = new Array(item0, item1, item2, item3);
+		{	
+			var itemList:Array = new Array(item0, item1, item2, item3);
+			trace(itemList.length);
+			
+			items = chooseRandomItems(itemList);
 
 			if (items[0] != null) {
 				items[0].x = 50;

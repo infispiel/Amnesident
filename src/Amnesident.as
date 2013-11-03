@@ -8,6 +8,8 @@ package
 		[Embed(source = "assets/art/moldyYogurt.png")] public static var moldyYogurtPic:Class; //125x119
 		[Embed(source = "assets/art/Yogurt.png")] public static var YogurtPic:Class; //125x119
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
+		[Embed(source = 'assets/art/redbox.png')] public static var redBox:Class; //32x32
+		
 		
 		public function Amnesident() 
 		{

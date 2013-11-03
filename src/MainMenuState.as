@@ -17,7 +17,15 @@ package
 			
 			//Use FlxG.mouse.show(ImgCursor, 16, 16) to show the custom cursor image
 			FlxG.mouse.show();
-			level1 = new Level(new Item(Amnesident.grayBox, 32, 32, "What an exquisite gray box! :)"));
+			
+			var item1:Item = new Item(Amnesident.grayBox, 32, 32, "What an exquisite gray box! :)");
+			var item2:Item = new Item(Amnesident.moldyYogurtPic, 32, 32, "ewwwwwww");
+			var item3:Item = new Item(Amnesident.YogurtPic, 32, 32, "What an exquisite yogurt! :)");
+			var item4:Item = new Item(Amnesident.redBox, 32, 32, "What an exquisite red box! :)");
+			
+			
+			level1 = new Level(item1,item2,item3,item4);
+			
 			story = new Story();
 			story.setLevel(level1);
 			title = new FlxText(200, 180, 300, "Amnesident");
