@@ -10,6 +10,19 @@ package
 		public var title:FlxText;
 		public var items:Array;
 		
+		public function chooseRandomItems(itemlist:Array):Array
+		{
+			var numItems:int = int(Math.random() * 4);
+			var resultingItems:Array
+			for each (var item:Item in itemlist) {
+				if(item != null){
+					
+				}
+			}
+			
+			return resultingItems;
+		}
+		
 		public function Level(item0:Item = null, item1:Item = null,
                               item2:Item = null, item3:Item = null)
 		{

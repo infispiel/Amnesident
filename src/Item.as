@@ -9,6 +9,7 @@ package
 		
 		//represents the text to be displayed when the item is clicked.
 		private var itemText:String;
+		
 		public function Item(sprite: Class, width: int, height: int, text: String):void
 		{
 			loadGraphic (sprite, true, true, width, height);
@@ -17,6 +18,7 @@ package
 			this.itemText = text;
 			trace("item initialized");
 		}
+		
 		public function setToken(token:Token):void {
 			belongsTo = token;
 			trace("item sets token");
