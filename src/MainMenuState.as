@@ -32,6 +32,7 @@ package
 		override public function update():void
 		{
 			if (FlxG.mouse.justPressed()) {
+				level1.story = story;
 				FlxG.switchState(level1);
 			}
 		}
