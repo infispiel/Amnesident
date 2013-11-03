@@ -42,5 +42,20 @@ package
 			title = new FlxText(300, 0, 100, "Level");
 			add(title);
 		}
+		
+		override public function update():void
+		{
+			//runs onClick on each item that is clicked.
+			for each (var item:Item in items) {
+				if(item != null){
+					if (item.justClicked()) {
+						
+						//item.onClick() will return a string and you can manage that string in the level state
+						var itemText:FlxText = new FlxText(300, 30, 500, item.onClick());
+						add(itemText);
+					}
+				}
+			}
+		}
     }
 }
