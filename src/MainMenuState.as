@@ -6,11 +6,15 @@ package
 	
 	public class MainMenuState extends FlxState 
 	{
+		[Embed(source = 'graybox.png')] public static var grayBox:Class;
 		
 		public var title:FlxText;
+		public var level1:Level;
 		
 		public function MainMenuState() 
 		{
+			level1 = new Level(new Item(grayBox, 32, 32));
+
 			title = new FlxText(300, 0, 100, "Amnesident!!");
 			add(title);
 		}
@@ -18,7 +22,7 @@ package
 		override public function update():void
 		{
 			if (FlxG.keys.ONE) {
-				FlxG.switchState(new Level());
+				FlxG.switchState(level1);
 			}
 		}
 	}
