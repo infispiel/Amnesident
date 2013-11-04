@@ -8,6 +8,7 @@ package
 		[Embed(source = "assets/art/moldyYogurt.png")] public static var moldyYogurtPic:Class; //125x119
 		[Embed(source = "assets/art/Yogurt.png")] public static var YogurtPic:Class; //125x119
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
+		[Embed(source = 'assets/art/redbox.png')] public static var redBox:Class; //32x32
 		[Embed(source = "assets/art/Bed.png")] public static var bedPic:Class; //307x115
 		[Embed(source = "assets/art/BedWithnews.png")] public static var bedWithnewsPic:Class; //307x115
 		[Embed(source = "assets/art/Door.png")] public static var doorPic:Class; //127x236
@@ -19,7 +20,7 @@ package
 		{
 			super(640, 480, MainMenuState, 1);
 			FlxG.mouse.show();
-	}
+		}
 		
 	}
 	

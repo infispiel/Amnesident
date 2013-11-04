@@ -47,7 +47,9 @@ package
 			if (completed1 || completed2) {
 				tokenCompleted();
 				Story.markCompleted(this);
-//				trace(FlxG.state.story);
+				// need to figure out how to access story
+				//FlxG.state.story.markCompleted(this);
+				//trace(FlxG.state.story);
 			}
 			return completed1 || completed2;
 		}

@@ -16,12 +16,12 @@ package
 			addAnimation("idle", [0]);
 			isSeen = false;
 			this.itemText = text;
-			trace("item initialized");
+			//trace("item initialized");
 		}
 		
 		public function setToken(token:Token):void {
 			belongsTo = token;
-			trace("item sets token");
+			//trace("item sets token");
 		}
 
 				
@@ -34,7 +34,6 @@ package
 					return true;
 				}
 			}
-			
 			return false;
 		}
 		
