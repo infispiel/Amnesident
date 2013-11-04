@@ -7,9 +7,9 @@ package
 	import org.flixel.*;
 	public class Story 
 	{
-		public var tokens:Array;
-		public var completedTokens:Array;
-		public var wantToCompleteTokens:Array;
+		public static var tokens:Array;
+		public static var completedTokens:Array;
+		public static var wantToCompleteTokens:Array;
 
 		public var items:Array;
 		
@@ -37,7 +37,7 @@ package
 			currentLevel = level;
 		}
 
-		public function markCompleted(token:Token):void {
+		public static function markCompleted(token:Token):void {
 			if (wantToCompleteTokens.indexOf(token) != -1){
 			    // remove from wantToCompleteTokens
 			    wantToCompleteTokens.splice(wantToCompleteTokens.indexOf(token), 1);
