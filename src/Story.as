@@ -7,10 +7,14 @@ package
 	import org.flixel.*;
 	public class Story 
 	{
+		public var tokens:Array;
+		public var completedTokens:Array;
+		public var wantToCompleteTokens:Array;
+
+		public var items:Array;
+		
 		public var discoverPresident:Token;
 		public var howLong:Token;
-		public var tokens:Array;
-		public var items:Array;
 		public var item1:Item;
 		public var item2:Item;
 		public var item3:Item;
@@ -31,6 +35,16 @@ package
 		}
 		public function setLevel(level:Level):void {
 			currentLevel = level;
+		}
+
+		public function markCompleted(token:Token):void {
+			if (wantToCompleteTokens.indexOf(token) != -1){
+			    // remove from wantToCompleteTokens
+			    wantToCompleteTokens.splice(wantToCompleteTokens.indexOf(token), 1);
+			}
+			if (completedTokens.indexOf(token) == -1){
+			    completedTokens.push(token);
+			}
 		}
 		
 	}
