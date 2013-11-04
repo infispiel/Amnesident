@@ -10,11 +10,33 @@ package
 		public var title:FlxText;
 		public var items:Array;
 		public var story:Story;
-
-		public function Level(item0:Item = null, item1:Item = null,
-                              item2:Item = null, item3:Item = null)
+		public var itemText:FlxText;
+		
+		public function chooseRandomItems(itemlist:Array):Array
 		{
-			items = new Array(item0, item1, item2, item3);
+			//minimum number of items is 1
+			var numItems:int = int(Math.random() * 4 + 1);
+			
+			var resultingItems:Array = new Array();
+			var randomIndexes:Array = new Array();
+			
+			for (var i:Number = 0; i < numItems; i ++) {
+				randomIndexes.push(int(Math.random() * itemlist.length) + 1);
+			}
+			
+			
+			for each (var index:int in randomIndexes) {
+				resultingItems.push(itemlist[index]);
+			}
+			
+			trace("number of items supposed to be on the screen :" + resultingItems.length);
+			return resultingItems;
+		}
+
+		public function Level(itemlist:Array)
+		{
+			items = itemlist;
+			items = chooseRandomItems(itemlist);
 
 			if (items[0] != null) {
 				items[0].x = 50;
@@ -41,7 +63,9 @@ package
 			}
 
 			title = new FlxText(300, 0, 100, "Level");
+			itemText = new FlxText(300, 30, 500, "Try clicking on an item!");
 			add(title);
+			add(itemText);
 		}
 		
 		override public function update():void
@@ -50,13 +74,13 @@ package
 			for each (var item:Item in items) {
 				if(item != null){
 					if (item.justClicked()) {
-						
+						remove(itemText);
 						//item.onClick() will return a string and you can manage that string in the level state
-						var itemText:FlxText = new FlxText(300, 30, 500, item.onClick());
-						add(itemText);
+						itemText = new FlxText(300, 30, 500, item.onClick());
 					}
 				}
 			}
+			add(itemText);
 		}
     }
 }
