@@ -33,12 +33,7 @@ package
 			return resultingItems;
 		}
 
-<<<<<<< HEAD
-		public function Level(item0:Item = null, item1:Item = null,
-                              item2:Item = null, item3:Item = null)
-=======
 		public function Level(itemlist:Array)
->>>>>>> RandomizedRooms
 		{
 			items = itemlist;
 			items = chooseRandomItems(itemlist);
