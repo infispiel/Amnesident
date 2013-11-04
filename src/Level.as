@@ -14,6 +14,7 @@ package
 		public function chooseRandomItems(itemlist:Array):Array
 		{
 			var numItems:int = int(Math.random() * 4);
+			trace("number of items: " + numItems);
 			var resultingItems:Array = new Array();
 			
 			var randomIndexes:Array = new Array();
