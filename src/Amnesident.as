@@ -20,7 +20,7 @@ package
 		{
 			super(640, 480, MainMenuState, 1);
 			FlxG.mouse.show();
-	}
+		}
 		
 	}
 	

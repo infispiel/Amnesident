@@ -9,6 +9,7 @@ package
 		
 		public var title:FlxText;
 		public var items:Array;
+		public var story:Story;
 		
 		public function chooseRandomItems(itemlist:Array):Array
 		{
@@ -27,8 +28,6 @@ package
 			
 			return resultingItems;
 		}
-		
-		public var story:Story;
 
 		public function Level(item0:Item = null, item1:Item = null,
                               item2:Item = null, item3:Item = null)
