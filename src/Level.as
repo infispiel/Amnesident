@@ -88,7 +88,7 @@ package
 					if (item.justClicked()) {
 						remove(itemText);
 						//item.onClick() will return a string and you can manage that string in the level state
-						itemText = new FlxText(300, 30, 500, item.onClick());
+						itemText = new FlxText(300, 30, 300, item.onClick());
 					}
 				}
 			}
