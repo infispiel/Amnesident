@@ -13,14 +13,9 @@ package
 		public var items:Array;
 		public var story:Story;
 		public var itemText:FlxText;
-		public var newLevel:Level;
-		public var newStory:Story;
 
 		public function Level(itemlist:Array)
 		{
-			newLevel = new Level(itemlist);
-			newStory = new Story();
-			newStory.setLevel(newLevel);
 			
 			trace(itemlist.length);
 			originalItemsList = itemlist;
@@ -85,8 +80,7 @@ package
 		override public function update():void
 		{
 			if (FlxG.keys.G) {
-				newLevel.story = this.newStory;
-				FlxG.switchState(newLevel);
+				FlxG.resetGame();
 			}
 			
 			//onClick() is called on each item that is clicked.
