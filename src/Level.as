@@ -3,39 +3,24 @@ package
     import org.flixel.*;
     import flash.ui.Mouse;
     import flash.ui.MouseCursor;
+	import org.flixel.system.FlxList;
 	
     public class Level extends FlxState
     {
 		
 		public var title:FlxText;
+		public var originalItemsList:Array;
 		public var items:Array;
 		public var story:Story;
 		public var itemText:FlxText;
-		
-		public function chooseRandomItems(itemlist:Array):Array
-		{
-			//minimum number of items is 1
-			var numItems:int = int(Math.random() * 4 + 1);
-			
-			var resultingItems:Array = new Array();
-			var randomIndexes:Array = new Array();
-			
-			for (var i:Number = 0; i < numItems; i ++) {
-				randomIndexes.push(int(Math.random() * itemlist.length) + 1);
-			}
-			
-			
-			for each (var index:int in randomIndexes) {
-				resultingItems.push(itemlist[index]);
-			}
-			
-			trace("number of items supposed to be on the screen :" + resultingItems.length);
-			return resultingItems;
-		}
 
 		public function Level(itemlist:Array)
 		{
-			items = itemlist;
+			
+			trace(itemlist.length);
+			originalItemsList = itemlist;
+			trace("original items list length : " + originalItemsList.length);
+			
 			items = chooseRandomItems(itemlist);
 
 			if (items[0] != null) {
@@ -66,11 +51,39 @@ package
 			itemText = new FlxText(300, 30, 500, "Try clicking on an item!");
 			add(title);
 			add(itemText);
+			
+			var debugText:FlxText = new FlxText(300, 60, 500, "Press g to generate a new room!");
+			add(debugText);
+		}
+		
+				public function chooseRandomItems(itemlist:Array):Array
+		{
+			//minimum number of items is 1
+			var numItems:int = int(Math.random() * 4 + 1);
+			
+			var resultingItems:Array = new Array();
+			var randomIndexes:Array = new Array();
+			
+			for (var i:Number = 0; i < numItems; i ++) {
+				randomIndexes.push(int(Math.random() * itemlist.length) + 1);
+			}
+			
+			
+			for each (var index:int in randomIndexes) {
+				resultingItems.push(itemlist[index]);
+			}
+			
+			trace("number of items supposed to be on the screen :" + resultingItems.length);
+			return resultingItems;
 		}
 		
 		override public function update():void
 		{
-			//runs onClick on each item that is clicked.
+			if (FlxG.keys.G) {
+				FlxG.resetGame();
+			}
+			
+			//onClick() is called on each item that is clicked.
 			for each (var item:Item in items) {
 				if(item != null){
 					if (item.justClicked()) {
