@@ -33,12 +33,14 @@ package
 			story = new Story();
 
 			story.setLevel(level1);
-			title = new FlxText(200, 180, 300, "Amnesident");
+			title = new FlxText(0, 180, FlxG.width, "Amnesident");
 			title.size = 32;
+			title.alignment = "center";
 			add(title);
 
-			click = new FlxText(250, 220, 200, "Click to start");
+			click = new FlxText(0, 230, FlxG.width, "Click to start");
 			click.size = 16;
+			click.alignment = "center";
 			add(click);
 		}
 

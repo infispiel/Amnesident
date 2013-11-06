@@ -19,7 +19,6 @@ package
 			
 			trace(itemlist.length);
 			originalItemsList = itemlist;
-			trace("original items list length : " + originalItemsList.length);
 			
 			items = chooseRandomItems(itemlist);
 

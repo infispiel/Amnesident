@@ -1,7 +1,7 @@
 package 
 {
 	import org.flixel.*;
-	[SWF(width="640", height="480", backgroundColor="#00000000")] 
+	[SWF(width="800", height="480", backgroundColor="#00000000")] 
 	[Frame(factoryClass = "Preloader")] //Tells Flixel to use the default preloader 
 	public class Amnesident extends FlxGame
 	{
@@ -43,8 +43,9 @@ package
 		
 		public function Amnesident() 
 		{
-			super(640, 480, MainMenuState, 1);
+			super(800, 480, MainMenuState, 1);
 			FlxG.mouse.show();
+			trace(FlxG.width);
 		}
 		
 	}
