@@ -99,7 +99,15 @@ package
 					}
 				}
 			}
+
 			add(itemText);
+			// switch to End Screen when press ESCAPE 
+			if (FlxG.keys.ESCAPE) {
+				var end:EndGame = new EndGame();
+				end.addSummary("It has been ", "2 years");
+				end.addSummary("The world", "has been destroyed");
+				FlxG.switchState(end);
+			}
 		}
     }
 }

@@ -1,7 +1,7 @@
 package
 {
     import org.flixel.*;
-
+	import flash.utils.setTimeout;
     public class Item extends FlxSprite
     {
 		public var isSeen:Boolean;
@@ -40,7 +40,8 @@ package
 		//Edit this to determine what happens when the item is clicked.
 		public function onClick(): String
 		{
-			return this.itemText;
+			return this.itemText;	
 		}
+		
 	}
 }

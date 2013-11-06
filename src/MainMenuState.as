@@ -17,7 +17,7 @@ package
 			
 			//Use FlxG.mouse.show(ImgCursor, 16, 16) to show the custom cursor image
 			FlxG.mouse.show();
-			
+		
 			var moldyYogurt:Item = new Item(Amnesident.moldyYogurtPic, 125, 119, "ewwwwwww");
 			var yogurt:Item = new Item(Amnesident.YogurtPic, 125, 119, "What an exquisite yogurt! :)");
 			var bed:Item = new Item(Amnesident.bedPic, 307, 115, "The holy grail for MIT/Wellesely Students...");
@@ -31,6 +31,7 @@ package
 			level1 = new Level(itemList);
 			
 			story = new Story();
+
 			story.setLevel(level1);
 			title = new FlxText(200, 180, 300, "Amnesident");
 			title.size = 32;
