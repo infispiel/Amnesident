@@ -12,12 +12,15 @@ package
 		public var path2:Array;
 		public var completedText:String;
 		public var isCompleted:Boolean;
-		public function Token(_completedText: String, _path1: Array, _path2: Array) 
+		public var incompatibleWith:Array;
+
+		public function Token(_completedText: String, _path1: Array, _path2: Array, _incompatibleWith:Array) 
 		{
 			path1 = _path1;
 			path2 = _path2;
 			completedText = _completedText;
 			isCompleted = false;
+			incompatibleWith = _incompatibleWith;
 			// set Token for each item
 			for each (var i:Item in path1) {
 				i.setToken(this);
@@ -47,6 +50,9 @@ package
 			if (completed1 || completed2) {
 				tokenCompleted();
 				Story.markCompleted(this);
+				
+				// need to figure out how to access story
+				//FlxG.state.story.markCompleted(this);
 				//trace(FlxG.state.story);
 			}
 			return completed1 || completed2;
