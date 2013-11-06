@@ -37,6 +37,7 @@ package
 			var tokenList:Array = new Array(discoverPresident, longTime);
 
 			story = new Story(itemList, tokenList);
+			
 			story.setLevel(level1);
 			title = new FlxText(200, 180, 300, "Amnesident");
 			title.size = 32;

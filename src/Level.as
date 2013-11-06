@@ -76,11 +76,19 @@ package
 					if (item.justClicked()) {
 						remove(itemText);
 						//item.onClick() will return a string and you can manage that string in the level state
-						itemText = new FlxText(300, 30, 500, item.onClick());
+						itemText = new FlxText(300, 30, 300, item.onClick());
 					}
 				}
 			}
+
 			add(itemText);
+			// switch to End Screen when press ESCAPE 
+			if (FlxG.keys.ESCAPE) {
+				var end:EndGame = new EndGame();
+				end.addSummary("It has been ", "2 years");
+				end.addSummary("The world", "has been destroyed");
+				FlxG.switchState(end);
+			}
 		}
     }
 }
