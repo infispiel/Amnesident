@@ -9,7 +9,7 @@ package
     {
 		
 		public var title:FlxText;
-		public var originalItemsList:Array;
+		//public var originalItemsList:Array;
 		public var items:Array;
 		public var story:Story;
 		public var itemText:FlxText;
@@ -18,9 +18,10 @@ package
 		{
 			
 			trace(itemlist.length);
-			originalItemsList = itemlist;
+			//originalItemsList = itemlist;
 			
-			items = chooseRandomItems(itemlist);
+			items = new Array(Story.cat);
+			//items = chooseRandomItems(itemlist);
 
 			if (items[0] != null) {
 				items[0].x = 50;
@@ -55,7 +56,7 @@ package
 			add(debugText);
 		}
 		
-				public function chooseRandomItems(itemlist:Array):Array
+		public function chooseRandomItems(itemlist:Array):Array
 		{
 			//minimum number of items is 1
 			var numItems:int = int(Math.random() * 4 + 1);
@@ -64,7 +65,7 @@ package
 			var randomIndexes:Array = new Array();
 			
 			for (var i:Number = 0; i < numItems; i ++) {
-				randomIndexes.push(int(Math.random() * itemlist.length) + 1);
+				randomIndexes.push(int(Math.random() * itemlist.length));
 			}
 			
 			
@@ -79,7 +80,15 @@ package
 		override public function update():void
 		{
 			if (FlxG.keys.G) {
-				FlxG.resetGame();
+			        if(Story.itemList.length == 8){
+				    Story.setLevel(Story.nextLevel);
+				    FlxG.switchState(Story.nextLevel);
+				} else {
+				var test:EndGame = new EndGame();
+				test.addSummary("It has been ", "2 years");
+				test.addSummary("The world", "has been destroyed");
+				FlxG.switchState(test);
+				}
 			}
 			
 			//onClick() is called on each item that is clicked.
