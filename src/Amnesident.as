@@ -5,6 +5,9 @@ package
 	[Frame(factoryClass = "Preloader")] //Tells Flixel to use the default preloader 
 	public class Amnesident extends FlxGame
 	{
+		public static var numSlots:int = 4;
+		public static var slotSize:int = 800 / 4;
+
 		//Yogurt
 		[Embed(source = "assets/art/moldyYogurt.png")] public static var moldyYogurtPic:Class; //125x119
 		[Embed(source = "assets/art/Yogurt.png")] public static var YogurtPic:Class; //125x119
