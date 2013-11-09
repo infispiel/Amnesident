@@ -5,6 +5,8 @@ package
 	[Frame(factoryClass = "Preloader")] //Tells Flixel to use the default preloader 
 	public class Amnesident extends FlxGame
 	{
+		public static var numSlots:int = 4;
+		public static var slotSize:int = 800 / 4;
 		//Boxes
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
 		[Embed(source = 'assets/art/redbox.png')] public static var redBox:Class; //32x32

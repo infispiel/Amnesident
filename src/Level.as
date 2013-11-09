@@ -17,31 +17,30 @@ package
 		public function Level(itemlist:Array)
 		{
 			
-			trace(itemlist.length);
 			originalItemsList = itemlist;
 			
 			items = chooseRandomItems(itemlist);
-
+			
 			if (items[0] != null) {
-				items[0].x = 50;
+				items[0].x = 0;
 				items[0].y = 480 - items[0].height;
 				add(items[0]);
 			}
 
 			if (items[1] != null) {
-				items[1].x = 210;
+				items[1].x = Amnesident.slotSize;
 				items[1].y = 480 - items[1].height;
 				add(items[1]);
 			}
 
 			if (items[2] != null) {
-				items[2].x = 370;
+				items[2].x = Amnesident.slotSize * 2;
 				items[2].y = 480 - items[2].height;
 				add(items[2]);
 			}
 
 			if (items[3] != null) {
-				items[3].x = 530;
+				items[3].x = Amnesident.slotSize * 3;
 				items[3].y = 480 - items[3].height;
 				add(items[3]);
 			}
@@ -55,24 +54,67 @@ package
 			add(debugText);
 		}
 		
-				public function chooseRandomItems(itemlist:Array):Array
+		public function chooseRandomItems(itemlist:Array):Array
 		{
 			//minimum number of items is 1
-			var numItems:int = int(Math.random() * 4 + 1);
+			var numItems:int = Math.floor(Math.random() * 4) + 1;
 			
-			var resultingItems:Array = new Array();
+			var resultingItems:Array = new Array(null, null, null, null);
 			var randomIndexes:Array = new Array();
-			
-			for (var i:Number = 0; i < numItems; i ++) {
-				randomIndexes.push(int(Math.random() * itemlist.length) + 1);
+			var space:Array = new Array(1, 1, 1, 1);
+
+			var maxTries:int = 100;
+			var numTries:int = 0;
+			var i:int = 0;
+			while (i < numItems && numTries < maxTries) {
+				numTries++;
+
+				var idx:int = Math.floor(Math.random() * itemlist.length);
+				var itm:Item = itemlist[idx];
+				var gap:int = 0;
+				var fittable:Boolean = false;
+
+				for (var j:int = 0; j < space.length; j++) {
+					if (space[j]) {
+						gap++;
+						if (gap >= itm.slots) {
+							fittable = true;
+						}
+					} else {
+						gap = 0;
+					}
+				}
+
+				if (!fittable) {
+					continue;
+				}
+
+				var fit:int = 0;
+				var tarSlot:int;
+
+				while (!fit) {
+					tarSlot = Math.floor(Math.random() * 4)
+
+					fit = 1;
+					for (var idx:int = tarSlot;
+						idx < tarSlot + itm.slots;
+						idx++) {
+
+						fit &= space[idx];
+					}
+				}
+
+				for (var idx:int = tarSlot;
+					idx < tarSlot + itm.slots;
+					idx++) {
+
+					space[idx] = 0;
+				}
+
+				i++;
+				resultingItems[tarSlot] = itm;
 			}
-			
-			
-			for each (var index:int in randomIndexes) {
-				resultingItems.push(itemlist[index]);
-			}
-			
-			trace("number of items supposed to be on the screen :" + resultingItems.length);
+
 			return resultingItems;
 		}
 		
