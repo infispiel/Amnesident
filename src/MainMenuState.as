@@ -12,6 +12,8 @@ package
 
 		public var level1:Level;
 		public var story:Story;
+		public var hospitalHallway:Hallway;
+		
 		public function MainMenuState() 
 		{
 			
@@ -29,10 +31,12 @@ package
 			
 			var itemList:Array = new Array(president, moldyYogurt, yogurt, bed, door, cat, bedNews, mirror);
 			level1 = new Level(itemList);
-
-                        var discoverPresident:Token = new Token("Hey...I've seen that face before...I must be the President!", new Array(bedNews, president), new Array(mirror, president), new Array());
+			
+			hospitalHallway = new Hallway(Amnesident.doorPic, 5, 0);
+	
+            var discoverPresident:Token = new Token("Hey...I've seen that face before...I must be the President!", new Array(bedNews, president), new Array(mirror, president), new Array());
 			// for now I'm just making both paths the same but I should make it so the second path can be null
-                        var longTime:Token = new Token("I must have been unconscious for a while....", new Array(moldyYogurt), new Array(moldyYogurt), new Array());
+			var longTime:Token = new Token("I must have been unconscious for a while....", new Array(moldyYogurt), new Array(moldyYogurt), new Array());
 
 			var tokenList:Array = new Array(discoverPresident, longTime);
 
@@ -54,7 +58,8 @@ package
 		{
 			if (FlxG.mouse.justPressed()) {
 				level1.story = story;
-				FlxG.switchState(level1);
+				//FlxG.switchState(level1);
+				FlxG.switchState(hospitalHallway);
 			}
 		}
 	}

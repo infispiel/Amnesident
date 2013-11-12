@@ -24,7 +24,6 @@ package
 		public function setToken(token:Token):void {
 			belongsTo = token;
 		}
-
 				
 		//Returns true if the item was just clicked.
 		public function justClicked():Boolean

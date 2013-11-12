@@ -7,6 +7,13 @@ package
 	{
 		public static var numSlots:int = 4;
 		public static var slotSize:int = 800 / 4;
+		//Arrows
+		[Embed(source="assets/art/leftArrow.png")] public static var leftArrow:Class;	//115x99
+		[Embed(source="assets/art/rightArrow.png")] public static var rightArrow:Class;	//115x99
+		
+		//Backgrounds
+		[Embed(source="assets/art/GenericBackgroundTilesBlue.png")] public static var blueTiles:Class; //1307x573
+		
 		//Boxes
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
 		[Embed(source = 'assets/art/redbox.png')] public static var redBox:Class; //32x32
@@ -20,6 +27,7 @@ package
 		//Doors
 		[Embed(source = "assets/art/Door.png")] public static var doorPic:Class; //127x236
 		[Embed(source = "assets/art/Door2.png")] public static var door2Pic:Class; //148x247
+		[Embed(source = "assets/art/roomExit.png")] public static var roomExit:Class; //148x247
 		
 		//Endtable Top Items -- THEY ARE ALL 125x200
 			//Metal:
