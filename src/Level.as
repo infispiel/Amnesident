@@ -50,7 +50,7 @@ package
 			add(title);
 			add(itemText);
 			
-			var debugText:FlxText = new FlxText(300, 60, 500, "Press g to generate a new room!");
+			var debugText:FlxText = new FlxText(300, 60, 500, "Press g to return to the hallway!");
 			add(debugText);
 		}
 		
@@ -121,7 +121,8 @@ package
 		override public function update():void
 		{
 			if (FlxG.keys.G) {
-				FlxG.resetGame();
+				var hospitalHallway:Hallway = new Hallway(Amnesident.doorPic, 5, 0);
+				FlxG.switchState(hospitalHallway);
 			}
 			
 			//onClick() is called on each item that is clicked.

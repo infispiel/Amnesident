@@ -7,6 +7,8 @@ package
 	{
 		public static var numSlots:int = 4;
 		public static var slotSize:int = 800 / 4;
+		public var visitedRoomCount:Number = 0;
+		
 		//Arrows
 		[Embed(source="assets/art/leftArrow.png")] public static var leftArrow:Class;	//115x99
 		[Embed(source="assets/art/rightArrow.png")] public static var rightArrow:Class;	//115x99
@@ -85,6 +87,7 @@ package
 		//Bookshelf
 		[Embed(source = "assets/art/Bookshelf1.png")] public static var bookshelf1Pic:Class; //200x382
 		
+		public static var hospitalHallway:Hallway = new Hallway(doorPic, 5, 0);
 		
 		
 		public function Amnesident() 
