@@ -15,7 +15,7 @@ package
 		
 		override public function create():void {
 			//Set the background color to light gray (0xAARRGGBB)
-			FlxG.bgColor = 0xffaaaaaa;
+			//FlxG.bgColor = 0xffaaaaaa;
 			//Create Tiled Background
 			var hallwayBackground:Background = new Background(Amnesident.blueTiles);
 			add(hallwayBackground);

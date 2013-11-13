@@ -35,8 +35,8 @@ package
 		override public function update():void
 		{
 			if (FlxG.mouse.justPressed()) {
-				//FlxG.switchState(room.level1);
-				FlxG.switchState(Amnesident.hospitalHallway);
+				FlxG.switchState(room.level1);
+				//FlxG.switchState(Amnesident.hospitalHallway);
 			}
 		}
 	}
