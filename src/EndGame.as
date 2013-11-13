@@ -28,10 +28,10 @@ package
 		public function addSummary(stat:String, dyn:String):void {
 			
 			var staticText:FlxText = new FlxText(25, 30 * lineNumber, 200, stat);
-			staticText.setFormat(null, 10, 0xffffff, "right")
+			staticText.setFormat(null, 13, 0xffffff, "right")
 
 			var dynamicText:FlxText = new FlxText(250, 30 * lineNumber, 250, dyn);
-			dynamicText.setFormat(null, 10, 0x000000, "center")
+			dynamicText.setFormat(null, 13, 0x000000, "center")
 			
 			var sprite:FlxSprite = new FlxSprite(250, 30*lineNumber);
 			sprite.loadGraphic(textbox, true, true, 250, 20);

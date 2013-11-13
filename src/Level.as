@@ -56,6 +56,7 @@ package
 			}
 
 			title = new FlxText(300, 0, 100, "Level");
+			title.size = 20;
 			itemText = new FlxText(300, 30, 500, "Try clicking on an item!");
 			
 			itemBox = new FlxSprite(295, 25);	
@@ -72,7 +73,7 @@ package
 			add(title);
 			add(itemText);
 			
-			var debugText:FlxText = new FlxText(300, 60, 500, "Press g to return to the hallway!");
+			var debugText:FlxText = new FlxText(300, 100, 500, "Press g to return to the hallway!");
 			add(debugText);
 		}
 		
@@ -157,7 +158,7 @@ package
 						}			
 						//item.onClick() will return a string and you can manage that string in the level state
 						itemText = new FlxText(300, 30, 300, item.onClick());
-						itemText.setFormat(null, 10, 0x0000000, "left");				
+						itemText.setFormat(null, 13, 0x0000000, "left");				
 						var textheight:int = itemText.height;
 						numBoxes = (int) ((textheight / 22) + 1);
 					}
