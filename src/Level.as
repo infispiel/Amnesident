@@ -1,5 +1,6 @@
 package
 {
+	import flash.display.Sprite;
     import org.flixel.*;
     import flash.ui.Mouse;
     import flash.ui.MouseCursor;
@@ -11,7 +12,14 @@ package
 		public var items:Array;
 		public var story:Story;
 		public var itemText:FlxText;
-		
+		public var itemBox:FlxSprite;
+		public var itemBox2:FlxSprite;
+		public var itemBox3:FlxSprite;
+		public var itemBox4:FlxSprite;
+		public var itemBoxes:Array;
+		public var numBoxes:int;
+
+		[Embed(source = "/assets/art/textboxLevel.png")] public var textboxLevel:Class;
 		public function chooseRandomItems(itemlist:Array):Array
 		{
 			//minimum number of items is 1
@@ -64,6 +72,18 @@ package
 
 			title = new FlxText(300, 0, 100, "Level");
 			itemText = new FlxText(300, 30, 500, "Try clicking on an item!");
+			
+			itemBox = new FlxSprite(295, 25);	
+			itemBox2 = new FlxSprite(295, 47);			
+			itemBox3 = new FlxSprite(295, 69);	
+			itemBox4 = new FlxSprite(295, 81);
+			
+			itemBoxes = [itemBox, itemBox2, itemBox3, itemBox4];
+			for each (var itembox:FlxSprite in itemBoxes) {
+				itembox.loadGraphic(textboxLevel, true, true, 300, 22);
+				itembox.addAnimation("idle", [0]);
+			}
+			add(itemBox);
 			add(title);
 			add(itemText);
 		}
@@ -74,13 +94,29 @@ package
 			for each (var item:Item in items) {
 				if(item != null){
 					if (item.justClicked()) {
+
 						remove(itemText);
+						for each (var sp:FlxSprite in itemBoxes) {
+							remove(sp);
+						}
+						
 						//item.onClick() will return a string and you can manage that string in the level state
-						itemText = new FlxText(300, 30, 500, item.onClick());
+						itemText = new FlxText(300, 30, 300, item.onClick());
+						itemText.setFormat(null, 10, 0x0000000, "left");
+												
+						var textheight:int = itemText.height;
+						trace("Height of text: " + textheight.toString());
+						numBoxes = (int) ((textheight / 22) + 1);
+						trace("Number of boxes used: " + numBoxes.toString());					
 					}
 				}
 			}
-
+			var num:int = 0;
+			for each (var s:FlxSprite in itemBoxes) {
+				if (num < numBoxes) { add(s);}
+				num++;
+			}
+			
 			add(itemText);
 			// switch to End Screen when press ESCAPE 
 			if (FlxG.keys.ESCAPE) {
@@ -89,6 +125,25 @@ package
 				end.addSummary("The world", "has been destroyed");
 				FlxG.switchState(end);
 			}
+		}
+		
+		public function insertTextBox(text:FlxText):Array {
+			// textboxLevel is 300x22
+			var textheight:int = text.height;
+			var numBoxes:int = 3; // (int) (textheight / 22);
+			trace("Number of boxes used: " + numBoxes.toString());
+			var sprites:Array = new Array();;
+			var i:int;
+			
+			for (i = 0; i++; i < numBoxes + 3) {
+				var sprite:FlxSprite = new FlxSprite(300, 22 * i);
+				sprite.loadGraphic(textboxLevel, true, true, 300, 22);
+				sprite.addAnimation("idle", [0]);				
+				sprites.push(sprite);
+			}
+			
+			trace("Size of sprites" + sprites.length.toString());
+			return sprites;
 		}
     }
 }
