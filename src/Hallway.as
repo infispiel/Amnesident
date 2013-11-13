@@ -28,11 +28,20 @@ package
 		}
 		
 		override public function update():void	{
-			for (var doorNum:int = 0; doorNum < doors.length; doorNum++) {
-				//Check If Door Just Clicked, If So Load a Random Room
-				if (doors[doorNum].justClicked()) {
-					var room:Room = new Room();
-					FlxG.switchState(room.level1);
+			// switch to End Screen when press ESCAPE 
+			if (FlxG.keys.ESCAPE) {
+				var end:EndGame = new EndGame();
+				end.addSummary("It has been ", "2 years");
+				end.addSummary("The world", "has been destroyed");
+				FlxG.switchState(end);
+			}
+			else {
+				for (var doorNum:int = 0; doorNum < doors.length; doorNum++) {
+					//Check If Door Just Clicked, If So Load a Random Room
+					if (doors[doorNum].justClicked()) {
+						var room:Room = new Room();
+						FlxG.switchState(room.level1);
+					}
 				}
 			}
 		}
