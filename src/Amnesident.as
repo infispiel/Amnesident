@@ -14,7 +14,8 @@ package
 		[Embed(source="assets/art/rightArrow.png")] public static var rightArrow:Class;	//115x99
 		
 		//Backgrounds
-		[Embed(source="assets/art/GenericBackgroundTilesBlue.png")] public static var blueTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundTilesBlue.png")] public static var blueTiles:Class; //1307x573
+		[Embed(source="assets/art/GenericBackgroundTilesGreen-01.png")] public static var greenTiles:Class; //1307x573
 		
 		//Boxes
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32

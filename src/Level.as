@@ -26,6 +26,8 @@ package
 
 		public function Level(itemlist:Array)
 		{
+			var roomBackground:Background = new Background(Amnesident.greenTiles);
+			add(roomBackground);
 			
 			originalItemsList = itemlist;
 			
