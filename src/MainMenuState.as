@@ -35,9 +35,13 @@ package
 		override public function update():void
 		{
 			if (FlxG.mouse.justPressed()) {
-				FlxG.switchState(room.level1);
-				//FlxG.switchState(Amnesident.hospitalHallway);
+				FlxG.fade(0xff000000, 1, startPlay);
 			}
+		}
+		
+		public function startPlay():void {
+			FlxG.switchState(room.level1);
+			//FlxG.switchState(Amnesident.hospitalHallway);
 		}
 	}
 }
