@@ -6,6 +6,10 @@ package
 	 */
 	public class AssetsRegistry 
 	{
+		//Custom Cursor (For hovering over objects)
+		[Embed(source = "assets/art/hoverCursorImg.png")] public static var hoverCursor:Class;
+		[Embed(source = "assets/art/cursor.png")] public static var normalCursor:Class;
+		
 		//TextBox
 		[Embed(source = "/assets/art/textbox.png")] public static var textbox:Class;
 		[Embed(source = "/assets/art/textboxLevel.png")] public static var textboxLevel:Class;
