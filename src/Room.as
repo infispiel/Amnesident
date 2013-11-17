@@ -20,14 +20,16 @@ package
 			var itemList:Array = new Array(president, moldyYogurt, yogurt, bed, door, cat, bedNews, mirror);
 
 			//Create Token List for Story
-			var discoverPresident:Token = new Token("Hey...I've seen that face before...I must be the President!", new Array(bedNews, president), new Array(mirror, president), new Array());
-			// for now I'm just making both paths the same but I should make it so the second path can be null
-			var longTime:Token = new Token("I must have been unconscious for a while....", new Array(moldyYogurt), new Array(moldyYogurt), new Array());
+			var discoverPresidentNews:Token = new Token("Hey...I've seen that face before...I must be the President!", "You are", "the President", new Array(bedNews, president));
+			var discoverPresidentMirror:Token = new Token("Hey...I've seen that face before...I look just like the President! Maybe I'm his twin brother?", "You are", "the President's identical twin", new Array(mirror, president));
+			var longTime:Token = new Token("I must have been unconscious for a while....", "You were asleep for", "several years", new Array(moldyYogurt));
+			discoverPresidentNews.addIncompatible(discoverPresidentMirror);
 
-			var tokenList:Array = new Array(discoverPresident, longTime);
+			var tokenList:Array = new Array(discoverPresidentNews, discoverPresidentMirror, longTime);
 			
 			//Create Level 1 from Item List and Create Story from Item and Token Lists
 			//Associate Story with Level1
+			
 			level1 = new Level(itemList);
 			story = new Story(itemList, tokenList);
 			story.setLevel(level1);
