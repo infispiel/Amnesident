@@ -13,7 +13,6 @@ package
 			if (FlxG.mouse.justReleased()) {
 				var mousePoint:FlxPoint = new FlxPoint(FlxG.mouse.x, FlxG.mouse.y);
 				if (this.overlapsPoint(mousePoint)) {
-					trace("poop");
 					return true;
 				}
 			}
