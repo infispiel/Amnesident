@@ -6,6 +6,7 @@ package
 	 * ...
 	 * @author Benjamin Shaibu
 	 */
+	//Extends a FlxState, but prevents it from being destroyed during FlxG.switchState()
 	public class IndestructableFlxState extends FlxState 
 	{
 		
