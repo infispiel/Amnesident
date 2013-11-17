@@ -28,6 +28,7 @@ package
 		}
 		
 		override public function update():void	{
+			
 			// switch to End Screen when press ESCAPE 
 			if (FlxG.keys.ESCAPE) {
 				var end:EndGame = new EndGame();

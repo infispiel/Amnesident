@@ -5,6 +5,7 @@ package
     import flash.ui.Mouse;
     import flash.ui.MouseCursor;
 	import org.flixel.system.FlxList;
+	import org.flixel.plugin.photonstorm.*;
 	
     public class Level extends FlxState
     {
@@ -130,6 +131,8 @@ package
 		
 		override public function update():void
 		{
+			Amnesident.checkMouseHover(items);
+			
 			if (FlxG.keys.G) {
 				var hospitalHallway:Hallway = new Hallway(Amnesident.doorPic, 5, 0);
 				FlxG.switchState(hospitalHallway);
@@ -151,6 +154,7 @@ package
 					}
 				}
 			}
+			
 			var num:int = 0;
 			for each (var s:FlxSprite in itemBoxes) {
 				if (num < numBoxes) { add(s);}

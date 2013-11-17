@@ -1,6 +1,8 @@
 package 
 {
 	import org.flixel.*;
+	import org.flixel.plugin.photonstorm.*;
+	
 	[SWF(width="800", height="480", backgroundColor="#00000000")] 
 	[Frame(factoryClass = "Preloader")] //Tells Flixel to use the default preloader 
 	public class Amnesident extends FlxGame
@@ -8,6 +10,11 @@ package
 		public static var numSlots:int = 4;
 		public static var slotSize:int = 800 / 4;
 		public var visitedRoomCount:Number = 0;
+		
+		//Custom Cursor (For hovering over objects)
+		[Embed(source = "assets/art/hoverCursorImg.png")] public static var hoverCursor:Class;
+		[Embed(source = "assets/art/cursor.png")] public static var normalCursor:Class;
+
 		
 		//Arrows
 		[Embed(source="assets/art/leftArrow.png")] public static var leftArrow:Class;	//115x99
@@ -89,6 +96,23 @@ package
 		[Embed(source = "assets/art/Bookshelf1.png")] public static var bookshelf1Pic:Class; //200x382
 		
 		public static var hospitalHallway:Hallway = new Hallway(doorPic, 5, 0);
+		
+		//changes mouse cursor whenever mouse hovers over an item in the array. TO BE CALLED IN UPDATE() IN EACH STATE!
+		public static function checkMouseHover(items:Array):void {
+			var overLappingAnItem:Boolean = false;
+			for each (var item:Item in items) {
+				if (item != null) {
+					if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, item)) {
+						overLappingAnItem = true;
+					}
+				}
+			}	
+			if (overLappingAnItem) {
+				FlxG.mouse.show(Amnesident.hoverCursor);
+			} else {
+				FlxG.mouse.show(Amnesident.normalCursor);
+			}
+		}
 		
 		
 		public function Amnesident() 
