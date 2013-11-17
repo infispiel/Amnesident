@@ -47,8 +47,8 @@ package
 		// get list of tokens and addSummary for each of them
 		public function addSummaries(tokens:Array):void {
 			for each (var tok:Token in tokens) {
-				//addSummary(tok.endStaticText, tok.endDynamicText);
-				addSummary(tok.completedText, "No dynamic text yet");
+				addSummary(tok.endStaticText, tok.endDynamicText);
+				//addSummary(tok.completedText, "No dynamic text yet");
 			}
 		}
 		

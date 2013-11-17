@@ -27,6 +27,16 @@ package
 		
 			items = itemList;
 			tokens = tokenList;	
+			possibleTokens = tokenList;
+			for each (var t:Token in possibleTokens){
+			    // tokens with prereqs aren't immediately possible
+			    if (t.requires.length > 0){
+				possibleTokens.splice(possibleTokens.indexOf(t), 1);
+			    }
+			}
+			wantToCompleteTokens = new Array();
+			chooseNewToken();
+			trace(wantToCompleteTokens);
 			trace("Story initialized");
 			
 		}
@@ -47,16 +57,22 @@ package
 			if (completedTokens.indexOf(token) == -1){
 			    completedTokens.push(token);
 			}
+
 		}
 
 		// Chooses a token from the list of possible tokens and moves 
 		// it to wantToCompleteTokens.
-		public function chooseNewToken():void {
+		public static function chooseNewToken():void {
 		    if (possibleTokens.length != 0){
-			var tokenNumber:int = Math.round(Math.random()*possibleTokens.length);
+			var tokenNumber:int = Math.floor(Math.random()*possibleTokens.length);
+			trace(tokenNumber);
 			var selected:Array = possibleTokens.splice(tokenNumber, 1);
+			trace('selected'+selected[0].endDynamicText);
 			wantToCompleteTokens = wantToCompleteTokens.concat(selected);
+			trace(wantToCompleteTokens);
 		        // all tokens incompatible with the chosen one are no longer possible
+			trace('choose new');
+			trace(selected[0].incompatibleWith.length);
 			for each (var t:Token in selected[0].incompatibleWith){
 			    possibleTokens.splice(possibleTokens.indexOf(t), 1);
 			}	
