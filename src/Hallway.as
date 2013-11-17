@@ -17,7 +17,7 @@ package
 			//Set the background color to light gray (0xAARRGGBB)
 			//FlxG.bgColor = 0xffaaaaaa;
 			//Create Tiled Background
-			var hallwayBackground:Background = new Background(Amnesident.blueTiles);
+			var hallwayBackground:Background = new Background(AssetsRegistry.blueTiles);
 			add(hallwayBackground);
 			for (var i:int = 0; i < 5; i++) {
 				var space:Number = 127 * 1.25;
