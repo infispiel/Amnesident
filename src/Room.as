@@ -2,8 +2,7 @@ package
 {
 	public class Room	{
 		public var level1:Level;
-		public var story:Story;
-	
+		public var story:Story;	
 	
 		//Randomly Generates A Room
 		public function Room() {

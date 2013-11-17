@@ -8,6 +8,7 @@ package
 	{
 		//TextBox
 		[Embed(source = "/assets/art/textbox.png")] public static var textbox:Class;
+		[Embed(source = "/assets/art/textboxLevel.png")] public static var textboxLevel:Class;
 		
 		//Arrows
 		[Embed(source="assets/art/leftArrow.png")] public static var leftArrow:Class;	//115x99
