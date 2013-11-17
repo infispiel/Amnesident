@@ -100,7 +100,7 @@ package
 		//changes mouse cursor whenever mouse hovers over an item in the array. TO BE CALLED IN UPDATE() IN EACH STATE!
 		public static function checkMouseHover(items:Array):void {
 			var overLappingAnItem:Boolean = false;
-			for each (var item:Item in items) {
+			for each (var item:FlxSprite in items) {
 				if (item != null) {
 					if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, item)) {
 						overLappingAnItem = true;
