@@ -96,7 +96,8 @@ package
 		[Embed(source = "assets/art/Bookshelf1.png")] public static var bookshelf1Pic:Class; //200x382
 		
 		public static var hospitalHallway:Hallway = new Hallway(doorPic, 5, 0);
-		
+		public static var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
+
 		//changes mouse cursor whenever mouse hovers over an item in the array. TO BE CALLED IN UPDATE() IN EACH STATE!
 		public static function checkMouseHover(items:Array):void {
 			var overLappingAnItem:Boolean = false;

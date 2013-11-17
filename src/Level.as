@@ -27,7 +27,7 @@ package
 
 		public function Level(itemlist:Array)
 		{
-			var roomBackground:Background = new Background(Amnesident.greenTiles);
+			var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
 			add(roomBackground);
 			
 			originalItemsList = itemlist;
@@ -134,7 +134,7 @@ package
 			Amnesident.checkMouseHover(items);
 			
 			if (FlxG.keys.G) {
-				var hospitalHallway:Hallway = new Hallway(Amnesident.doorPic, 5, 0);
+				var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
 				FlxG.switchState(hospitalHallway);
 			}
 			
