@@ -178,6 +178,10 @@ package
 				var end:EndGame = new EndGame();
 				end.addSummary("It has been ", "2 years");
 				end.addSummary("The world", "has been destroyed");
+				var toks:Array = new Array();
+				toks.push(new Token("Test completed text", new Array(), new Array(), new Array()));
+				toks.push(new Token("Second completed text", new Array(), new Array(), new Array()));
+				end.addSummaries(toks);
 				FlxG.switchState(end);
 			}
 		}

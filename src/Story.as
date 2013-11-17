@@ -62,6 +62,22 @@ package
 			}	
 		    }
 		}
+		
+		// somewhere convenient can move around. For now just leave it in Story
+		// loop through a list of tokens, return list of items player has not already seen
+		public function unseenTokens(tokens:Array):Array {
+			var incompleteTokens:Array = new Array();
+			for each (var tok:Token in tokens) {
+				if (!tok.checkComplete()) {
+					incompleteTokens.push(tok);
+				}
+			}
+			
+			for each (var toke:Token in incompleteTokens) {
+				incompleteTokens.push(toke.unseenItems);
+			}
+			return incompleteTokens;
+		}		
 	}
 
 }

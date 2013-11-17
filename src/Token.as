@@ -58,11 +58,22 @@ package
 			return completed1 || completed2;
 		}
 		
-		
+		// return unseen items in current token
+		public function unseenItems():Array {
+			var unseenItems = new Array();
+			// Chau: path1 may not be there anymore, change it after EA pushes
+			for each (var item:Item in path1) {
+				if (!item.isSeen) {
+					unseenItems.push(item);
+				}
+			}
+			return unseenItems;
+		}
 		public function tokenCompleted():void {
 			var message:FlxText = new FlxText(300, 0, 100, completedText);
 			//add(message);
 		}
+
 	}
 
 }
