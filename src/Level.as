@@ -171,7 +171,10 @@ package
 				if (num < numBoxes) { add(s);}
 				num++;
 			}
-			
+			for each (var t:Token in Story.wantToCompleteTokens){
+			    t.checkPrereqsComplete();
+			    t.checkComplete();
+			}			
 			add(itemText);
 			// switch to End Screen when press ESCAPE 
 			if (FlxG.keys.ESCAPE) {

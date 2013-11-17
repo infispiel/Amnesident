@@ -40,7 +40,9 @@ package
 		//Edit this to determine what happens when the item is clicked.
 		public function onClick(): String
 		{
-			return this.itemText;	
+		    this.isSeen = true;	
+		    trace(this.isSeen);
+		    return this.itemText;	
 		}
 		
 	}
