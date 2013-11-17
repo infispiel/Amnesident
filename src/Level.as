@@ -5,8 +5,9 @@ package
     import flash.ui.Mouse;
     import flash.ui.MouseCursor;
 	import org.flixel.system.FlxList;
+	import org.flixel.plugin.photonstorm.*;
 	
-    public class Level extends FlxState
+    public class Level extends IndestructableFlxState
     {
 		
 		public var title:FlxText;
@@ -21,12 +22,12 @@ package
 		public var itemBox4:FlxSprite;
 		public var itemBoxes:Array;
 		public var numBoxes:int;
-
-		[Embed(source = "/assets/art/textboxLevel.png")] public var textboxLevel:Class;
+		
+		public var createdBefore:Boolean;
 
 		public function Level(itemlist:Array)
 		{
-			var roomBackground:Background = new Background(Amnesident.greenTiles);
+			var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
 			add(roomBackground);
 			
 			originalItemsList = itemlist;
@@ -53,7 +54,7 @@ package
 			
 			itemBoxes = [itemBox, itemBox2, itemBox3, itemBox4];
 			for each (var itembox:FlxSprite in itemBoxes) {
-				itembox.loadGraphic(textboxLevel, true, true, 300, 22);
+				itembox.loadGraphic(AssetsRegistry.textboxLevel, true, true, 300, 22);
 				itembox.addAnimation("idle", [0]);
 			}
 			add(itemBox);
@@ -130,9 +131,11 @@ package
 		
 		override public function update():void
 		{
+			Amnesident.checkMouseHover(items);
+			
 			if (FlxG.keys.G) {
-				var hospitalHallway:Hallway = new Hallway(Amnesident.doorPic, 5, 0);
-				FlxG.switchState(hospitalHallway);
+				//var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
+				FlxG.switchState(Registry.hospitalHallway);
 			}
 			
 			//onClick() is called on each item that is clicked.
@@ -151,6 +154,7 @@ package
 					}
 				}
 			}
+			
 			var num:int = 0;
 			for each (var s:FlxSprite in itemBoxes) {
 				if (num < numBoxes) { add(s);}
@@ -181,7 +185,7 @@ package
 			
 			for (i = 0; i++; i < numBoxes + 3) {
 				var sprite:FlxSprite = new FlxSprite(300, 22 * i);
-				sprite.loadGraphic(textboxLevel, true, true, 300, 22);
+				sprite.loadGraphic(AssetsRegistry.textboxLevel, true, true, 300, 22);
 				sprite.addAnimation("idle", [0]);				
 				sprites.push(sprite);
 			}

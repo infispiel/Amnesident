@@ -2,6 +2,8 @@ package
 {
     import org.flixel.*;
 	import flash.utils.setTimeout;
+	import org.flixel.plugin.photonstorm.*;
+	
     public class Item extends FlxSprite
     {
 		public var isSeen:Boolean;
@@ -29,8 +31,7 @@ package
 		public function justClicked():Boolean
 		{
 			if (FlxG.mouse.justReleased()) {
-				var mousePoint:FlxPoint = new FlxPoint(FlxG.mouse.x, FlxG.mouse.y);
-				if (this.overlapsPoint(mousePoint)) {
+				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, this)){
 					return true;
 				}
 			}

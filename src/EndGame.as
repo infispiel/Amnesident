@@ -13,7 +13,7 @@ package
 	{
 		public var title:FlxText;
 		public var lineNumber:int = 0;
-		[Embed(source = "/assets/art/textbox.png")] public var textbox:Class;
+		
 		public function EndGame() 
 		{
 			title = new FlxText(200, 180, 300, "End of game");
@@ -34,7 +34,7 @@ package
 			dynamicText.setFormat(null, 13, 0x000000, "center")
 			
 			var sprite:FlxSprite = new FlxSprite(250, 30*lineNumber);
-			sprite.loadGraphic(textbox, true, true, 250, 20);
+			sprite.loadGraphic(AssetsRegistry.textbox, true, true, 250, 20);
 			sprite.addAnimation("idle", [0]);
 			
 			add(sprite);
