@@ -135,7 +135,7 @@ package
 			
 			if (FlxG.keys.G) {
 				//var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
-				FlxG.switchState(Amnesident.hospitalHallway);
+				FlxG.switchState(Registry.hospitalHallway);
 			}
 			
 			//onClick() is called on each item that is clicked.

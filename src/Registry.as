@@ -6,11 +6,9 @@ package
 	 */
 	public class Registry	{
 		
-		public static var currentHallway:String = "";
+		public var visitedRoomCount:Number = 0;
 		public static var currentRoom:int = 0;
-		
-		public static var doors:Array = new Array();
-		public static var rooms:Array = new Array();
+		public static var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
 		
 		public function Registry()	{			
 		}

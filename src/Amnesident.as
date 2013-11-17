@@ -115,7 +115,6 @@ package
 			}
 		}
 		
-		
 		public function Amnesident() 
 		{
 			super(800, 480, MainMenuState, 1);

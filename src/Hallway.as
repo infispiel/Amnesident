@@ -16,13 +16,12 @@ package
 		}
 		
 		override public function create():void {
-			//Set the background color to light gray (0xAARRGGBB)
-			//FlxG.bgColor = 0xffaaaaaa;
-			//Create Tiled Background
+			var i:int = 0;
 			if (!createdBefore) {
+				//Create Tiled Background
 				var hallwayBackground:Background = new Background(AssetsRegistry.blueTiles);
 				add(hallwayBackground);
-				for (var i:int = 0; i < roomCount; i++) {
+				for (; i < roomCount; i++) {
 					var space:Number = 127 * 1.25;
 					var door:Door = new Door(10 + i * space, FlxG.height - 236, doorImage, 0);
 					var room:Room = new Room();
@@ -33,7 +32,7 @@ package
 				createdBefore = true;
 			}
 			else {
-				for (var i:int = 0; i < roomCount; i++) {
+				for (; i < roomCount; i++) {
 					add(doors[i]);
 				}
 			}
