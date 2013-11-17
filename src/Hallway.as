@@ -1,11 +1,13 @@
 package 
 {
 	import org.flixel.*;
-	public class Hallway extends FlxState {
+	public class Hallway extends IndestructableFlxState {
 		public static var doorImage:Class;
 		public static var roomCount:Number;
 		public var currentRoom:Number;
 		public var doors:Array = new Array();
+		public var rooms:Array = new Array();
+		public var createdBefore:Boolean = false;
 	
 		public function Hallway(door:Class, count:int, startingRoom:Number) {
 			doorImage = door;
@@ -14,16 +16,25 @@ package
 		}
 		
 		override public function create():void {
-			//Set the background color to light gray (0xAARRGGBB)
-			//FlxG.bgColor = 0xffaaaaaa;
-			//Create Tiled Background
-			var hallwayBackground:Background = new Background(Amnesident.blueTiles);
-			add(hallwayBackground);
-			for (var i:int = 0; i < 5; i++) {
-				var space:Number = 127 * 1.25;
-				var door:Door = new Door(10 + i * space, FlxG.height - 236, doorImage, 0);
-				doors.push(door);
-				add(door);
+			var i:int = 0;
+			if (!createdBefore) {
+				//Create Tiled Background
+				var hallwayBackground:Background = new Background(AssetsRegistry.blueTiles);
+				add(hallwayBackground);
+				for (; i < roomCount; i++) {
+					var space:Number = 127 * 1.25;
+					var door:Door = new Door(10 + i * space, FlxG.height - 236, doorImage, 0);
+					var room:Room = new Room();
+					doors.push(door);
+					rooms.push(room.level1);
+					add(door);
+				}
+				createdBefore = true;
+			}
+			else {
+				for (; i < roomCount; i++) {
+					add(doors[i]);
+				}
 			}
 		}
 		
@@ -42,8 +53,7 @@ package
 				for (var doorNum:int = 0; doorNum < doors.length; doorNum++) {
 					//Check If Door Just Clicked, If So Load a Random Room
 					if (doors[doorNum].justClicked()) {
-						var room:Room = new Room();
-						FlxG.switchState(room.level1);
+						FlxG.switchState(rooms[doorNum]);
 					}
 				}
 			}
