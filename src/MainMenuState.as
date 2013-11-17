@@ -41,7 +41,7 @@ package
 		
 		public function startPlay():void {
 			FlxG.switchState(room.level1);
-			//FlxG.switchState(Amnesident.hospitalHallway);
+			//FlxG.switchState(Registry.hospitalHallway);
 		}
 	}
 }

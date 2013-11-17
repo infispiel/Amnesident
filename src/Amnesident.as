@@ -6,10 +6,7 @@ package
 	public class Amnesident extends FlxGame
 	{
 		public static var numSlots:int = 4;
-		public static var slotSize:int = 800 / 4;
-		public var visitedRoomCount:Number = 0;
-		public static var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
-		
+		public static var slotSize:int = 800 / 4;		
 		
 		public function Amnesident() 
 		{
