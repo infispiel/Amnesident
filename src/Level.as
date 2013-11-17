@@ -6,7 +6,7 @@ package
     import flash.ui.MouseCursor;
 	import org.flixel.system.FlxList;
 	
-    public class Level extends FlxState
+    public class Level extends IndestructableFlxState
     {
 		
 		public var title:FlxText;
@@ -21,8 +21,8 @@ package
 		public var itemBox4:FlxSprite;
 		public var itemBoxes:Array;
 		public var numBoxes:int;
-
-		[Embed(source = "/assets/art/textboxLevel.png")] public var textboxLevel:Class;
+		
+		public var createdBefore:Boolean;
 
 		public function Level(itemlist:Array)
 		{
@@ -68,7 +68,7 @@ package
 			
 			itemBoxes = [itemBox, itemBox2, itemBox3, itemBox4];
 			for each (var itembox:FlxSprite in itemBoxes) {
-				itembox.loadGraphic(textboxLevel, true, true, 300, 22);
+				itembox.loadGraphic(AssetsRegistry.textboxLevel, true, true, 300, 22);
 				itembox.addAnimation("idle", [0]);
 			}
 			add(itemBox);
@@ -146,8 +146,8 @@ package
 		override public function update():void
 		{
 			if (FlxG.keys.G) {
-				var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
-				FlxG.switchState(hospitalHallway);
+				//var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
+				FlxG.switchState(Amnesident.hospitalHallway);
 			}
 			
 			//onClick() is called on each item that is clicked.
@@ -192,7 +192,7 @@ package
 			
 			for (i = 0; i++; i < numBoxes + 3) {
 				var sprite:FlxSprite = new FlxSprite(300, 22 * i);
-				sprite.loadGraphic(textboxLevel, true, true, 300, 22);
+				sprite.loadGraphic(AssetsRegistry.textboxLevel, true, true, 300, 22);
 				sprite.addAnimation("idle", [0]);				
 				sprites.push(sprite);
 			}
