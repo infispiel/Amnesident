@@ -33,33 +33,18 @@ package
 			
 			items = chooseRandomItems(itemlist);
 			
-			if (items[0] != null) {
-				items[0].x = 0;
-				items[0].y = 480 - items[0].height;
-				add(items[0]);
+			for (var ii:int = 0; ii < items.length; ii ++){
+				if (items[ii] != null) {
+					items[ii].x = Amnesident.slotSize * ii
+					items[ii].y = FlxG.height - items[ii].height;
+					add(items[ii]);
+				}
 			}
-
-			if (items[1] != null) {
-				items[1].x = Amnesident.slotSize;
-				items[1].y = 480 - items[1].height;
-				add(items[1]);
-			}
-
-			if (items[2] != null) {
-				items[2].x = Amnesident.slotSize * 2;
-				items[2].y = 480 - items[2].height;
-				add(items[2]);
-			}
-
-			if (items[3] != null) {
-				items[3].x = Amnesident.slotSize * 3;
-				items[3].y = 480 - items[3].height;
-				add(items[3]);
-			}
-
+			
 			title = new FlxText(300, 0, 100, "Level");
 			title.size = 20;
 			itemText = new FlxText(300, 30, 500, "Try clicking on an item!");
+			itemText.setFormat(null, 13, 0x0000000, "left");
 			
 			itemBox = new FlxSprite(295, 25);	
 			itemBox2 = new FlxSprite(295, 47);			
@@ -121,19 +106,19 @@ package
 					tarSlot = Math.floor(Math.random() * 4)
 
 					fit = 1;
-					for (var idx:int = tarSlot;
-						idx < tarSlot + itm.slots;
-						idx++) {
+					for (var indx:int = tarSlot;
+						indx < tarSlot + itm.slots;
+						indx++) {
 
-						fit &= space[idx];
+						fit &= space[indx];
 					}
 				}
 
-				for (var idx:int = tarSlot;
-					idx < tarSlot + itm.slots;
-					idx++) {
+				for (var n:int = tarSlot;
+					n < tarSlot + itm.slots;
+					n++) {
 
-					space[idx] = 0;
+					space[n] = 0;
 				}
 
 				i++;
