@@ -53,8 +53,19 @@ package
 
 	public static var rulerCatBad:Token = new Token("How...how could he? Mr. Cat, my beloved pet, must have taken over the world. It's the only logical conclusion. He's made such a mess of it, too. Odd, he always gave me the best advice...", "The world", "is ruled poorly by Mr. Cat", new Array(mrCatRulesPic, windowCatBad));
 	public static var rulerCatGood:Token = new Token("The cat portrait...cats and people acting as equal citizens...oh no! My pet kitty has taken over the world!", "The world", "is ruled well by Mr. Cat", new Array(mrCatRulesPic, windowCatGood));
-	public static var rulerVp:Token = new Token("The VP is in command...I always knew she had it in her!");
-
+	public static var rulerVp:Token = new Token("My VP is in command...of the whole world?! I'm impressed!", "The world", "is ruled by the former VP", new Array(vpLetter, vpTvNews));
+	public static var rulerYou:Token = new Token("Looks like I'm in charge! It doesn't get much better than this!", "The world", "is ruled by you", new Array(youRuleTvNews, youRuleWindow));
+	public static var rulerGraybox:Token = new Token("So many boxes everywhere...this must be the doing of the nefarious Graybox Corporation! They've been trying to gain control of government assets for a while...looks like they finally succeeded.", "The world", "is ruled by Graybox Corp.", new Array(grayboxHouse, grayboxRulesTvNews, grayboxBooks));
+	
+	public static var timeTenMin:Token = new Token("Wait, it's still the Fourth of July! I've barely been here for ten minutes!", "It has been", "ten minutes", new Array(tenMinDesk, tenMinNews));
+	public static var timeWeek:Token = new Token("I'd guess I've been here for around a week.", "It has been", "a week", new Array(weekRazor, weekNews, moldyYogurtWeek));
+	public static var timeHundredYears:Token = new Token("Oh no, someone must have transported me into the future! ...or I was just asleep for a hundred years. Not sure which makes more sense, really!", "It has been", "a hundred years", new Array(hundredYearYogurt, hundredYearWindow, hundredYearGraybox));
+	
+	public static var amnesiaSelf:Token = new Token("The state of the world, that note I wrote...I caused all of it! No wonder I gave myself amnesia. I wonder if I could do it again...", "Your amnesia was caused by", "yourself", new Array(amnesiaSelfNote, amnesiaSelfTvNews));
+	public static var amnesiaVp:Token = new Token("So, the VP was scheming against me to make a grab for power...come to think of it, I do remember that giant 'Amnesia' needle now...", "Your amnesia was caused by", "the VP", new Array(amnesiaVpNote, amnesiaVpJournal));
+	public static var amnesiaGraybox:Token = new Token("Oh, that's right, I signed up to test Graybox's new amnesia product. Hey, they offered me $50 for it!", "Your amnesia was caused by", "Graybox Corp.", new Array(amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook));
+	public static var amnesiaAllergies:Token = new Token("I always was allergic to cats...could that be the cause of my amnesia?", "Your amnesia was caused by", "your cat allergies", new Array(allergyCatPic, allergyBook, allergyDesk));
+	public static var amnesiaMrCatAllergies:Token = new Token("Me, a cat, allergic to my own kin? No wonder I'm in the hospital.", "Your amnesia was caused by", "your cat allergies", new Array(allergyCatPic, allergyBook));
     }
 
 }
