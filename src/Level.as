@@ -167,9 +167,16 @@ package
 			add(itemText);
 			// switch to End Screen when press ESCAPE 
 			if (FlxG.keys.ESCAPE) {
+				// test End Game
 				var end:EndGame = new EndGame();
 				end.addSummary("It has been ", "2 years");
 				end.addSummary("The world", "has been destroyed");
+				var toks:Array = new Array();
+				var president:Item = new Item(AssetsRegistry.mrPresidentPic, 127, 459, "What a handsome fellow! No wonder the public voted for him....");
+				var bedNews:Item = new Item(AssetsRegistry.bedWithnewsPic, 307, 115, "The headline reads: 'Is Craine Insane? President's erratic behavior mystifies family, staff.'");
+				var discoverPresidentNews:Token = new Token("Hey...I've seen that face before...I must be the President!", "You are", "the President", new Array(bedNews, president));
+				toks.push(discoverPresidentNews);
+				end.addSummaries(toks);
 				FlxG.switchState(end);
 			}
 		}
