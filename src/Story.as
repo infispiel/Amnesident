@@ -35,6 +35,7 @@ package
 			    }
 			}
 			wantToCompleteTokens = new Array();
+			completedTokens = new Array();
 			chooseNewToken();
 			trace(wantToCompleteTokens);
 			trace("Story initialized");
