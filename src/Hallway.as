@@ -23,7 +23,7 @@ package
 				add(hallwayBackground);
 				for (; i < roomCount; i++) {
 					var space:Number = 127 * 1.25;
-					var door:Door = new Door(10 + i * space, FlxG.height - 236, doorImage, 0);
+					var door:Door = new Door(10 + i * space, FlxG.height - 236 - Amnesident.interfaceSize, doorImage, 0);
 					var room:Room = new Room();
 					doors.push(door);
 					rooms.push(room.level1);

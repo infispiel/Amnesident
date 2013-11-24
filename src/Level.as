@@ -15,13 +15,6 @@ package
 		public var items:Array;
 		public var story:Story;
 		public var itemText:FlxText;
-
-		public var itemBox:FlxSprite;
-		public var itemBox2:FlxSprite;
-		public var itemBox3:FlxSprite;
-		public var itemBox4:FlxSprite;
-		public var itemBoxes:Array;
-		public var numBoxes:int;
 		
 		public var createdBefore:Boolean;
 
@@ -37,32 +30,23 @@ package
 			for (var ii:int = 0; ii < items.length; ii ++){
 				if (items[ii] != null) {
 					items[ii].x = Amnesident.slotSize * ii
-					items[ii].y = FlxG.height - items[ii].height;
+					//Amnesident.interfaceSize accounts for the UI space.
+					items[ii].y = FlxG.height - Amnesident.interfaceSize - items[ii].height;
 					add(items[ii]);
 				}
 			}
 			
-			title = new FlxText(300, 0, 100, "Level");
+			title = new FlxText(FlxG.width/2 - 30, 0, 100, "Level");
 			title.size = 20;
-			itemText = new FlxText(300, 30, 500, "Try clicking on an item!");
-			itemText.setFormat(null, 13, 0x0000000, "left");
+			itemText = new FlxText(30, FlxG.height - Amnesident.interfaceSize, FlxG.width - 60, "Try clicking on an item!");
+			itemText.setFormat(null, 13, 0xfffffff, "left");
 			
-			itemBox = new FlxSprite(295, 25);	
-			itemBox2 = new FlxSprite(295, 47);			
-			itemBox3 = new FlxSprite(295, 69);	
-			itemBox4 = new FlxSprite(295, 81);
-			
-			itemBoxes = [itemBox, itemBox2, itemBox3, itemBox4];
-			for each (var itembox:FlxSprite in itemBoxes) {
-				itembox.loadGraphic(AssetsRegistry.textboxLevel, true, true, 300, 22);
-				itembox.addAnimation("idle", [0]);
-			}
-			add(itemBox);
 			add(title);
 			add(itemText);
 			
-			var debugText:FlxText = new FlxText(300, 100, 500, "Press g to return to the hallway!");
+			var debugText:FlxText = new FlxText(FlxG.width/2 - 60, 30, 500, "Press g to return to the hallway!");
 			add(debugText);
+			
 		}
 		
 		public function chooseRandomItems(itemlist:Array):Array
@@ -143,22 +127,11 @@ package
 				if(item != null){
 					if (item.justClicked()) {
 						remove(itemText);
-						for each (var sp:FlxSprite in itemBoxes) {
-							remove(sp);
-						}			
 						//item.onClick() will return a string and you can manage that string in the level state
-						itemText = new FlxText(300, 30, 300, item.onClick());
-						itemText.setFormat(null, 13, 0x0000000, "left");				
-						var textheight:int = itemText.height;
-						numBoxes = (int) ((textheight / 22) + 1);
+						itemText = new FlxText(30, FlxG.height - Amnesident.interfaceSize + 5, FlxG.width - 60, item.onClick());
+						itemText.setFormat(null, 13, 0xfffffff, "left");
 					}
 				}
-			}
-			
-			var num:int = 0;
-			for each (var s:FlxSprite in itemBoxes) {
-				if (num < numBoxes) { add(s);}
-				num++;
 			}
 			for each (var t:Token in Story.wantToCompleteTokens){
 			    t.checkPrereqsComplete();
@@ -181,23 +154,5 @@ package
 			}
 		}
 		
-		public function insertTextBox(text:FlxText):Array {
-			// textboxLevel is 300x22
-			var textheight:int = text.height;
-			var numBoxes:int = 3; // (int) (textheight / 22);
-			trace("Number of boxes used: " + numBoxes.toString());
-			var sprites:Array = new Array();;
-			var i:int;
-			
-			for (i = 0; i++; i < numBoxes + 3) {
-				var sprite:FlxSprite = new FlxSprite(300, 22 * i);
-				sprite.loadGraphic(AssetsRegistry.textboxLevel, true, true, 300, 22);
-				sprite.addAnimation("idle", [0]);				
-				sprites.push(sprite);
-			}
-			
-			trace("Size of sprites" + sprites.length.toString());
-			return sprites;
-		}
     }
 }
