@@ -93,7 +93,6 @@ package
 		//Bookshelf
 		[Embed(source = "assets/art/Bookshelf1.png")] public static var bookshelf1Pic:Class; //200x382
 
-<<<<<<< HEAD
 		// Graybox Products
 		[Embed(source = "assets/art/grayboxhousing.png")] public static var grayboxHousingPic:Class; // 226x225
 		[Embed(source = "assets/art/grayboxbeard.png")] public static var grayboxBeardPic:Class; // 181x180
