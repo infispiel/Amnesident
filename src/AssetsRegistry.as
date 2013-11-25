@@ -95,7 +95,8 @@ package
 
 		// Sound
 		[Embed(source = "assets/sound/eat.mp3")] public static var sfxEat:Class;
-		[Embed(source = "assets/sound/footstep1.mp3")] public static var sfxStep:Class;
+		[Embed(source = "assets/sound/footstep1.mp3")] public static var sfxStep1:Class;
+		[Embed(source = "assets/sound/footstep2.mp3")] public static var sfxStep2:Class;
 		[Embed(source = "assets/sound/openjournal.mp3")] public static var sfxopenjournal:Class;
 		[Embed(source = "assets/sound/opendoor.mp3")] public static var sfxopendoor:Class;
 		[Embed(source = "assets/sound/meowcute.mp3")] public static var sfxmeowcute:Class;

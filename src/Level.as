@@ -65,6 +65,9 @@ package
 			add(debugText);
 		}
 		
+		override public function create():void {
+			FlxG.play(AssetsRegistry.sfxStep1);
+		}
 		public function chooseRandomItems(itemlist:Array):Array
 		{
 			//minimum number of items is 1
