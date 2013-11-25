@@ -92,7 +92,13 @@ package
 		
 		//Bookshelf
 		[Embed(source = "assets/art/Bookshelf1.png")] public static var bookshelf1Pic:Class; //200x382
-		
+
+		// Sound
+		[Embed(source = "assets/sound/eat.mp3")] public static var sfxEat:Class;
+		[Embed(source = "assets/sound/footstep1.mp3")] public static var sfxStep:Class;
+		[Embed(source = "assets/sound/openjournal.mp3")] public static var sfxopenjournal:Class;
+		[Embed(source = "assets/sound/opendoor.mp3")] public static var sfxopendoor:Class;
+		[Embed(source = "assets/sound/meowcute.mp3")] public static var sfxmeowcute:Class;
 		public function AssetsRegistry() 
 		{
 			

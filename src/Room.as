@@ -9,9 +9,6 @@ package
 			//Associate Story with Level1
 			
 			level1 = new Level(Tokens.itemList);
-//			story = new Story(Tokens.itemList, Tokens.tokenList); 
-//			story.setLevel(level1);
-//			level1.story = story;
 		}		
 	}
 	
