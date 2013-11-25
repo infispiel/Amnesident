@@ -9,6 +9,7 @@ package
 	{
 		public static var numSlots:int = 4;
 		public static var slotSize:int = 800 / 4;
+		public static var story:Story;
 
 		//changes mouse cursor whenever mouse hovers over an item in the array. TO BE CALLED IN UPDATE() IN EACH STATE!
 		public static function checkMouseHover(items:Array):void {

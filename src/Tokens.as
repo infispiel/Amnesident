@@ -1,7 +1,7 @@
 package
 {
 
-    public static class Tokens {
+    public class Tokens {
         public static var moldyYogurtWeek:Item = new Item(AssetsRegistry.table_m_moldPic, 125, 200, "It's covered in mold! I'm going to have a word with room service....");
         public static var freshYogurt:Item = new Item(AssetsRegistry.table_m_yogurtPic, 125, 200, "Whoever put this here must have known how much I love cucumber yogurt. How kind!");
         public static var bed:Item = new Item(AssetsRegistry.bedPic, 307, 115, "I only woke up a few minutes ago, I'm not going back to sleep already!");
@@ -43,7 +43,8 @@ package
 	public static var allergyBook:Item = new Item(AssetsRegistry.table_m_bluebookPic, 125, 200, "It's the National Journal of Amphigory. Let's see...'Autoimmune response to Fel d 4 linked to memory lapses'...this makes no sense!");
 	public static var allergyDesk:Item = new Item(AssetsRegistry.desk1BasicPic, 306, 150, "A note from the Vice President: 'Don't you think you spend too much time with Mr. Cat?' How dare she?");
 	
-	public static var itemList:Array = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, moldyYogurtJanitor, presPicJanitor, bedNewsJanitor, mrCatRulesPic, windowCatBad, windowCatGood, vpLetter, vpTvNews, grayboxHouse, grayboxRulesTvNews, grayboxBooks, youRuleTvNews, youRuleWindow, tenMinDesk, tenMinNews, weekRazor, weekNews, hundredYearYogurt, hundredYearWindow, hundredYearGraybox, amnesiaSelfTvNews, amnesiaSelfNote, amnesiaVpNote, amnesiaVpJournal, amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook, allergyCatPic, allergyBook, allergyDesk);
+	// public static var itemList:Array = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, moldyYogurtJanitor, presPicJanitor, bedNewsJanitor, mrCatRulesPic, windowCatBad, windowCatGood, vpLetter, vpTvNews, grayboxHouse, grayboxRulesTvNews, grayboxBooks, youRuleTvNews, youRuleWindow, tenMinDesk, tenMinNews, weekRazor, weekNews, hundredYearYogurt, hundredYearWindow, hundredYearGraybox, amnesiaSelfTvNews, amnesiaSelfNote, amnesiaVpNote, amnesiaVpJournal, amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook, allergyCatPic, allergyBook, allergyDesk);
+	public static var itemList:Array = new Array(presPic, bedNewsPres, mirror);
 
 	// TOKENS
 	public static var youArePres:Token = new Token("Hey, I've seen that face before! I must be the President!", "You are", "the President", new Array(mirror, bedNewsPres));
@@ -53,8 +54,9 @@ package
 
 	public static var rulerCatBad:Token = new Token("How...how could he? Mr. Cat, my beloved pet, must have taken over the world. It's the only logical conclusion. He's made such a mess of it, too. Odd, he always gave me the best advice...", "The world", "is ruled poorly by Mr. Cat", new Array(mrCatRulesPic, windowCatBad));
 	public static var rulerCatGood:Token = new Token("The cat portrait...cats and people acting as equal citizens...oh no! My pet kitty has taken over the world!", "The world", "is ruled well by Mr. Cat", new Array(mrCatRulesPic, windowCatGood));
-	public static var rulerVp:Token = new Token("The VP is in command...I always knew she had it in her!");
 
+
+	// public static var tokenList:Array = new Array(youArePres, youAreClone, youAreCat, youAreJanitor, rulerCatBad, rulerCatGood);
+	public static var tokenList:Array = new Array(youArePres);
     }
-
 }

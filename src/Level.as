@@ -13,7 +13,7 @@ package
 		public var title:FlxText;
 		public var originalItemsList:Array;
 		public var items:Array;
-		public var story:Story;
+		// public var story:Story;
 		public var itemText:FlxText;
 
 		public var itemBox:FlxSprite;
