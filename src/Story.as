@@ -46,6 +46,7 @@ package
 		}
 
 		public static function markCompleted(token:Token):void {
+			trace("completing token: "+token.completedText);
 			if (wantToCompleteTokens.indexOf(token) != -1){
 			    // remove from wantToCompleteTokens
 			    wantToCompleteTokens.splice(wantToCompleteTokens.indexOf(token), 1);
