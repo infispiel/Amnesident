@@ -78,7 +78,7 @@ package
 		
 		//Windows
 		[Embed(source = "assets/art/window1.png")] public static var windowPic:Class; //200x459
-		[Embed(source = "assets/art/window1wood.png")] public static var woodWinodowPic:Class; //200x459
+		[Embed(source = "assets/art/window1wood.png")] public static var woodWindowPic:Class; //200x459
 		
 		//Desks
 		[Embed(source = "assets/art/desk1basic.png")] public static var desk1BasicPic:Class; //306x150
