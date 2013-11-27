@@ -41,9 +41,9 @@ package
 		
 		public function startPlay():void {
 			Amnesident.story = new Story(Tokens.itemList, Tokens.tokenList);
-			Registry.hospitalHallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
-			Registry.hospitalHallway.create();
-			FlxG.switchState(Registry.hospitalHallway.rooms[0]);
+			Registry.halls[Registry.currentHall] = new Hallway(AssetsRegistry.doorPic, AssetsRegistry.blueTiles, 5, 0);
+			Registry.halls[Registry.currentHall].create();
+			FlxG.switchState(Registry.halls[Registry.currentHall].rooms[0]);
 		}
 	}
 }

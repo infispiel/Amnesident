@@ -1,6 +1,8 @@
 package 
 {
 	import org.flixel.*;
+	import org.flixel.plugin.photonstorm.*;
+
 	public class Hallway extends IndestructableFlxState {
 		public static var doorImage:Class;
 		public static var roomCount:Number;
@@ -9,19 +11,19 @@ package
 		public var rooms:Array = new Array();
 		public var createdBefore:Boolean = false;
 	
-		public function Hallway(door:Class, count:int, startingRoom:Number) {
-			doorImage = door;
+		private var endGameBtn:FlxButtonPlus;
+		private var hallwayBtn:FlxButtonPlus;
+		private var journalBtn:FlxButtonPlus;
+
+		public function Hallway(doorImg:Class, bgImg:Class, count:int, startingRoom:Number) {
+			doorImage = doorImg;
 			roomCount = count;
 			currentRoom = startingRoom;	
-		}
-		
-		override public function create():void {
-			FlxG.play(AssetsRegistry.sfxStep2);
-			
+
 			var i:int = 0;
 			if (!createdBefore) {
 				//Create Tiled Background
-				var hallwayBackground:Background = new Background(AssetsRegistry.blueTiles);
+				var hallwayBackground:Background = new Background(bgImg);
 				add(hallwayBackground);
 				for (; i < roomCount; i++) {
 					var space:Number = 127 * 1.25;
@@ -38,10 +40,73 @@ package
 					add(doors[i]);
 				}
 			}
+
+			buildUi();
 		}
 		
+		override public function create():void {
+			FlxG.play(AssetsRegistry.sfxStep2);
+		}
+		
+		private function buildUi():void {
+			endGameBtn = new FlxButtonPlus(610, 10, endGame, null, null);
+			var endGameImg:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
+			var endGameImgHover:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImgHover);
+			endGameBtn.loadGraphic(endGameImg, endGameImgHover);
+			endGameBtn.width = 181;
+			endGameBtn.height = 50;
+			add(endGameBtn);
+
+			hallwayBtn = new FlxButtonPlus(20, 4, returnHallway, null, null);
+			var hallwayImg:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
+			var hallwayImgHover:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImgHover);
+			hallwayBtn.loadGraphic(hallwayImg, hallwayImgHover);
+			hallwayBtn.width = 106;
+			hallwayBtn.height = 64;
+			add(hallwayBtn);
+
+			journalBtn = new FlxButtonPlus(150, 4, journal, null, null);
+			var journalImg:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImg);
+			var journalImgHover:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImgHover);
+			journalBtn.loadGraphic(journalImg, journalImgHover);
+			journalBtn.width = 65;
+			journalBtn.height = 63;
+			add(journalBtn);
+		}
+
+		private function endGame():void {
+			var end:EndGame = new EndGame();
+			end.addSummaries(Story.completedTokens.concat(Story.wantToCompleteTokens));
+			FlxG.switchState(end);
+			return;
+		}
+
+		private function returnHallway():void {
+			trace("hallway");
+			// FlxG.switchState(Registry.hospitalHallway);
+		}
+
+		private function journal():void {
+			trace("journal");
+		}
+
 		override public function update():void	{
+			super.update();
 			
+			if (FlxG.keys.H) {
+				var nextHall:int = Registry.currentHall ^ 1;
+				var nextBg:Class;
+				if (nextHall) {
+					nextBg = AssetsRegistry.blueTiles;
+				} else {
+					nextBg = AssetsRegistry.greenTiles;
+				}
+
+				Registry.halls[nextHall] = new Hallway(AssetsRegistry.doorPic, nextBg, 5, 0);
+				Registry.currentHall = nextHall;
+				FlxG.switchState(Registry.halls[Registry.currentHall]);
+			}
+
 			Amnesident.checkMouseHover(doors);
 			// switch to End Screen when press ESCAPE 
 			if (FlxG.keys.ESCAPE) {
