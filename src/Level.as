@@ -13,7 +13,7 @@ package
 		public var title:FlxText;
 		public var originalItemsList:Array;
 		public var items:Array;
-		public var story:Story;
+		// public var story:Story;
 		public var itemText:FlxText;
 
 		public var itemBox:FlxSprite;
@@ -76,17 +76,43 @@ package
 			var resultingItems:Array = new Array(null, null, null, null);
 			var randomIndexes:Array = new Array();
 			var space:Array = new Array(1, 1, 1, 1);
+			var chosen:Array = new Array();
 
 			var maxTries:int = 100;
 			var numTries:int = 0;
-			var i:int = 0;
-			while (i < numItems && numTries < maxTries) {
+			var placed:int = 0;
+			trace("================");
+			trace("placing:");
+			trace(numItems);
+
+			while (placed < numItems && numTries < maxTries) {
 				numTries++;
 
-				var idx:int = Math.floor(Math.random() * itemlist.length);
-				var itm:Item = itemlist[idx];
+				var idx:int;
+				var itm:Item;
 				var gap:int = 0;
-				var fittable:Boolean = false;
+				var fittable:Boolean;
+
+				var attempts:int = 0;
+				var maxAttempts = 100;
+				var done:Boolean = false;
+				while (!done && attempts < maxAttempts) {
+					attempts++;
+					idx = Math.floor(Math.random() * itemlist.length);
+					itm = itemlist[idx];
+
+					for (var i:int = 0; i < resultingItems.length; i++) {
+						if (itm == resultingItems[i]) {
+							done = true;
+							break;
+						}
+					}
+				}
+
+				if (attempts == maxAttempts) {
+				}
+
+				fittable = false;
 
 				for (var j:int = 0; j < space.length; j++) {
 					if (space[j]) {
@@ -103,9 +129,10 @@ package
 					continue;
 				}
 
-				var fit:int = 0;
+				var fit:int;
 				var tarSlot:int;
 
+				fit = 0;
 				while (!fit) {
 					tarSlot = Math.floor(Math.random() * 4)
 
@@ -118,6 +145,10 @@ package
 					}
 				}
 
+				trace(itm.itemText);
+				trace("tarSlot:");
+				trace(tarSlot);
+
 				for (var n:int = tarSlot;
 					n < tarSlot + itm.slots;
 					n++) {
@@ -125,10 +156,11 @@ package
 					space[n] = 0;
 				}
 
-				i++;
 				resultingItems[tarSlot] = itm;
+				placed++;
 			}
 
+			trace("================");
 			return resultingItems;
 		}
 		
