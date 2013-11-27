@@ -61,7 +61,7 @@ package
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.completedTokens.concat(Story.wantToCompleteTokens));
+			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
 			FlxG.switchState(end);
 			return;
 		}
@@ -134,18 +134,10 @@ package
 
 			Amnesident.checkMouseHover(doors);
 			// switch to End Screen when press ESCAPE 
-			if (FlxG.keys.ESCAPE) {
-				var end:EndGame = new EndGame();
-				end.addSummary("It has been ", "2 years");
-				end.addSummary("The world", "has been destroyed");				
-				FlxG.switchState(end);
-			}
-			else {
-				for (var doorNum:int = 0; doorNum < doors.length; doorNum++) {
-					//Check If Door Just Clicked, If So Load a Random Room
-					if (doors[doorNum].justClicked()) {
-						FlxG.switchState(rooms[doorNum]);
-					}
+			for (var doorNum:int = 0; doorNum < doors.length; doorNum++) {
+				//Check If Door Just Clicked, If So Load a Random Room
+				if (doors[doorNum].justClicked()) {
+					FlxG.switchState(rooms[doorNum]);
 				}
 			}
 		}

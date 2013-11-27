@@ -54,7 +54,7 @@ package
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.completedTokens.concat(Story.wantToCompleteTokens));
+			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
 			FlxG.switchState(end);
 			return;
 		}

@@ -44,13 +44,16 @@ package
 			
 		}
 		// get list of tokens and addSummary for each of them
-		public function addSummaries(tokens:Array):void {
-			for each (var tok:Token in tokens) {
+		public function addSummaries(progress:Array, complete:Array):void {
+			var tok:Token;
+			for each (tok in complete) {
 				addSummary(tok.endStaticText, tok.endDynamicText);
 				//addSummary(tok.completedText, "No dynamic text yet");
 			}
+			for each (tok in progress) {
+				addSummary(tok.endStaticText, "");
+				//addSummary(tok.completedText, "No dynamic text yet");
+			}
 		}
-		
 	}
-
 }
