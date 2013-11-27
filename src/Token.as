@@ -21,7 +21,6 @@ package
 			path = _path;
 			endStaticText = _endStaticText;
 			endDynamicText = _endDynamicText;
-			trace(endDynamicText);
 			completedText = _completedText;
 			isCompleted = false;
 			incompatibleWith = new Array();
@@ -30,7 +29,6 @@ package
 			for each (var i:Item in path) {
 			    i.setToken(this);
 			}
-			trace("Token initialized");
 
 		}
 	
@@ -48,8 +46,6 @@ package
 			var completed:Boolean = true;
 			for each (var i:Item in path) {
 				if (!i.isSeen) {
-				    //trace(i.isSeen);
-				    //trace(i.itemText);
 				    completed = false;
 				}
 			}
@@ -63,7 +59,7 @@ package
 		
 		// return unseen items in current token
 		public function unseenItems():Array {
-			var unseenItems = new Array();
+			var unseenItems:Array = new Array();
 			// Chau: path1 may not be there anymore, change it after EA pushes
 			for each (var item:Item in path) {
 				if (!item.isSeen) {
@@ -76,8 +72,6 @@ package
 			var completed:Boolean = true;
 			for each (var t:Token in requires) {
 				if (!t.isCompleted) {
-				    //trace(i.isSeen);
-				    //trace(i.itemText);
 				    completed = false;
 				}
 			} 

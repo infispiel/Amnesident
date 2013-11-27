@@ -10,7 +10,6 @@ package
     public class Level extends IndestructableFlxState
     {
 		
-		public var title:FlxText;
 		public var originalItemsList:Array;
 		public var items:Array;
 		// public var story:Story;
@@ -36,19 +35,17 @@ package
 				}
 			}
 			
-			title = new FlxText(FlxG.width/2 - 30, 0, 100, "Level");
-			title.size = 20;
-			itemText = new FlxText(30, FlxG.height - Amnesident.interfaceSize, FlxG.width - 60, "Try clicking on an item!");
-			itemText.setFormat(null, 13, 0xfffffff, "left");
-			
-			add(title);
-			add(itemText);
-			
 			var debugText:FlxText = new FlxText(FlxG.width/2 - 60, 30, 500, "Press g to return to the hallway!");
 			add(debugText);
 			
+			var btn:FlxButton = new FlxButton(200, 200, "asdf", pressed);
+			add(btn);
 		}
 		
+		private function pressed():void {
+			trace("pressed");
+		}
+
 		override public function create():void {
 			FlxG.play(AssetsRegistry.sfxStep1);
 		}
@@ -78,7 +75,7 @@ package
 				var fittable:Boolean;
 
 				var attempts:int = 0;
-				var maxAttempts = 100;
+				var maxAttempts:int = 100;
 				var done:Boolean = false;
 				while (!done && attempts < maxAttempts) {
 					attempts++;
@@ -187,6 +184,8 @@ package
 				end.addSummaries(toks);
 				FlxG.switchState(end);
 			}
+
+			super.update();
 		}
 		
     }
