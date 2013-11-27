@@ -81,6 +81,8 @@ package
 		}
 
 		private function journal():void {
+			Amnesident.story.pingJournal = false;
+
 			var journalScrn:Journal = new Journal(this);
 			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
 			FlxG.switchState(journalScrn);

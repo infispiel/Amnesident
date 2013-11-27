@@ -13,18 +13,17 @@ package
 		public static var possibleTokens:Array;
 
 		public var items:Array;
-		
-		public var discoverPresident:Token;
-		public var howLong:Token;
 		public var item1:Item;
 		public var item2:Item;
 		public var item3:Item;
 		public var item4:Item;
-		
 		public var currentLevel:Level;
-		public function Story(itemList:Array, tokenList:Array) 
+		public var pingJournal:Boolean = false;
+
+		public function Story(itemList:Array, tokenList:Array)
 		{
-		
+			pingJournal = false;
+
 			items = itemList;
 			tokens = tokenList;	
 			possibleTokens = tokenList.concat();
@@ -45,7 +44,8 @@ package
 			currentLevel = level;
 		}
 
-		public static function markCompleted(token:Token):void {
+		public function markCompleted(token:Token):void {
+			pingJournal = true;
 			trace("completing token: "+token.completedText);
 			if (wantToCompleteTokens.indexOf(token) != -1){
 			    // remove from wantToCompleteTokens
@@ -65,7 +65,7 @@ package
 
 		// Chooses a token from the list of possible tokens and moves 
 		// it to wantToCompleteTokens.
-		public static function chooseNewToken():void {
+		public function chooseNewToken():void {
 		    if (possibleTokens.length != 0){
 				var tokenNumber:int = Math.floor(Math.random()*possibleTokens.length);
 				var selected:Array = possibleTokens.splice(tokenNumber, 1);
