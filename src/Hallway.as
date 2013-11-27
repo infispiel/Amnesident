@@ -82,7 +82,7 @@ package
 
 		private function journal():void {
 			var journalScrn:Journal = new Journal(this);
-			journalScrn.addSummaries(Story.completedTokens.concat(Story.wantToCompleteTokens));
+			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
 			FlxG.switchState(journalScrn);
 			return;
 		}
