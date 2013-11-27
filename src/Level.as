@@ -16,9 +16,9 @@ package
 		
 		public var createdBefore:Boolean;
 
-		private var endGameBtn:FlxButtonPlus;
-		private var hallwayBtn:FlxButtonPlus;
-		private var journalBtn:FlxButtonPlus;
+		private var endGameBtn:FlxSprite;
+		private var hallBtn:FlxSprite;
+		private var journalBtn:FlxSprite;
 
 		public function Level(itemlist:Array)
 		{
@@ -42,29 +42,38 @@ package
 		}
 
 		private function buildUi():void {
-			endGameBtn = new FlxButtonPlus(610, 10, endGame, null, null);
-			var endGameImg:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
-			var endGameImgHover:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImgHover);
-			endGameBtn.loadGraphic(endGameImg, endGameImgHover);
-			endGameBtn.width = 181;
-			endGameBtn.height = 50;
+			hallBtn = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
+			add(hallBtn);
+
+			journalBtn = new FlxSprite(150, 4, AssetsRegistry.journalBtnImg);
+			add(journalBtn);
+
+			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
 			add(endGameBtn);
 
-			hallwayBtn = new FlxButtonPlus(20, 4, returnHallway, null, null);
-			var hallwayImg:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
-			var hallwayImgHover:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImgHover);
-			hallwayBtn.loadGraphic(hallwayImg, hallwayImgHover);
-			hallwayBtn.width = 106;
-			hallwayBtn.height = 64;
-			add(hallwayBtn);
+			// endGameBtn = new FlxButtonPlus(610, 10, endGame, null, null);
+			// var endGameImg:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
+			// var endGameImgHover:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImgHover);
+			// endGameBtn.loadGraphic(endGameImg, endGameImgHover);
+			// endGameBtn.width = 181;
+			// endGameBtn.height = 50;
+			// add(endGameBtn);
 
-			journalBtn = new FlxButtonPlus(150, 4, journal, null, null);
-			var journalImg:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImg);
-			var journalImgHover:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImgHover);
-			journalBtn.loadGraphic(journalImg, journalImgHover);
-			journalBtn.width = 65;
-			journalBtn.height = 63;
-			add(journalBtn);
+			// hallwayBtn = new FlxButtonPlus(20, 4, returnHallway, null, null);
+			// var hallwayImg:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
+			// var hallwayImgHover:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImgHover);
+			// hallwayBtn.loadGraphic(hallwayImg, hallwayImgHover);
+			// hallwayBtn.width = 106;
+			// hallwayBtn.height = 64;
+			// add(hallwayBtn);
+
+			// journalBtn = new FlxButtonPlus(150, 4, journal, null, null);
+			// var journalImg:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImg);
+			// var journalImgHover:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImgHover);
+			// journalBtn.loadGraphic(journalImg, journalImgHover);
+			// journalBtn.width = 65;
+			// journalBtn.height = 63;
+			// add(journalBtn);
 		}
 
 		private function endGame():void {
@@ -74,9 +83,8 @@ package
 			return;
 		}
 
-		private function returnHallway():void {
-			trace("hallway");
-			// FlxG.switchState(Registry.hospitalHallway);
+		private function hallway():void {
+			FlxG.switchState(Registry.halls[Registry.currentHall]);
 		}
 
 		private function journal():void {
@@ -185,6 +193,30 @@ package
 
 			Amnesident.checkMouseHover(items);
 			
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {
+				hallBtn.loadGraphic(AssetsRegistry.hallwayBtnImgHover);
+			} else {
+				hallBtn.loadGraphic(AssetsRegistry.hallwayBtnImg);
+			}
+
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
+				journalBtn.loadGraphic(AssetsRegistry.journalBtnImgHover);
+			} else {
+				journalBtn.loadGraphic(AssetsRegistry.journalBtnImg);
+			}
+
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
+				endGameBtn.loadGraphic(AssetsRegistry.endGameBtnImgHover);
+			} else {
+				endGameBtn.loadGraphic(AssetsRegistry.endGameBtnImg);
+			}
+
+			if (FlxG.mouse.justReleased()) {
+				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {
+					hallway();
+				}
+			}
+
 			//onClick() is called on each item that is clicked.
 			for each (var item:Item in items) {
 				if(item != null){
