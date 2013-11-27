@@ -67,11 +67,9 @@ package
 		public static function chooseNewToken():void {
 		    if (possibleTokens.length != 0){
 				var tokenNumber:int = Math.floor(Math.random()*possibleTokens.length);
-				trace(tokenNumber);
 				var selected:Array = possibleTokens.splice(tokenNumber, 1);
 				trace('selected '+selected[0].endDynamicText);
 				wantToCompleteTokens = wantToCompleteTokens.concat(selected);
-				trace(wantToCompleteTokens);
 		        // all tokens incompatible with the chosen one are no longer possible
 				for each (var t:Token in selected[0].incompatibleWith){
 					possibleTokens.splice(possibleTokens.indexOf(t), 1);

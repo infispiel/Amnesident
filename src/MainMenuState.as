@@ -40,9 +40,10 @@ package
 		}
 		
 		public function startPlay():void {
-			FlxG.switchState(room.level1);
 			Amnesident.story = new Story(Tokens.itemList, Tokens.tokenList);
-			//FlxG.switchState(Registry.hospitalHallway);
+			Registry.hospitalHallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
+			Registry.hospitalHallway.create();
+			FlxG.switchState(Registry.hospitalHallway.rooms[0]);
 		}
 	}
 }
