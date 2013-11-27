@@ -13,12 +13,15 @@ package
 		public var originalItemsList:Array;
 		public var items:Array;
 		public var itemText:FlxText;
+		public var tokenText:FlxText;
 		
 		public var createdBefore:Boolean;
 
 		private var endGameBtn:FlxSprite;
 		private var hallBtn:FlxSprite;
 		private var journalBtn:FlxSprite;
+		private var completionTextBg:FlxSprite;
+		private var textOverlay:Boolean;
 
 		public function Level(itemlist:Array)
 		{
@@ -26,8 +29,8 @@ package
 			add(roomBackground);
 
 			originalItemsList = itemlist;
-
 			items = chooseRandomItems(itemlist);
+			textOverlay = false;
 
 			for (var ii:int = 0; ii < items.length; ii ++){
 				if (items[ii] != null) {
@@ -50,13 +53,14 @@ package
 
 			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
 			add(endGameBtn);
+
+			completionTextBg = new FlxSprite(0, Amnesident.interfaceSize+1, AssetsRegistry.tokenCompletionBox);
 		}
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
 			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
 			FlxG.switchState(end);
-			return;
 		}
 
 		private function hallway():void {
@@ -65,11 +69,11 @@ package
 
 		private function journal():void {
 			Amnesident.story.pingJournal = false;
+			textOverlay = false;
 
 			var journalScrn:Journal = new Journal(this);
 			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
 			FlxG.switchState(journalScrn);
-			return;
 		}
 
 		override public function create():void {
@@ -166,8 +170,16 @@ package
 		
 		override public function update():void
 		{
-			if (FlxG.keys.G) {
-				FlxG.switchState(Registry.halls[Registry.currentHall]);
+			if (FlxG.mouse.justReleased()) {
+				remove(itemText);
+				itemText = new FlxText(30, FlxG.height - Amnesident.interfaceSize + 5, FlxG.width - 60, "");
+				itemText.setFormat(null, 13, 0xfffffff, "left");
+				add(itemText);
+
+				if (textOverlay) {
+					remove(completionTextBg);
+					remove(tokenText);
+				}
 			}
 
 			super.update();
@@ -223,7 +235,14 @@ package
 			}
 			for each (var t:Token in Story.wantToCompleteTokens){
 			    t.checkPrereqsComplete();
-			    t.checkComplete();
+			    if (t.checkComplete()) {
+					textOverlay = true;
+					add(completionTextBg);
+					remove(tokenText);
+					tokenText = new FlxText(30, Amnesident.interfaceSize + 45, FlxG.width - 60, t.completedText);
+					tokenText.setFormat(null, 13, 0x0000000, "left");
+					add(tokenText);
+				}
 			}			
 			add(itemText);
 		}
