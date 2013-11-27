@@ -13,6 +13,7 @@ package
 		public var originalItemsList:Array;
 		public var items:Array;
 		public var itemText:FlxText;
+		public var tokenText:FlxText;
 		
 		public var createdBefore:Boolean;
 
@@ -177,15 +178,11 @@ package
 
 				if (textOverlay) {
 					remove(completionTextBg);
+					remove(tokenText);
 				}
 			}
 
 			super.update();
-
-			if (FlxG.keys.Q) {
-				textOverlay = true;
-				add(completionTextBg);
-			}
 
 			Amnesident.checkMouseHover(items);
 			
@@ -241,6 +238,10 @@ package
 			    if (t.checkComplete()) {
 					textOverlay = true;
 					add(completionTextBg);
+					remove(tokenText);
+					tokenText = new FlxText(30, Amnesident.interfaceSize + 45, FlxG.width - 60, t.completedText);
+					tokenText.setFormat(null, 13, 0x0000000, "left");
+					add(tokenText);
 				}
 			}			
 			add(itemText);
