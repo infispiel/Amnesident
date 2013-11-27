@@ -11,9 +11,9 @@ package
 		public var rooms:Array = new Array();
 		public var createdBefore:Boolean = false;
 	
-		private var endGameBtn:FlxButtonPlus;
-		private var hallwayBtn:FlxButtonPlus;
-		private var journalBtn:FlxButtonPlus;
+		private var endGameBtn:FlxSprite;
+		private var hallBtn:FlxSprite;
+		private var journalBtn:FlxSprite;
 
 		public function Hallway(doorImg:Class, bgImg:Class, count:int, startingRoom:Number) {
 			doorImage = doorImg;
@@ -49,29 +49,14 @@ package
 		}
 		
 		private function buildUi():void {
-			endGameBtn = new FlxButtonPlus(610, 10, endGame, null, null);
-			var endGameImg:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
-			var endGameImgHover:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImgHover);
-			endGameBtn.loadGraphic(endGameImg, endGameImgHover);
-			endGameBtn.width = 181;
-			endGameBtn.height = 50;
-			add(endGameBtn);
+			hallBtn = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
+			add(hallBtn);
 
-			hallwayBtn = new FlxButtonPlus(20, 4, returnHallway, null, null);
-			var hallwayImg:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
-			var hallwayImgHover:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImgHover);
-			hallwayBtn.loadGraphic(hallwayImg, hallwayImgHover);
-			hallwayBtn.width = 106;
-			hallwayBtn.height = 64;
-			add(hallwayBtn);
-
-			journalBtn = new FlxButtonPlus(150, 4, journal, null, null);
-			var journalImg:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImg);
-			var journalImgHover:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImgHover);
-			journalBtn.loadGraphic(journalImg, journalImgHover);
-			journalBtn.width = 65;
-			journalBtn.height = 63;
+			journalBtn = new FlxSprite(150, 4, AssetsRegistry.journalBtnImg);
 			add(journalBtn);
+
+			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
+			add(endGameBtn);
 		}
 
 		private function endGame():void {
@@ -81,9 +66,18 @@ package
 			return;
 		}
 
-		private function returnHallway():void {
-			trace("hallway");
-			// FlxG.switchState(Registry.hospitalHallway);
+		private function hallway():void {
+			var nextHall:int = Registry.currentHall ^ 1;
+			var nextBg:Class;
+			if (nextHall) {
+				nextBg = AssetsRegistry.greenTiles;
+			} else {
+				nextBg = AssetsRegistry.blueTiles;
+			}
+
+			Registry.halls[nextHall] = new Hallway(AssetsRegistry.doorPic, nextBg, 5, 0);
+			Registry.currentHall = nextHall;
+			FlxG.switchState(Registry.halls[Registry.currentHall]);
 		}
 
 		private function journal():void {
@@ -93,6 +87,34 @@ package
 		override public function update():void	{
 			super.update();
 			
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {
+				hallBtn.loadGraphic(AssetsRegistry.hallwayBtnImgHover);
+			} else {
+				hallBtn.loadGraphic(AssetsRegistry.hallwayBtnImg);
+			}
+
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
+				journalBtn.loadGraphic(AssetsRegistry.journalBtnImgHover);
+			} else {
+				journalBtn.loadGraphic(AssetsRegistry.journalBtnImg);
+			}
+
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
+				endGameBtn.loadGraphic(AssetsRegistry.endGameBtnImgHover);
+			} else {
+				endGameBtn.loadGraphic(AssetsRegistry.endGameBtnImg);
+			}
+
+			if (FlxG.mouse.justReleased()) {
+				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {
+					hallway();
+				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
+					journal();
+				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
+					endGame();
+				}
+			}
+
 			if (FlxG.keys.H) {
 				var nextHall:int = Registry.currentHall ^ 1;
 				var nextBg:Class;

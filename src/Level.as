@@ -50,30 +50,6 @@ package
 
 			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
 			add(endGameBtn);
-
-			// endGameBtn = new FlxButtonPlus(610, 10, endGame, null, null);
-			// var endGameImg:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
-			// var endGameImgHover:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImgHover);
-			// endGameBtn.loadGraphic(endGameImg, endGameImgHover);
-			// endGameBtn.width = 181;
-			// endGameBtn.height = 50;
-			// add(endGameBtn);
-
-			// hallwayBtn = new FlxButtonPlus(20, 4, returnHallway, null, null);
-			// var hallwayImg:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
-			// var hallwayImgHover:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImgHover);
-			// hallwayBtn.loadGraphic(hallwayImg, hallwayImgHover);
-			// hallwayBtn.width = 106;
-			// hallwayBtn.height = 64;
-			// add(hallwayBtn);
-
-			// journalBtn = new FlxButtonPlus(150, 4, journal, null, null);
-			// var journalImg:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImg);
-			// var journalImgHover:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImgHover);
-			// journalBtn.loadGraphic(journalImg, journalImgHover);
-			// journalBtn.width = 65;
-			// journalBtn.height = 63;
-			// add(journalBtn);
 		}
 
 		private function endGame():void {
@@ -214,6 +190,10 @@ package
 			if (FlxG.mouse.justReleased()) {
 				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {
 					hallway();
+				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
+					journal();
+				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
+					endGame();
 				}
 			}
 
