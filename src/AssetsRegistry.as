@@ -16,7 +16,9 @@ package
 		
 		//UI Buttons
 		[Embed(source="/assets/art/UI/endgame.png")] public static var endGameBtnImg:Class; //181x50
+		[Embed(source="/assets/art/UI/newStoryBtnImg.png")] public static var newStoryBtnImg:Class; //181x50
 		[Embed(source="/assets/art/UI/endgame_hover.png")] public static var endGameBtnImgHover:Class; //181x50
+		[Embed(source="/assets/art/UI/newStoryBtnImgHover.png")] public static var newStoryBtnImgHover:Class; //181x50
 		[Embed(source="/assets/art/UI/hallway.png")] public static var hallwayBtnImg:Class; //106x64
 		[Embed(source="/assets/art/UI/hallway_hover.png")] public static var hallwayBtnImgHover:Class; //106x64
 		[Embed(source="/assets/art/UI/journal.png")] public static var journalBtnImg:Class; //65x63
