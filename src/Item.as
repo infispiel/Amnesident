@@ -43,7 +43,6 @@ package
 		public function onClick(): String
 		{
 		    this.isSeen = true;	
-		    trace(this.isSeen);
 			// Play Music
 			FlxG.play(this.sound);
 		    return this.itemText;	

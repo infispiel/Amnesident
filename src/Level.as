@@ -12,20 +12,23 @@ package
 		
 		public var originalItemsList:Array;
 		public var items:Array;
-		// public var story:Story;
 		public var itemText:FlxText;
 		
 		public var createdBefore:Boolean;
+
+		private var endGameBtn:FlxButtonPlus;
+		private var hallwayBtn:FlxButtonPlus;
+		private var journalBtn:FlxButtonPlus;
 
 		public function Level(itemlist:Array)
 		{
 			var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
 			add(roomBackground);
-			
+
 			originalItemsList = itemlist;
-			
+
 			items = chooseRandomItems(itemlist);
-			
+
 			for (var ii:int = 0; ii < items.length; ii ++){
 				if (items[ii] != null) {
 					items[ii].x = Amnesident.slotSize * ii
@@ -34,14 +37,36 @@ package
 					add(items[ii]);
 				}
 			}
-			
-			var endGameBtn:FlxButton = new FlxButton(610, 4, "", endGame);
-			endGameBtn.loadGraphic(AssetsRegistry.endGameBtnImg, false, false, 181, 50);
+
+			buildUi();
+		}
+
+		private function buildUi():void {
+			endGameBtn = new FlxButtonPlus(610, 10, endGame, null, null);
+			var endGameImg:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
+			var endGameImgHover:FlxSprite = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImgHover);
+			endGameBtn.loadGraphic(endGameImg, endGameImgHover);
 			endGameBtn.width = 181;
 			endGameBtn.height = 50;
 			add(endGameBtn);
+
+			hallwayBtn = new FlxButtonPlus(20, 4, returnHallway, null, null);
+			var hallwayImg:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
+			var hallwayImgHover:FlxSprite = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImgHover);
+			hallwayBtn.loadGraphic(hallwayImg, hallwayImgHover);
+			hallwayBtn.width = 106;
+			hallwayBtn.height = 64;
+			add(hallwayBtn);
+
+			journalBtn = new FlxButtonPlus(150, 4, journal, null, null);
+			var journalImg:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImg);
+			var journalImgHover:FlxSprite = new FlxSprite(150, 4, AssetsRegistry.journalBtnImgHover);
+			journalBtn.loadGraphic(journalImg, journalImgHover);
+			journalBtn.width = 65;
+			journalBtn.height = 63;
+			add(journalBtn);
 		}
-		
+
 		private function endGame():void {
 			var end:EndGame = new EndGame();
 			end.addSummary("It has been ", "2 years");
@@ -53,6 +78,16 @@ package
 			toks.push(discoverPresidentNews);
 			end.addSummaries(toks);
 			FlxG.switchState(end);
+			return;
+		}
+
+		private function returnHallway():void {
+			trace("hallway");
+			// FlxG.switchState(Registry.hospitalHallway);
+		}
+
+		private function journal():void {
+			trace("journal");
 		}
 
 		override public function create():void {
@@ -149,12 +184,13 @@ package
 		
 		override public function update():void
 		{
-			Amnesident.checkMouseHover(items);
-			
 			if (FlxG.keys.G) {
-				//var hospitalHallway:Hallway = new Hallway(AssetsRegistry.doorPic, 5, 0);
 				FlxG.switchState(Registry.hospitalHallway);
 			}
+
+			super.update();
+
+			Amnesident.checkMouseHover(items);
 			
 			//onClick() is called on each item that is clicked.
 			for each (var item:Item in items) {
@@ -172,9 +208,6 @@ package
 			    t.checkComplete();
 			}			
 			add(itemText);
-
-			super.update();
 		}
-		
     }
 }
