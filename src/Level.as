@@ -53,16 +53,13 @@ package
 			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
 			add(endGameBtn);
 
-			textOverlay = true;
 			completionTextBg = new FlxSprite(0, Amnesident.interfaceSize+1, AssetsRegistry.tokenCompletionBox);
-			add(completionTextBg);
 		}
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
 			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
 			FlxG.switchState(end);
-			return;
 		}
 
 		private function hallway():void {
@@ -71,11 +68,11 @@ package
 
 		private function journal():void {
 			Amnesident.story.pingJournal = false;
+			textOverlay = false;
 
 			var journalScrn:Journal = new Journal(this);
 			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
 			FlxG.switchState(journalScrn);
-			return;
 		}
 
 		override public function create():void {
@@ -183,11 +180,12 @@ package
 				}
 			}
 
-			if (FlxG.keys.G) {
-				FlxG.switchState(Registry.halls[Registry.currentHall]);
-			}
-
 			super.update();
+
+			if (FlxG.keys.Q) {
+				textOverlay = true;
+				add(completionTextBg);
+			}
 
 			Amnesident.checkMouseHover(items);
 			
@@ -240,7 +238,10 @@ package
 			}
 			for each (var t:Token in Story.wantToCompleteTokens){
 			    t.checkPrereqsComplete();
-			    t.checkComplete();
+			    if (t.checkComplete()) {
+					textOverlay = true;
+					add(completionTextBg);
+				}
 			}			
 			add(itemText);
 		}

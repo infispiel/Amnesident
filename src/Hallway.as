@@ -120,20 +120,6 @@ package
 				}
 			}
 
-			if (FlxG.keys.H) {
-				var nextHall:int = Registry.currentHall ^ 1;
-				var nextBg:Class;
-				if (nextHall) {
-					nextBg = AssetsRegistry.blueTiles;
-				} else {
-					nextBg = AssetsRegistry.greenTiles;
-				}
-
-				Registry.halls[nextHall] = new Hallway(AssetsRegistry.doorPic, nextBg, 5, 0);
-				Registry.currentHall = nextHall;
-				FlxG.switchState(Registry.halls[Registry.currentHall]);
-			}
-
 			Amnesident.checkMouseHover(doors);
 			// switch to End Screen when press ESCAPE 
 			for (var doorNum:int = 0; doorNum < doors.length; doorNum++) {
