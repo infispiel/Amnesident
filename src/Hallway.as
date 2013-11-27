@@ -12,10 +12,12 @@ package
 		public function Hallway(door:Class, count:int, startingRoom:Number) {
 			doorImage = door;
 			roomCount = count;
-			currentRoom = startingRoom;
+			currentRoom = startingRoom;	
 		}
 		
 		override public function create():void {
+			FlxG.play(AssetsRegistry.sfxStep2);
+			
 			var i:int = 0;
 			if (!createdBefore) {
 				//Create Tiled Background
@@ -41,12 +43,11 @@ package
 		override public function update():void	{
 			
 			Amnesident.checkMouseHover(doors);
-			
 			// switch to End Screen when press ESCAPE 
 			if (FlxG.keys.ESCAPE) {
 				var end:EndGame = new EndGame();
 				end.addSummary("It has been ", "2 years");
-				end.addSummary("The world", "has been destroyed");
+				end.addSummary("The world", "has been destroyed");				
 				FlxG.switchState(end);
 			}
 			else {

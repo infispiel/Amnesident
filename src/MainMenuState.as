@@ -41,6 +41,7 @@ package
 		
 		public function startPlay():void {
 			FlxG.switchState(room.level1);
+			Amnesident.story = new Story(Tokens.itemList, Tokens.tokenList);
 			//FlxG.switchState(Registry.hospitalHallway);
 		}
 	}

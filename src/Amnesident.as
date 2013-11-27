@@ -21,6 +21,7 @@ package
 		public static var slotSize:int = 800 / numSlots;
 		//Accounts for the UI space.
 		public static var interfaceSize:int = 60;
+		public static var story:Story;
 
 		//changes mouse cursor whenever mouse hovers over an item in the array. TO BE CALLED IN UPDATE() IN EACH STATE!
 		public static function checkMouseHover(items:Array):void {

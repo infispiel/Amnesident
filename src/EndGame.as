@@ -18,8 +18,7 @@ package
 		{
 			title = new FlxText(200, 180, 300, "End of game");
 			title.size = 32;
-			add(title);	
-			
+			add(title);			
 		}
 		
 		/**

@@ -9,16 +9,17 @@ package
 		public var isSeen:Boolean;
 		public var belongsTo:Token;
 		public var slots:int;
-		
+		public var sound:Class;
 		//represents the text to be displayed when the item is clicked.
 		public var itemText:String;
 		
-		public function Item(sprite: Class, width: int, height: int, text: String):void
+		public function Item(sprite: Class, width: int, height: int, text: String, sound: Class = null):void
 		{
 			loadGraphic(sprite, true, true, width, height);
 			addAnimation("idle", [0]);
 			isSeen = false;
 			this.itemText = text;
+			this.sound = sound;
 
 			slots = Math.ceil(width / Amnesident.slotSize);
 		}
@@ -43,6 +44,8 @@ package
 		{
 		    this.isSeen = true;	
 		    trace(this.isSeen);
+			// Play Music
+			FlxG.play(this.sound);
 		    return this.itemText;	
 		}
 		
