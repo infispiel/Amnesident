@@ -19,6 +19,7 @@ package
 		private var endGameBtn:FlxSprite;
 		private var hallBtn:FlxSprite;
 		private var journalBtn:FlxSprite;
+		private var completionTextBg:FlxSprite;
 
 		public function Level(itemlist:Array)
 		{
@@ -50,6 +51,9 @@ package
 
 			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
 			add(endGameBtn);
+
+			completionTextBg = new FlxSprite(0, Amnesident.interfaceSize+1, AssetsRegistry.tokenCompletionBox);
+			add(completionTextBg);
 		}
 
 		private function endGame():void {

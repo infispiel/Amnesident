@@ -24,6 +24,9 @@ package
 		[Embed(source="/assets/art/UI/highlightJournal.png")] public static var highlightJournalBtn:Class; //65x63
 		[Embed(source="/assets/art/UI/highlightJournalHover.png")] public static var highlightJournalBtnHover:Class; //65x63
 
+		//UI background
+		[Embed(source="/assets/art/UI/token_completion_box.png")] public static var tokenCompletionBox:Class; //800x160
+
 		//Arrows
 		[Embed(source="assets/art/leftArrow.png")] public static var leftArrow:Class;	//115x99
 		[Embed(source="assets/art/rightArrow.png")] public static var rightArrow:Class;	//115x99
