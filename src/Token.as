@@ -60,7 +60,6 @@ package
 		// return unseen items in current token
 		public function unseenItems():Array {
 			var unseenItems:Array = new Array();
-			// Chau: path1 may not be there anymore, change it after EA pushes
 			for each (var item:Item in path) {
 				if (!item.isSeen) {
 					unseenItems.push(item);

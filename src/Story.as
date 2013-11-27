@@ -37,6 +37,7 @@ package
 			wantToCompleteTokens = new Array();
 			completedTokens = new Array();
 			chooseNewToken();
+			chooseNewToken();
 			trace("Story initialized");
 		}
 
@@ -79,19 +80,22 @@ package
 		
 		
 		// loop through a list of tokens, return list of items player has not already seen
-		public function unseenTokens(tokens:Array):Array {
-			var incompleteTokens:Array = new Array();
-			for each (var tok:Token in tokens) {
-				if (!tok.checkComplete()) {
-					incompleteTokens.push(tok);
-				}
-			}
+		public function unseenTokens():Array {
+			// var incompleteTokens:Array = new Array();
+			// for each (var tok:Token in tokens) {
+			// 	if (!tok.checkComplete()) {
+			// 		incompleteTokens.push(tok);
+			// 	}
+			// }
 			
-			for each (var toke:Token in incompleteTokens) {
-				incompleteTokens.push(toke.unseenItems);
+			var desiredItems:Array = new Array();
+
+			for each (var tok:Token in wantToCompleteTokens) {
+				desiredItems = desiredItems.concat(tok.unseenItems());
 			}
-			return incompleteTokens;
-		}		
+
+			return desiredItems;
+		}
 	}
 
 }

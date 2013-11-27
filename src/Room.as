@@ -8,7 +8,8 @@ package
 		public function Room() {
 			//Associate Story with Level1
 			
-			level1 = new Level(Tokens.itemList);
+			// level1 = new Level(Tokens.itemList);
+			level1 = new Level(Amnesident.story.unseenTokens());
 		}		
 	}
 	
