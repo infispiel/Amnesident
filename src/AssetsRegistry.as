@@ -14,6 +14,14 @@ package
 		[Embed(source = "/assets/art/textbox.png")] public static var textbox:Class;
 		[Embed(source = "/assets/art/textboxLevel.png")] public static var textboxLevel:Class;
 		
+		//UI Buttons
+		[Embed(source="/assets/art/UI/endgame.png")] public static var endGameBtnImg:Class; //181x50
+		[Embed(source="/assets/art/UI/endgame_hover.png")] public static var endGameBtnImgHover:Class; //181x50
+		[Embed(source="/assets/art/UI/hallway.png")] public static var hallwayBtnImg:Class; //106x64
+		[Embed(source="/assets/art/UI/hallway_hover.png")] public static var hallwayBtnImgHover:Class; //106x64
+		[Embed(source="/assets/art/UI/journal.png")] public static var journalBtnImg:Class; //65x63
+		[Embed(source="/assets/art/UI/journal_hover.png")] public static var journalBtnImgHover:Class; //65x63
+
 		//Arrows
 		[Embed(source="assets/art/leftArrow.png")] public static var leftArrow:Class;	//115x99
 		[Embed(source="assets/art/rightArrow.png")] public static var rightArrow:Class;	//115x99

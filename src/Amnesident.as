@@ -44,7 +44,6 @@ package
 		{
 			super(800, 600, MainMenuState, 1);
 			FlxG.mouse.show();
-			trace(FlxG.width);
 		}
 		
 	}

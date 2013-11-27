@@ -35,20 +35,30 @@ package
 				}
 			}
 			
-			var debugText:FlxText = new FlxText(FlxG.width/2 - 60, 30, 500, "Press g to return to the hallway!");
-			add(debugText);
-			
-			var btn:FlxButton = new FlxButton(200, 200, "asdf", pressed);
-			add(btn);
+			var endGameBtn:FlxButton = new FlxButton(610, 4, "", endGame);
+			endGameBtn.loadGraphic(AssetsRegistry.endGameBtnImg, false, false, 181, 50);
+			endGameBtn.width = 181;
+			endGameBtn.height = 50;
+			add(endGameBtn);
 		}
 		
-		private function pressed():void {
-			trace("pressed");
+		private function endGame():void {
+			var end:EndGame = new EndGame();
+			end.addSummary("It has been ", "2 years");
+			end.addSummary("The world", "has been destroyed");
+			var toks:Array = new Array();
+			var president:Item = new Item(AssetsRegistry.mrPresidentPic, 127, 459, "What a handsome fellow! No wonder the public voted for him....");
+			var bedNews:Item = new Item(AssetsRegistry.bedWithnewsPic, 307, 115, "The headline reads: 'Is Craine Insane? President's erratic behavior mystifies family, staff.'");
+			var discoverPresidentNews:Token = new Token("Hey...I've seen that face before...I must be the President!", "You are", "the President", new Array(bedNews, president));
+			toks.push(discoverPresidentNews);
+			end.addSummaries(toks);
+			FlxG.switchState(end);
 		}
 
 		override public function create():void {
 			FlxG.play(AssetsRegistry.sfxStep1);
 		}
+
 		public function chooseRandomItems(itemlist:Array):Array
 		{
 			//minimum number of items is 1
@@ -62,9 +72,6 @@ package
 			var maxTries:int = 100;
 			var numTries:int = 0;
 			var placed:int = 0;
-			trace("================");
-			trace("placing:");
-			trace(numItems);
 
 			while (placed < numItems && numTries < maxTries) {
 				numTries++;
@@ -126,10 +133,6 @@ package
 					}
 				}
 
-				trace(itm.itemText);
-				trace("tarSlot:");
-				trace(tarSlot);
-
 				for (var n:int = tarSlot;
 					n < tarSlot + itm.slots;
 					n++) {
@@ -141,7 +144,6 @@ package
 				placed++;
 			}
 
-			trace("================");
 			return resultingItems;
 		}
 		
@@ -170,20 +172,6 @@ package
 			    t.checkComplete();
 			}			
 			add(itemText);
-			// switch to End Screen when press ESCAPE 
-			if (FlxG.keys.ESCAPE) {
-				// test End Game
-				var end:EndGame = new EndGame();
-				end.addSummary("It has been ", "2 years");
-				end.addSummary("The world", "has been destroyed");
-				var toks:Array = new Array();
-				var president:Item = new Item(AssetsRegistry.mrPresidentPic, 127, 459, "What a handsome fellow! No wonder the public voted for him....");
-				var bedNews:Item = new Item(AssetsRegistry.bedWithnewsPic, 307, 115, "The headline reads: 'Is Craine Insane? President's erratic behavior mystifies family, staff.'");
-				var discoverPresidentNews:Token = new Token("Hey...I've seen that face before...I must be the President!", "You are", "the President", new Array(bedNews, president));
-				toks.push(discoverPresidentNews);
-				end.addSummaries(toks);
-				FlxG.switchState(end);
-			}
 
 			super.update();
 		}
