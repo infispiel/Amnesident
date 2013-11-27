@@ -51,8 +51,8 @@ package
 			}
 			if (completed) {
 				tokenCompleted();
-				Story.markCompleted(this);
-				Story.chooseNewToken();
+				Amnesident.story.markCompleted(this);
+				Amnesident.story.chooseNewToken();
 			}
 			return completed;
 		}
