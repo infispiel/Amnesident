@@ -20,6 +20,7 @@ package
 		private var hallBtn:FlxSprite;
 		private var journalBtn:FlxSprite;
 		private var completionTextBg:FlxSprite;
+		private var textOverlay:Boolean;
 
 		public function Level(itemlist:Array)
 		{
@@ -27,8 +28,8 @@ package
 			add(roomBackground);
 
 			originalItemsList = itemlist;
-
 			items = chooseRandomItems(itemlist);
+			textOverlay = false;
 
 			for (var ii:int = 0; ii < items.length; ii ++){
 				if (items[ii] != null) {
@@ -52,6 +53,7 @@ package
 			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
 			add(endGameBtn);
 
+			textOverlay = true;
 			completionTextBg = new FlxSprite(0, Amnesident.interfaceSize+1, AssetsRegistry.tokenCompletionBox);
 			add(completionTextBg);
 		}
@@ -175,6 +177,10 @@ package
 				itemText = new FlxText(30, FlxG.height - Amnesident.interfaceSize + 5, FlxG.width - 60, "");
 				itemText.setFormat(null, 13, 0xfffffff, "left");
 				add(itemText);
+
+				if (textOverlay) {
+					remove(completionTextBg);
+				}
 			}
 
 			if (FlxG.keys.G) {
