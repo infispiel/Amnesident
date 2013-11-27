@@ -99,9 +99,17 @@ package
 			}
 
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
-				journalBtn.loadGraphic(AssetsRegistry.journalBtnImgHover);
+				if (Amnesident.story.pingJournal) {
+					journalBtn.loadGraphic(AssetsRegistry.highlightJournalBtnHover);
+				} else {
+					journalBtn.loadGraphic(AssetsRegistry.journalBtnImgHover);
+				}
 			} else {
-				journalBtn.loadGraphic(AssetsRegistry.journalBtnImg);
+				if (Amnesident.story.pingJournal) {
+					journalBtn.loadGraphic(AssetsRegistry.highlightJournalBtn);
+				} else {
+					journalBtn.loadGraphic(AssetsRegistry.journalBtnImg);
+				}
 			}
 
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
