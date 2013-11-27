@@ -52,7 +52,13 @@ package
 			if (completed) {
 				tokenCompleted();
 				Amnesident.story.markCompleted(this);
-				Amnesident.story.chooseNewToken();
+				if (Story.possibleTokens.length != 0 || Story.wantToCompleteTokens.length != 0){
+				    Amnesident.story.chooseNewToken();
+			 	} else {
+				    var end:EndGame = new EndGame();
+			            end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			            FlxG.switchState(end);
+				}
 			}
 			return completed;
 		}
