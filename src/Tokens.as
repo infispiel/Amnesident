@@ -23,7 +23,7 @@ package
 		public static var grayboxHouse:Item = new Item(AssetsRegistry.grayboxHousingPic, 226, 225, "It's marked 'Graybox Corp. Official Housing'. It looks cozy, but what's the point of putting a house inside another building?");
 		public static var grayboxRulesTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "It's playing a commercial for Graybox Turkey Substitute with Gray-vy. I'd take moldy yogurt over this any day.");
 		public static var grayboxBooks:Item = new Item(AssetsRegistry.bookshelf1Pic, 200, 382, "'Fox in Box'...'The Box and the Hound'...these books seem pretty boring.");
-		public static var youRuleTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "The reporter says: 'During the time our glorious leader has been incapacitated, 376 bills have been submitted for his approval. Will Turkey Substitute become the official bird of the United States? We'll just have to wait for his return to find out.");
+		public static var youRuleTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "The reporter says: 'During the time our glorious leader has been incapacitated, 376 bills have been submitted for his approval. Will Turkey Substitute become the official bird of the United States? We'll just have to wait for his return to find out.'");
 		public static var youRuleWindow:Item = new Item(AssetsRegistry.windowPic, 200, 459, "Someone outside the window spots me and starts cheering. I'm pretty sure I wasn't this popular before I wound up here...I should get amnesia more often!");
 		public static var tenMinDesk:Item = new Item(AssetsRegistry.table_m_chargerPic, 125, 200, "My hospital chart is on the desk. Apparently, I arrived here at 9:50 PM on July 4, 2013.");
 		public static var tenMinNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "They're showing fireworks on the 10 o'clock news. It's so pretty!");
@@ -76,7 +76,40 @@ package
 		timeWeek.addIncompatible(youAreCat);
 		amnesiaAllergies.addIncompatible(youAreCat);
 		amnesiaMrCatAllergies.addPrereq(youAreCat);
+		
+		rulerCatBad.addIncompatible(rulerCatGood);
+		rulerCatBad.addIncompatible(rulerVp);
+		rulerCatBad.addIncompatible(rulerYou);
+		rulerCatBad.addIncompatible(rulerGraybox);
+		rulerCatGood.addIncompatible(rulerVp);
+		rulerCatGood.addIncompatible(rulerYou);
+		rulerCatGood.addIncompatible(rulerGraybox);
+		rulerVp.addIncompatible(rulerYou);
+		rulerVp.addIncompatible(rulerGraybox);
+		rulerYou.addIncompatible(rulerGraybox);
 
+		youArePres.addIncompatible(youAreClone);
+		youArePres.addIncompatible(youAreCat);
+		youArePres.addIncompatible(youAreJanitor);
+		youAreClone.addIncompatible(youAreCat);
+		youAreClone.addIncompatible(youAreJanitor);
+		youAreCat.addIncompatible(youAreJanitor);
+
+		timeTenMin.addIncompatible(timeWeek);
+		timeTenMin.addIncompatible(timeHundredYears);
+		timeWeek.addIncompatible(timeHundredYears);
+		
+		amnesiaSelf.addIncompatible(amnesiaVp);
+		amnesiaSelf.addIncompatible(amnesiaGraybox);
+		amnesiaSelf.addIncompatible(amnesiaAllergies);
+		amnesiaSelf.addIncompatible(amnesiaMrCatAllergies);
+		amnesiaVp.addIncompatible(amnesiaGraybox);
+		amnesiaVp.addIncompatible(amnesiaAllergies);
+		amnesiaVp.addIncompatible(amnesiaMrCatAllergies);
+		amnesiaGraybox.addIncompatible(amnesiaAllergies);
+		amnesiaGraybox.addIncompatible(amnesiaMrCatAllergies);
+		amnesiaAllergies.addIncompatible(amnesiaMrCatAllergies);
+		
         public static var tokenList:Array = new Array(youArePres, youAreClone, youAreCat, youAreJanitor, rulerCatBad, rulerCatGood, rulerVp, rulerYou, rulerGraybox, timeTenMin, timeWeek, timeHundredYears, amnesiaSelf, amnesiaVp, amnesiaGraybox, amnesiaAllergies, amnesiaMrCatAllergies);
     }
 }

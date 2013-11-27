@@ -99,9 +99,17 @@ package
 			}
 
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
-				journalBtn.loadGraphic(AssetsRegistry.journalBtnImgHover);
+				if (Amnesident.story.pingJournal) {
+					journalBtn.loadGraphic(AssetsRegistry.highlightJournalBtnHover);
+				} else {
+					journalBtn.loadGraphic(AssetsRegistry.journalBtnImgHover);
+				}
 			} else {
-				journalBtn.loadGraphic(AssetsRegistry.journalBtnImg);
+				if (Amnesident.story.pingJournal) {
+					journalBtn.loadGraphic(AssetsRegistry.highlightJournalBtn);
+				} else {
+					journalBtn.loadGraphic(AssetsRegistry.journalBtnImg);
+				}
 			}
 
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
@@ -118,20 +126,6 @@ package
 				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
 					endGame();
 				}
-			}
-
-			if (FlxG.keys.H) {
-				var nextHall:int = Registry.currentHall ^ 1;
-				var nextBg:Class;
-				if (nextHall) {
-					nextBg = AssetsRegistry.blueTiles;
-				} else {
-					nextBg = AssetsRegistry.greenTiles;
-				}
-
-				Registry.halls[nextHall] = new Hallway(AssetsRegistry.doorPic, nextBg, 5, 0);
-				Registry.currentHall = nextHall;
-				FlxG.switchState(Registry.halls[Registry.currentHall]);
 			}
 
 			Amnesident.checkMouseHover(doors);
