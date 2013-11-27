@@ -64,7 +64,10 @@ package
 		}
 
 		private function journal():void {
-			trace("journal");
+			var journalScrn:Journal = new Journal(this);
+			journalScrn.addSummaries(Story.completedTokens.concat(Story.wantToCompleteTokens));
+			FlxG.switchState(journalScrn);
+			return;
 		}
 
 		override public function create():void {
