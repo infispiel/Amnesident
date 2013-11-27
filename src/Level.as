@@ -170,6 +170,13 @@ package
 		
 		override public function update():void
 		{
+			if (FlxG.mouse.justReleased()) {
+				remove(itemText);
+				itemText = new FlxText(30, FlxG.height - Amnesident.interfaceSize + 5, FlxG.width - 60, "");
+				itemText.setFormat(null, 13, 0xfffffff, "left");
+				add(itemText);
+			}
+
 			if (FlxG.keys.G) {
 				FlxG.switchState(Registry.halls[Registry.currentHall]);
 			}
