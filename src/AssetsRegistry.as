@@ -99,7 +99,8 @@ package
 		//Desks
 		[Embed(source = "assets/art/desk1basic.png")] public static var desk1BasicPic:Class; //306x150
 		[Embed(source = "assets/art/desk1lamp.png")] public static var desk1LampPic:Class; //306x272
-		[Embed(source="assets/art/desk2basic.png")] public static var desk2BasicPic:Class;  //306x150
+		[Embed(source = "assets/art/desk2basic.png")] public static var desk2BasicPic:Class;  //306x150
+		[Embed(source = "assets/art/desk2lamp.png")] public static var desk2LampPic:Class; //306x272
 		
 		//Tables
 		[Embed(source = "assets/art/table1metal.png")] public static var table_mPic:Class; //125x75
