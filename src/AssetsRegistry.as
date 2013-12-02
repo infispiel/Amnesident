@@ -120,6 +120,11 @@ package
 		[Embed(source = "assets/sound/openjournal.mp3")] public static var sfxopenjournal:Class;
 		[Embed(source = "assets/sound/opendoor.mp3")] public static var sfxopendoor:Class;
 		[Embed(source = "assets/sound/meowcute.mp3")] public static var sfxmeowcute:Class;
+
+		// Music
+		// [Embed(source = 'assets/music/dark-days.wav')] public static var darkDaysBgm:Class;
+		[Embed(source = 'assets/music/backgroundmusic.mp3')] public static var BgmPlaceholder:Class;
+
 		public function AssetsRegistry() 
 		{
 			
