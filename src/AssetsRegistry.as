@@ -93,6 +93,9 @@ package
 		[Embed(source = "assets/art/window1.png")] public static var windowPic:Class; //200x459
 		[Embed(source = "assets/art/window1wood.png")] public static var woodWindowPic:Class; //200x459
 		
+		//TV
+		[Embed(source = "assets/art/tv.png")] public static var tvPic:Class; //134x375
+
 		//Desks
 		[Embed(source = "assets/art/desk1basic.png")] public static var desk1BasicPic:Class; //306x150
 		[Embed(source = "assets/art/desk1lamp.png")] public static var desk1LampPic:Class; //306x272
