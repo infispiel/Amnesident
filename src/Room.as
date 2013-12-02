@@ -1,16 +1,22 @@
 package 
 {
+	import org.flixel.FlxG;
+
 	public class Room	{
-		public var level1:Level;
+		private var level:Level;
 		public var story:Story;	
 	
 		//Randomly Generates A Room
 		public function Room() {
-			//Associate Story with Level1
-			
-			// level1 = new Level(Tokens.itemList);
-			level1 = new Level(Amnesident.story.unseenTokens());
+			level = null;
 		}		
+
+		public function enter() {
+			if (level == null) {
+				level = new Level(Amnesident.story.unseenTokens());
+			}
+
+			FlxG.switchState(level);
+		}
 	}
-	
 }
