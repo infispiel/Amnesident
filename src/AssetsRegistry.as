@@ -1,9 +1,5 @@
 package  
 {
-	/**
-	 * ...
-	 * @author Benjamin Shaibu
-	 */
 	public class AssetsRegistry 
 	{
 		//Custom Cursor (For hovering over objects)
@@ -124,7 +120,14 @@ package
 
 		// Music
 		[Embed(source = 'assets/music/dark-days.mp3')] public static var darkDaysBgm:Class;
-
+		
+		//IntroVid Assets
+		[Embed(source="assets/art/introVid/ceiling.png")] public static var introCeiling:Class;
+		[Embed(source="assets/art/introVid/ceilingfisheye1.png")] public static var introCeilingFishEye:Class;
+		[Embed(source="assets/art/introVid/ceilingfisheyeblur.png")] public static var introCeilingFishEyeBlur:Class;
+		[Embed(source="assets/art/introVid/Mouse.png")] public static var introMouse:Class;
+		[Embed(source="assets/art/introVid/Surrounding.png")] public static var introSurrounding:Class;
+		
 		public function AssetsRegistry() 
 		{
 			
