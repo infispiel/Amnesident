@@ -46,7 +46,5 @@ package
 			super(800, 600, IntroScreen, 1);
 			FlxG.mouse.show();
 		}
-		
 	}
-	
 }

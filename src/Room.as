@@ -11,7 +11,7 @@ package
 			level = null;
 		}		
 
-		public function enter() {
+		public function enter():void {
 			if (level == null) {
 				level = new Level(Amnesident.story.unseenTokens());
 			}
