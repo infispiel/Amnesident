@@ -30,7 +30,7 @@ package
 					var door:Door = new Door(10 + i * space, FlxG.height - 236 - Amnesident.interfaceSize, doorImage, 0);
 					var room:Room = new Room();
 					doors.push(door);
-					rooms.push(room.level1);
+					rooms.push(room);
 					add(door);
 				}
 				createdBefore = true;
@@ -133,7 +133,8 @@ package
 			for (var doorNum:int = 0; doorNum < doors.length; doorNum++) {
 				//Check If Door Just Clicked, If So Load a Random Room
 				if (doors[doorNum].justClicked()) {
-					FlxG.switchState(rooms[doorNum]);
+					rooms[doorNum].enter();
+					// FlxG.switchState(rooms[doorNum].level1);
 				}
 			}
 		}
