@@ -233,8 +233,9 @@ package
 					}
 				}
 			}
+
 			for each (var t:Token in Story.wantToCompleteTokens){
-			    t.checkPrereqsComplete();
+				t.checkPrereqsComplete();
 			    if (t.checkComplete()) {
 					textOverlay = true;
 					add(completionTextBg);
