@@ -84,6 +84,7 @@ package
 		{
 			//minimum number of items is 1
 			var numItems:int = Math.floor(Math.random() * 4) + 1;
+			trace(numItems);
 			
 			var resultingItems:Array = new Array(null, null, null, null);
 			var randomIndexes:Array = new Array();
@@ -105,24 +106,24 @@ package
 				var attempts:int = 0;
 				var maxAttempts:int = 100;
 				var done:Boolean = false;
-				while (!done && attempts < maxAttempts) {
-					attempts++;
-					idx = Math.floor(Math.random() * itemlist.length);
-					itm = itemlist[idx];
+				// while (!done && attempts < maxAttempts) {
+				// 	attempts++;
 
-					for (var i:int = 0; i < resultingItems.length; i++) {
-						if (itm == resultingItems[i]) {
-							done = true;
-							break;
-						}
-					}
-				}
+				//TODO make this not pick repeats
+				idx = Math.floor(Math.random() * itemlist.length);
+				itm = itemlist[idx];
 
-				if (attempts == maxAttempts) {
-				}
+				// 	for (var i:int = 0; i < resultingItems.length; i++) {
+				// 		if (itm == resultingItems[i]) {
+				// 			done = true;
+				// 			break;
+				// 		}
+				// 	}
+				// }
 
 				fittable = false;
 
+				gap = 0;
 				for (var j:int = 0; j < space.length; j++) {
 					if (space[j]) {
 						gap++;
@@ -161,6 +162,8 @@ package
 					space[n] = 0;
 				}
 
+				trace("tarslot: " + tarSlot);
+				trace("itm: " + itm.itemText);
 				resultingItems[tarSlot] = itm;
 				placed++;
 			}

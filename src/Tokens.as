@@ -49,7 +49,11 @@ package
 		public static var tableBigOrdinary:Item = new Item(AssetsRegistry.desk2BasicPic, 306, 150, "Just a bunch of really boring paperwork. I think I'm breaking some confidentiality agreements just by breathing on them.");
 		public static var tableBigOrdinaryLamp:Item = new Item(AssetsRegistry.desk2LampPic, 306, 272, "It's so drab I wouldn't be surprised if the lamp lit everything gray rather than yellow.");
 		
-		public static var itemList:Array = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, moldyYogurtJanitor, presPicJanitor, bedNewsJanitor, mrCatRulesPic, windowCatBad, windowCatGood, vpLetter, vpTvNews, grayboxHouse, grayboxRulesTvNews, grayboxBooks, youRuleTvNews, youRuleWindow, tenMinDesk, tenMinNews, weekRazor, weekNews, hundredYearYogurt, hundredYearWindow, hundredYearGraybox, amnesiaSelfTvNews, amnesiaSelfNote, amnesiaVpNote, amnesiaVpJournal, amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook, allergyCatPic, allergyBook, allergyDesk, windowOrdinary, tvOrdinary, razorOrdinary, tableBigOrdinary, tableBigOrdinaryLamp);
+		// Add items which don't have a connection to tokens here.
+		public static var ordinaryItems:Array = new Array(windowOrdinary, tvOrdinary, razorOrdinary, tableBigOrdinary, tableBigOrdinaryLamp);
+
+		// Add items which are used in story tokens here.
+		public static var itemList:Array = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, moldyYogurtJanitor, presPicJanitor, bedNewsJanitor, mrCatRulesPic, windowCatBad, windowCatGood, vpLetter, vpTvNews, grayboxHouse, grayboxRulesTvNews, grayboxBooks, youRuleTvNews, youRuleWindow, tenMinDesk, tenMinNews, weekRazor, weekNews, hundredYearYogurt, hundredYearWindow, hundredYearGraybox, amnesiaSelfTvNews, amnesiaSelfNote, amnesiaVpNote, amnesiaVpJournal, amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook, allergyCatPic, allergyBook, allergyDesk);
 
 		// TOKENS
 		public static var youArePres:Token = new Token("Hey, I've seen that face before! I must be the President!", "You are", "the President", new Array(mirror, bedNewsPres));
