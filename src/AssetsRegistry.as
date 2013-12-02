@@ -122,8 +122,7 @@ package
 		[Embed(source = "assets/sound/meowcute.mp3")] public static var sfxmeowcute:Class;
 
 		// Music
-		// [Embed(source = 'assets/music/dark-days.wav')] public static var darkDaysBgm:Class;
-		[Embed(source = 'assets/music/backgroundmusic.mp3')] public static var BgmPlaceholder:Class;
+		[Embed(source = 'assets/music/dark-days.mp3')] public static var darkDaysBgm:Class;
 
 		public function AssetsRegistry() 
 		{
