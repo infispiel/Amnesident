@@ -1,10 +1,7 @@
 package 
 {
 	import org.flixel.*;
-	/**
-	 * ...
-	 * @author Benjamin Shaibu
-	 */
+
 	public class CreditsScreen extends FlxState	{
 		public var title:FlxText;
 		
