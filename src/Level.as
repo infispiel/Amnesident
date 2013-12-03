@@ -59,7 +59,7 @@ package
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			end.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(end);
 		}
 
@@ -72,7 +72,7 @@ package
 			textOverlay = false;
 
 			var journalScrn:Journal = new Journal(this);
-			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			journalScrn.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(journalScrn);
 		}
 
@@ -233,7 +233,7 @@ package
 					}
 				}
 			}
-			for each (var t:Token in Story.wantToCompleteTokens){
+			for each (var t:Token in Amnesident.story.getWantToCompleteTokens()){
 			    t.checkPrereqsComplete();
 			    if (t.checkComplete()) {
 					textOverlay = true;

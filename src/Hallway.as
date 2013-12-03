@@ -61,7 +61,7 @@ package
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			end.addSummaries(Amnesident.getStory().getWantToCompleteTokens(), Amnesident.getStory().getCompletedTokens());
 			FlxG.switchState(end);
 			return;
 		}
@@ -81,10 +81,10 @@ package
 		}
 
 		private function journal():void {
-			Amnesident.story.pingJournal = false;
+			Amnesident.getStory().pingJournal = false;
 
 			var journalScrn:Journal = new Journal(this);
-			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			journalScrn.addSummaries(Amnesident.getStory().getWantToCompleteTokens(), Amnesident.getStory().getCompletedTokens());
 			FlxG.switchState(journalScrn);
 			return;
 		}
@@ -99,13 +99,13 @@ package
 			}
 
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
-				if (Amnesident.story.pingJournal) {
+				if (Amnesident.getStory().pingJournal) {
 					journalBtn.loadGraphic(AssetsRegistry.highlightJournalBtnHover);
 				} else {
 					journalBtn.loadGraphic(AssetsRegistry.journalBtnImgHover);
 				}
 			} else {
-				if (Amnesident.story.pingJournal) {
+				if (Amnesident.getStory().pingJournal) {
 					journalBtn.loadGraphic(AssetsRegistry.highlightJournalBtn);
 				} else {
 					journalBtn.loadGraphic(AssetsRegistry.journalBtnImg);

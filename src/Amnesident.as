@@ -3,6 +3,7 @@ package
 	import flash.display.Bitmap;
 	import org.flixel.*;
 	import org.flixel.plugin.photonstorm.*;
+	import org.flixel.system.FlxWindow;
 	/**
 	 *
 	 * NOTES:

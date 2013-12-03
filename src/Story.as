@@ -8,9 +8,9 @@ package
 	public class Story 
 	{
 		public static var tokens:Array;
-		public static var completedTokens:Array;
-		public static var wantToCompleteTokens:Array;
-		public static var possibleTokens:Array;
+		public var completedTokens:Array = new Array();
+		public var wantToCompleteTokens:Array = new Array();
+		public var possibleTokens:Array = new Array();
 
 		public var items:Array;
 		public var item1:Item;
@@ -96,6 +96,17 @@ package
 
 			return desiredItems;
 		}
+
+		public function getCompletedTokens():Array {
+			return this.completedTokens;
+		}
+		public function getWantToCompleteTokens():Array{
+			return this.wantToCompleteTokens;
+		}
+		public function getPossibleTokens():Array {
+			return this.possibleTokens;
+		}
 	}
+		
 
 }

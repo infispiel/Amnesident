@@ -66,7 +66,8 @@ package
 			if (FlxG.mouse.justReleased()) {
 				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
 					trace("New story");
-					MainMenuState.startPlay();
+					FlxG.resetGame();
+					//MainMenuState.startPlay();
 				}
 			}			
 			
