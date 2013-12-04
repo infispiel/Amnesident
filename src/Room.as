@@ -15,7 +15,7 @@ package
 			if (level == null) {
 				level = new Level(Amnesident.story.unseenTokens());
 			}
-
+			FlxG.play(AssetsRegistry.sfxopendoor);
 			FlxG.switchState(level);
 		}
 	}

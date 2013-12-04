@@ -21,23 +21,24 @@ package
 		private var journalBtn:FlxSprite;
 		private var completionTextBg:FlxSprite;
 		private var textOverlay:Boolean;
-
 		public function Level(itemlist:Array)
 		{
+			var roomBackground:Background;
+
 			var roomBgType:int = Math.floor(Math.random() * 2);
 			if (Registry.halls[Registry.currentHall].isTileType) {
 				if(roomBgType == 0){
-					var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
+					roomBackground = new Background(AssetsRegistry.greenTiles);
 				}
 				else {
-					var roomBackground:Background = new Background(AssetsRegistry.blueTiles);
+					roomBackground = new Background(AssetsRegistry.blueTiles);
 				}
 			} else {
 				if(roomBgType == 0){
-					var roomBackground:Background = new Background(AssetsRegistry.woodTiles);
+					roomBackground = new Background(AssetsRegistry.woodTiles);
 				}
 				else if (roomBgType == 1) {
-					var roomBackground:Background = new Background(AssetsRegistry.brickTiles);
+					roomBackground = new Background(AssetsRegistry.brickTiles);
 				}
 			}
 			add(roomBackground);
@@ -50,7 +51,12 @@ package
 				if (items[ii] != null) {
 					items[ii].x = Amnesident.slotSize * ii
 					//Amnesident.interfaceSize accounts for the UI space.
-					items[ii].y = FlxG.height - Amnesident.interfaceSize - items[ii].height;
+					if (Registry.halls[Registry.currentHall].isTileType) {
+						items[ii].setImage(true);
+					}else {
+						items[ii].setImage(false);
+					}
+					items[ii].y = FlxG.height - Amnesident.interfaceSize + 5 - items[ii].height;
 					add(items[ii]);
 				}
 			}

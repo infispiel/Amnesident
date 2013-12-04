@@ -30,14 +30,14 @@ package
 				add(hallwayBackground);
 				for (i = 0; i < roomCount; i++) {
 					var space:Number = 127 * 1.15;
-					var door:Door = new Door(10 + i * space, FlxG.height - 236 - Amnesident.interfaceSize, doorImage, "door");
+					var door:Door = new Door(10 + i * space, FlxG.height - 236 - Amnesident.interfaceSize + 5, doorImage, "door");
 					var room:Room = new Room();
 					doors.push(door);
 					rooms.push(room);
 					add(door);
 				}
 
-				elevator = new Door(590, FlxG.height - 320 - Amnesident.interfaceSize, AssetsRegistry.elevatorImg, "elevator");
+				elevator = new Door(590, FlxG.height - 321 - Amnesident.interfaceSize + 5, AssetsRegistry.elevatorImg, "elevator");
 				add(elevator);
 
 				doors.push(elevator);
@@ -105,7 +105,7 @@ package
 				nextDoor = AssetsRegistry.door2Pic;
 			}
 			
-			Registry.halls[nextHall] = new Hallway(nextDoor, nextBg, 5, 0);
+			Registry.halls[nextHall] = new Hallway(nextDoor, nextBg, 4, 0);
 			Registry.halls[nextHall].isTileType = isTile;
 			Registry.currentHall = nextHall;
 			FlxG.switchState(Registry.halls[Registry.currentHall]);
