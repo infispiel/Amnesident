@@ -2,9 +2,12 @@ package
 {
 	import org.flixel.*;	
 	public class Door extends FlxSprite {
-		public function Door(X:Number, Y:Number, image:Class, room:Number) {
+		public var doorType:String;
+
+		public function Door(X:Number, Y:Number, image:Class, dt:String) {
 			super(X, Y, image);
 			solid = false;
+			doorType = dt;
 		}
 		
 		//Returns true if the item was just clicked.

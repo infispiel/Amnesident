@@ -37,7 +37,7 @@ package
 		
 		public function startPlay():void {
 			Amnesident.story = new Story(Tokens.itemList, Tokens.tokenList);
-			Registry.halls[Registry.currentHall] = new Hallway(AssetsRegistry.doorPic, AssetsRegistry.blueTiles, 5, 0);
+			Registry.halls[Registry.currentHall] = new Hallway(AssetsRegistry.doorPic, AssetsRegistry.blueTiles, 4, 0);
 			Registry.halls[Registry.currentHall].create();
 
 			FlxG.playMusic(AssetsRegistry.darkDaysBgm, 1);

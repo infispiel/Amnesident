@@ -44,6 +44,7 @@ package
 		public function Amnesident() 
 		{
 			super(800, 600, IntroScreen, 1);
+			// super(800, 600, MainMenuState, 1);
 			FlxG.mouse.show();
 		}
 	}

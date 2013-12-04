@@ -47,6 +47,7 @@ package
 		[Embed(source = "assets/art/Door.png")] public static var doorPic:Class; //127x236
 		[Embed(source = "assets/art/Door2.png")] public static var door2Pic:Class; //148x247
 		[Embed(source = "assets/art/roomExit.png")] public static var roomExit:Class; //148x247
+		[Embed(source = "assets/art/elevator.png")] public static var elevatorImg:Class; //200x320
 		
 		//Endtable Top Items -- THEY ARE ALL 125x200
 			//Metal:
@@ -92,7 +93,7 @@ package
 		[Embed(source = "assets/art/window1wood.png")] public static var woodWindowPic:Class; //200x459
 		
 		//TV
-		[Embed(source = "assets/art/tv.png")] public static var tvPic:Class; //134x375
+		[Embed(source = "assets/art/tv.png")] public static var tvPic:Class; //335x468
 
 		//Desks
 		[Embed(source = "assets/art/desk1basic.png")] public static var desk1BasicPic:Class; //306x150
