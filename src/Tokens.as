@@ -10,8 +10,8 @@ package
         public static var bedNewsPres:Item = new Item(AssetsRegistry.bedWithnewsPic, 307, 115, "The headline reads: 'Is Craine Insane? President's erratic behavior mystifies family, staff.'");
         public static var mirror:Item = new Item(AssetsRegistry.table_m_mirrorPic, 125, 200, "Now at least I know one thing about myself: I am ridiculously good-looking!");
 		public static var catRazor:Item = new Item(AssetsRegistry.table_m_razorPic, 125, 200, "A razor? I never saw the point in these. I prefer to keep my hair flowing and soft.");
-		public static var grayCatFood:Item = new Item(AssetsRegistry.grayboxCatPic, 113, 113, "It's a package of Graybox cat food, filled with the bland-looking parallelopipeds cats love! What a stroke of luck!");
-		public static var cloneTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "The reporter is saying: 'President Craine has just authorized the distribution of free fedoras to all children under the age of 6. Truly, a great day for America!'");
+		public static var grayCatFood:Item = new Item(AssetsRegistry.grayboxCatPic, 171, 171, "It's a package of Graybox cat food, filled with the bland-looking parallelopipeds cats love! What a stroke of luck!");
+		public static var cloneTvNews:Item = new Item(AssetsRegistry.tvPic, 335, 468, "The reporter is saying: 'President Craine has just authorized the distribution of free fedoras to all children under the age of 6. Truly, a great day for America!'");
 		public static var moldyYogurtJanitor:Item = new Item(AssetsRegistry.table_m_moldPic, 125, 200, "They left this here for me to clean up? Just who do they think I am, anyway?");
 		public static var presPicJanitor:Item = new Item(AssetsRegistry.mrPresidentPic, 127, 459, "Now there's a familiar face! I'm starting to piece things together already!");
 		public static var bedNewsJanitor:Item = new Item(AssetsRegistry.bedWithnewsPic, 307, 115, "The headline reads: 'White House Turning Gray: Disappearance of cleaning staff leads to dirt accumulation on famous building.'");
@@ -19,30 +19,40 @@ package
 		public static var windowCatBad:Item = new Item(AssetsRegistry.windowPic, 200, 459, "It's probably a nice day outside, I'll open the window...Are those puppies? Why are those terrible soldiers kicking them? WHY IS EVERYTHING ON FIRE?!");
 		public static var windowCatGood:Item = new Item(AssetsRegistry.windowPic, 200, 459, "That's odd. It seems like there are a lot more cats outside than normal. Wait a second, is that one running for Mayor?");
 		public static var vpLetter:Item = new Item(AssetsRegistry.table_m_chargerPic, 125, 200, "It's a letter from the Vice President. She's talking about seizing power from someone. Who could that possibly be?");
-		public static var vpTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "Huh. They're reporting about the UN as if it rules the world. And as if it's a dictatorship. And the Vice President is in a throne at the head of the meeting.");
-		public static var grayboxHouse:Item = new Item(AssetsRegistry.grayboxHousingPic, 226, 225, "It's marked 'Graybox Corp. Official Housing'. It looks cozy, but what's the point of putting a house inside another building?");
-		public static var grayboxRulesTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "It's playing a commercial for Graybox Turkey Substitute with Gray-vy. I'd take moldy yogurt over this any day.");
+		public static var vpTvNews:Item = new Item(AssetsRegistry.tvPic, 335, 468, "Huh. They're reporting about the UN as if it rules the world. And as if it's a dictatorship. And the Vice President is in a throne at the head of the meeting.");
+		public static var grayboxHouse:Item = new Item(AssetsRegistry.grayboxHousingPic, 171, 171, "It's marked 'Graybox Corp. Official Housing'. It looks cozy, but what's the point of putting a house inside another building?");
+		public static var grayboxRulesTvNews:Item = new Item(AssetsRegistry.tvPic, 335, 468, "It's playing a commercial for Graybox Turkey Substitute with Gray-vy. I'd take moldy yogurt over this any day.");
 		public static var grayboxBooks:Item = new Item(AssetsRegistry.bookshelf1Pic, 200, 382, "'Fox in Box'...'The Box and the Hound'...these books seem pretty boring.");
-		public static var youRuleTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "The reporter says: 'During the time our glorious leader has been incapacitated, 376 bills have been submitted for his approval. Will Turkey Substitute become the official bird of the United States? We'll just have to wait for his return to find out.'");
+		public static var youRuleTvNews:Item = new Item(AssetsRegistry.tvPic, 335, 468, "The reporter says: 'During the time our glorious leader has been incapacitated, 376 bills have been submitted for his approval. Will Turkey Substitute become the official bird of the United States? We'll just have to wait for his return to find out.'");
 		public static var youRuleWindow:Item = new Item(AssetsRegistry.windowPic, 200, 459, "Someone outside the window spots me and starts cheering. I'm pretty sure I wasn't this popular before I wound up here...I should get amnesia more often!");
 		public static var tenMinDesk:Item = new Item(AssetsRegistry.table_m_chargerPic, 125, 200, "My hospital chart is on the desk. Apparently, I arrived here at 9:50 PM on July 4, 2013.");
-		public static var tenMinNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "They're showing fireworks on the 10 o'clock news. It's so pretty!");
+		public static var tenMinNews:Item = new Item(AssetsRegistry.tvPic, 335, 468, "They're showing fireworks on the 10 o'clock news. It's so pretty!");
 		public static var weekRazor:Item = new Item(AssetsRegistry.table_m_razorPic, 125, 200, "Come to think of it, I could use a shave.");
 		public static var weekNews:Item = new Item(AssetsRegistry.bedWithnewsPic, 307, 115, "Nothing much of interest: the comics are already missing. It's dated July 20, 2013.");
 		public static var hundredYearYogurt:Item = new Item(AssetsRegistry.table_m_moldPic, 125, 200, "It looks like a cup of mold to me, but it's marked 'Yogurt'. Maybe it's a new flavor?");
 		public static var hundredYearWindow:Item = new Item(AssetsRegistry.windowPic, 200, 459, "A car is flying around outside. Its wings are truly majestic.");
-		public static var hundredYearGraybox:Item = new Item(AssetsRegistry.grayboxBeardPic, 181, 180, "It's marked 'Graybox Corp. Beard Annihilator'...my hair may have grown while I was asleep, but I'd rather not try this out.");
-		public static var amnesiaSelfTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "The world is half lava, half cat hair? Hiding in boxes is our only hope of survival? Who could have been so irresponsible?");
+		public static var hundredYearGraybox:Item = new Item(AssetsRegistry.grayboxBeardPic, 171, 171, "It's marked 'Graybox Corp. Beard Annihilator'...my hair may have grown while I was asleep, but I'd rather not try this out.");
+		public static var amnesiaSelfTvNews:Item = new Item(AssetsRegistry.tvPic, 335, 468, "The world is half lava, half cat hair? Hiding in boxes is our only hope of survival? Who could have been so irresponsible?");
 		public static var amnesiaSelfNote:Item = new Item(AssetsRegistry.table_m_chargerPic, 125, 200, "This note...it's in my handwriting and seems familiar...too bad my handwriting is so terrible. I can't read a word of this.");
 		public static var amnesiaVpNote:Item = new Item(AssetsRegistry.table_m_chargerPic, 125, 200, "It's a note from the Vice President: 'He's so annoying! If only I could get him out of the way for a while...'");
 		public static var amnesiaVpJournal:Item = new Item(AssetsRegistry.table_m_redbookPic, 125, 200, "The Vice President's diary. 'Dear Diary, I finally bought the amnesia medicine. It comes in a giant needle marked 'Amnesia'. Not subtle at all.'...only one entry? Really?");
-		public static var amnesiaGrayboxTvNews:Item = new Item(AssetsRegistry.grayBox, 32, 32, "It's a commercial. 'Feeling like the world's not going your way? Graybox Forget-O-Matic! Restart your life today!'");
+		public static var amnesiaGrayboxTvNews:Item = new Item(AssetsRegistry.tvPic, 335, 468, "It's a commercial. 'Feeling like the world's not going your way? Graybox Forget-O-Matic! Restart your life today!'");
 		public static var amnesiaGrayboxNews:Item = new Item(AssetsRegistry.bedWithnewsPic, 307, 115, "The headline reads: 'Graybox in the Red: Side effects of new product push stock prices down.'");
 		public static var amnesiaGrayboxBook:Item = new Item(AssetsRegistry.table_m_yellowbookPic, 125, 200, "Some notes from Graybox Corporation's R&D department. I thought they were kicked out of this hospital, but I guess they're still hanging around.");
 		public static var allergyCatPic:Item = new Item(AssetsRegistry.mrCatPic, 127, 459, "My eyes are watering, but whether from the beauty of this portrait or from allergies I cannot tell.");
 		public static var allergyBook:Item = new Item(AssetsRegistry.table_m_bluebookPic, 125, 200, "It's the National Journal of Amphigory. Let's see...'Autoimmune response to Fel d 4 linked to memory lapses'...this makes no sense!");
 		public static var allergyDesk:Item = new Item(AssetsRegistry.desk1BasicPic, 306, 150, "A note from the Vice President: 'Don't you think you spend too much time with Mr. Cat?' How dare she?");
 		
+		public static var windowOrdinary:Item = new Item(AssetsRegistry.windowPic, 200, 459, "This window really needs to be washed. I can't even see out of it!");
+		public static var tvOrdinary:Item = new Item(AssetsRegistry.tvPic, 335, 468, "All it has are kids channels, and those gave me a headache the moment they started.");
+		public static var razorOrdinary:Item = new Item(AssetsRegistry.table_m_razorPic, 125, 200, "Who would leave their razor lying around? This isn't even a bathroom!");
+		public static var tableBigOrdinary:Item = new Item(AssetsRegistry.desk2BasicPic, 306, 150, "Just a bunch of really boring paperwork. I think I'm breaking some confidentiality agreements just by breathing on them.");
+		public static var tableBigOrdinaryLamp:Item = new Item(AssetsRegistry.desk2LampPic, 306, 272, "It's so drab I wouldn't be surprised if the lamp lit everything gray rather than yellow.");
+		
+		// Add items which don't have a connection to tokens here.
+		public static var ordinaryItems:Array = new Array(windowOrdinary, tvOrdinary, razorOrdinary, tableBigOrdinary, tableBigOrdinaryLamp);
+
+		// Add items which are used in story tokens here.
 		public static var itemList:Array = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, moldyYogurtJanitor, presPicJanitor, bedNewsJanitor, mrCatRulesPic, windowCatBad, windowCatGood, vpLetter, vpTvNews, grayboxHouse, grayboxRulesTvNews, grayboxBooks, youRuleTvNews, youRuleWindow, tenMinDesk, tenMinNews, weekRazor, weekNews, hundredYearYogurt, hundredYearWindow, hundredYearGraybox, amnesiaSelfTvNews, amnesiaSelfNote, amnesiaVpNote, amnesiaVpJournal, amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook, allergyCatPic, allergyBook, allergyDesk);
 
 		// TOKENS

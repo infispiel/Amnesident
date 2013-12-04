@@ -102,7 +102,7 @@ package
 				desiredItems = desiredItems.concat(tok.unseenItems());
 			}
 
-			return desiredItems;
+			return desiredItems.concat(Tokens.ordinaryItems);
 		}
 	}
 

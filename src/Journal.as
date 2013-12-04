@@ -12,16 +12,21 @@ package
 	public class Journal extends FlxState
 	{
 		public var title:FlxText;
-		public var lineNumber:int = 0;
+		public var instruct:FlxText;
+		public var lineNumber:int = 4;
 		public var prevScreen:FlxState;
 		
 		public function Journal(prevScrn:FlxState)
 		{
 			prevScreen = prevScrn;
 
-			title = new FlxText(200, 180, 300, "Journal");
+			title = new FlxText(200, 20, 300, "Journal");
 			title.size = 32;
 			add(title);			
+
+			instruct = new FlxText(200, 500, 350, "Press Esc to return to game");
+			instruct.size = 16;
+			add(instruct);			
 		}
 		
 		/**

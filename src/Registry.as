@@ -1,9 +1,5 @@
 package  
 {
-	/**
-	 * ...
-	 * @author Benjamin Shaibu
-	 */
 	public class Registry	{
 		
 		public var visitedRoomCount:Number = 0;
