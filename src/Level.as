@@ -180,6 +180,12 @@ package
 					remove(completionTextBg);
 					remove(tokenText);
 				}
+				if (Amnesident.story.gameCompleted) {
+					var end:EndGame = new EndGame()
+					end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+					FlxG.switchState(end);
+
+				}
 			}
 
 			super.update();
