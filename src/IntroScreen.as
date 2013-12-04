@@ -39,12 +39,13 @@ package
 				add(title);		
 			}
 			else if (state == "blinking") {
-				background = new Background(AssetsRegistry.introCeiling);
+				background = new Background(AssetsRegistry.introCeilingFishEye, false);
 				add(background);
-				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
-				title.size = 32;
-				title.alignment = "center";
-				add(title);		
+
+				//title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
+				//title.size = 32;
+				//title.alignment = "center";
+				//add(title);		
 			}
 			else if (state == "ceiling") {
 				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
@@ -83,7 +84,10 @@ package
 			introTimer += FlxG.elapsed;
 			if (introTimer >= 2)	{
 				// After 2 seconds has passed, the timer will reset.
+				//FlxG.shake();
 				introTimer = 0;
+				background = new Background(AssetsRegistry.introCeiling, false);
+				add(background);
 			}
 			if (FlxG.mouse.justPressed()) {
 				FlxG.switchState(new MainMenuState());
