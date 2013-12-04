@@ -75,6 +75,11 @@ package
 			return;
 		}
 
+		private function enterElevator():void {
+			var elevatorEnter:Elevator = new Elevator();
+			FlxG.switchState(elevatorEnter);
+		}
+
 		private function hallway():void {
 			var hallType:int = Math.floor(Math.random() * 4);
 			var nextHall:int = Registry.currentHall ^ 1;
@@ -163,7 +168,8 @@ package
 					if (doors[doorNum].doorType == "door") {
 						rooms[doorNum].enter();
 					} else {
-						hallway();
+						enterElevator();
+						//hallway();
 					}
 					// FlxG.switchState(rooms[doorNum].level1);
 				}
