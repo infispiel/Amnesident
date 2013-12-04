@@ -86,7 +86,7 @@ package
 			    }
 			}
 			if (completed && Amnesident.story.getPossibleTokens().indexOf(this) == -1 && Amnesident.story.getWantToCompleteTokens().indexOf(this) == -1 && Amnesident.story.getCompletedTokens().indexOf(this) == -1) {
-				Amnesident.getStory.getPossibleTokens().push(this);
+				Amnesident.story.getPossibleTokens().push(this);
 			}
 			return completed;
 		}

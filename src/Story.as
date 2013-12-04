@@ -81,13 +81,6 @@ package
 		
 		// loop through a list of tokens, return list of items player has not already seen
 		public function unseenTokens():Array {
-			// var incompleteTokens:Array = new Array();
-			// for each (var tok:Token in tokens) {
-			// 	if (!tok.checkComplete()) {
-			// 		incompleteTokens.push(tok);
-			// 	}
-			// }
-			
 			var desiredItems:Array = new Array();
 
 			for each (var tok:Token in wantToCompleteTokens) {
