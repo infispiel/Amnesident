@@ -51,6 +51,11 @@ package
 					items[ii].x = Amnesident.slotSize * ii
 					//Amnesident.interfaceSize accounts for the UI space.
 					items[ii].y = FlxG.height - Amnesident.interfaceSize - items[ii].height;
+					if (Registry.halls[Registry.currentHall].isTileType) {
+						items[ii].setImage(true);
+					}else {
+						items[ii].setImage(false);
+					}
 					add(items[ii]);
 				}
 			}
