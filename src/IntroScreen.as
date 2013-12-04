@@ -7,7 +7,9 @@ package
 		public var gibberish:FlxText;
 		public var escapeVideo:FlxText;
 		public var textWidth:int = 300;
-		private var state:String = "blank";
+		private var state:String = "blinking";
+		private var background:Background;
+		
 		//states
 			//black screen
 			//blinking awake
@@ -23,7 +25,12 @@ package
 			
 		public var introTimer:Number = 0;
 			
-		public function IntroScreen() {			
+		public function IntroScreen() {
+			//AssetsRegistry.introCeiling;
+			//AssetsRegistry.introCeilingFishEye;
+			//AssetsRegistry.introCeilingFishEyeBlur;
+			//AssetsRegistry.introMouse;
+			//AssetsRegistry.introSurrounding;
 			
 			if (state == "blank") {
 				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "Black Screen");
@@ -32,6 +39,8 @@ package
 				add(title);		
 			}
 			else if (state == "blinking") {
+				background = new Background(AssetsRegistry.introCeiling);
+				add(background);
 				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
 				title.size = 32;
 				title.alignment = "center";
