@@ -9,7 +9,6 @@ package
 	
     public class Level extends IndestructableFlxState
     {
-		
 		public var originalItemsList:Array;
 		public var items:Array;
 		public var itemText:FlxText;
@@ -25,7 +24,22 @@ package
 
 		public function Level(itemlist:Array)
 		{
-			var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
+			var roomBgType:int = Math.floor(Math.random() * 2);
+			if (Registry.halls[Registry.currentHall].isTileType) {
+				if(roomBgType == 0){
+					var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
+				}
+				else {
+					var roomBackground:Background = new Background(AssetsRegistry.blueTiles);
+				}
+			} else {
+				if(roomBgType == 0){
+					var roomBackground:Background = new Background(AssetsRegistry.woodTiles);
+				}
+				else if (roomBgType == 1) {
+					var roomBackground:Background = new Background(AssetsRegistry.brickTiles);
+				}
+			}
 			add(roomBackground);
 
 			originalItemsList = itemlist;
@@ -84,6 +98,7 @@ package
 		{
 			//minimum number of items is 1
 			var numItems:int = Math.floor(Math.random() * 4) + 1;
+			trace(numItems);
 			
 			var resultingItems:Array = new Array(null, null, null, null);
 			var randomIndexes:Array = new Array();
@@ -105,24 +120,24 @@ package
 				var attempts:int = 0;
 				var maxAttempts:int = 100;
 				var done:Boolean = false;
-				while (!done && attempts < maxAttempts) {
-					attempts++;
-					idx = Math.floor(Math.random() * itemlist.length);
-					itm = itemlist[idx];
+				// while (!done && attempts < maxAttempts) {
+				// 	attempts++;
 
-					for (var i:int = 0; i < resultingItems.length; i++) {
-						if (itm == resultingItems[i]) {
-							done = true;
-							break;
-						}
-					}
-				}
+				//TODO make this not pick repeats
+				idx = Math.floor(Math.random() * itemlist.length);
+				itm = itemlist[idx];
 
-				if (attempts == maxAttempts) {
-				}
+				// 	for (var i:int = 0; i < resultingItems.length; i++) {
+				// 		if (itm == resultingItems[i]) {
+				// 			done = true;
+				// 			break;
+				// 		}
+				// 	}
+				// }
 
 				fittable = false;
 
+				gap = 0;
 				for (var j:int = 0; j < space.length; j++) {
 					if (space[j]) {
 						gap++;
@@ -161,6 +176,8 @@ package
 					space[n] = 0;
 				}
 
+				trace("tarslot: " + tarSlot);
+				trace("itm: " + itm.itemText);
 				resultingItems[tarSlot] = itm;
 				placed++;
 			}
@@ -179,6 +196,12 @@ package
 				if (textOverlay) {
 					remove(completionTextBg);
 					remove(tokenText);
+				}
+				if (Amnesident.story.gameCompleted) {
+					var end:EndGame = new EndGame()
+					end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+					FlxG.switchState(end);
+
 				}
 			}
 

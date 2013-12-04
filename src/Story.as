@@ -13,10 +13,7 @@ package
 		public static var possibleTokens:Array;
 
 		public var items:Array;
-		public var item1:Item;
-		public var item2:Item;
-		public var item3:Item;
-		public var item4:Item;
+		public var gameCompleted:Boolean = false;
 		public var currentLevel:Level;
 		public var pingJournal:Boolean = false;
 
@@ -30,7 +27,10 @@ package
 			for each (var t:Token in possibleTokens){
 			    // tokens with prereqs aren't immediately possible
 			    if (t.requires.length > 0){
+				
 				possibleTokens.splice(possibleTokens.indexOf(t), 1);
+			    } else {
+				trace("possible: " + t.endDynamicText);
 			    }
 			}
 			wantToCompleteTokens = new Array();
@@ -47,13 +47,12 @@ package
 		public function markCompleted(token:Token):void {
 			pingJournal = true;
 			trace("completing token: "+token.completedText);
+			for each (var t:Token in possibleTokens){
+			    trace("possible:"+t.endDynamicText)
+			}
 			if (wantToCompleteTokens.indexOf(token) != -1){
 			    // remove from wantToCompleteTokens
 			    wantToCompleteTokens.splice(wantToCompleteTokens.indexOf(token), 1);
-			}
-			if (possibleTokens.indexOf(token) != -1){
-			    // remove from wantToCompleteTokens
-			    possibleTokens.splice(possibleTokens.indexOf(token), 1);
 			}
 	
 			if (completedTokens.indexOf(token) == -1){
@@ -68,13 +67,22 @@ package
 		public function chooseNewToken():void {
 		    if (possibleTokens.length != 0){
 				var tokenNumber:int = Math.floor(Math.random()*possibleTokens.length);
+				trace("possible tokens: "+possibleTokens.length);
 				var selected:Array = possibleTokens.splice(tokenNumber, 1);
+				trace("possible tokens remaining "+possibleTokens.length);
 				trace('selected '+selected[0].endDynamicText);
 				wantToCompleteTokens = wantToCompleteTokens.concat(selected);
 		        // all tokens incompatible with the chosen one are no longer possible
-				for each (var t:Token in selected[0].incompatibleWith){
-					possibleTokens.splice(possibleTokens.indexOf(t), 1);
+				var newPoss:Array = new Array()
+				for each (var t:Token in possibleTokens){
+				    if (selected[0].incompatibleWith.indexOf(t) < 0){
+					newPoss.push(t);
+				    }
 				}
+				possibleTokens = newPoss;
+//				for each (var t:Token in selected[0].incompatibleWith){
+		//			possibleTokens.splice(possibleTokens.indexOf(t), 1);
+//				}
 		    }
 		}
 		
@@ -94,7 +102,7 @@ package
 				desiredItems = desiredItems.concat(tok.unseenItems());
 			}
 
-			return desiredItems;
+			return desiredItems.concat(Tokens.ordinaryItems);
 		}
 	}
 

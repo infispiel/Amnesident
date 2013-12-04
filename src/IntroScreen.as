@@ -77,7 +77,7 @@ package
 				introTimer = 0;
 			}
 			if (FlxG.mouse.justPressed()) {
-				FlxG.switchState(new MainMenuState);
+				FlxG.switchState(new MainMenuState());
 			}
 		}
 	}
