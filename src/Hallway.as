@@ -37,7 +37,7 @@ package
 					add(door);
 				}
 
-				elevator = new Door(590, FlxG.height - 320 - Amnesident.interfaceSize, AssetsRegistry.elevatorImg, "elevator");
+				elevator = new Door(590, FlxG.height - 321 - Amnesident.interfaceSize, AssetsRegistry.elevatorImg, "elevator");
 				add(elevator);
 
 				doors.push(elevator);
