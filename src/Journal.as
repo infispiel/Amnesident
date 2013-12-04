@@ -9,13 +9,15 @@ package
 	import mx.core.FlexTextField;
 	import org.flixel.*;
 	import flash.display.BitmapData;
+	import org.flixel.plugin.photonstorm.*;
 	public class Journal extends FlxState
 	{
 		public var title:FlxText;
 		public var instruct:FlxText;
 		public var lineNumber:int = 4;
 		public var prevScreen:FlxState;
-		
+		public var hallBtn:FlxSprite;
+		public var endGameBtn:FlxSprite;		
 		public function Journal(prevScrn:FlxState)
 		{
 			prevScreen = prevScrn;
@@ -24,11 +26,21 @@ package
 			title.size = 32;
 			add(title);			
 
-			instruct = new FlxText(250, 500, 350, "Press Esc to return to game");
-			instruct.size = 16;
-			add(instruct);			
+		//	instruct = new FlxText(250, 500, 350, "Press Esc to return to game");
+		//	instruct.size = 16;
+		//	add(instruct);	
+			buildUi();		
 		}
 		
+		private function buildUi():void {
+			hallBtn = new FlxSprite(20, 4, AssetsRegistry.hallwayBtnImg);
+			add(hallBtn);
+
+			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
+			add(endGameBtn);
+
+		}
+
 		/**
 		 * add Summary receives static text and dynamic text
 		 */
@@ -66,10 +78,27 @@ package
 
 		override public function update():void
 		{
-			if (FlxG.keys.ESCAPE) {
+			if (FlxG.mouse.justReleased() && (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn))) {
 				FlxG.switchState(prevScreen);
 				// FlxG.switchState(Registry.halls[Registry.currentHall]);
 			}
+			if (FlxG.mouse.justReleased() && (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn))) {
+			var end:EndGame = new EndGame();
+			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			FlxG.switchState(end);
+			}
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {
+				hallBtn.loadGraphic(AssetsRegistry.hallwayBtnImgHover);
+			} else {
+				hallBtn.loadGraphic(AssetsRegistry.hallwayBtnImg);
+			}
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
+				endGameBtn.loadGraphic(AssetsRegistry.endGameBtnImgHover);
+			} else {
+				endGameBtn.loadGraphic(AssetsRegistry.endGameBtnImg);
+			}
+
+
 		}
 	}
 }
