@@ -6,6 +6,8 @@ package
 	public class Hallway extends IndestructableFlxState {
 		public static var doorImage:Class;
 		public static var roomCount:Number;
+		//boolean which dictates what kind of hallway this is. (true for tiles, false for wood/brick).
+		public var isTileType:Boolean = true;
 		public var currentRoom:Number;
 		public var doors:Array = new Array();
 		public var rooms:Array = new Array();
@@ -67,15 +69,32 @@ package
 		}
 
 		private function hallway():void {
+			var hallType:int = Math.floor(Math.random() * 4);
 			var nextHall:int = Registry.currentHall ^ 1;
 			var nextBg:Class;
-			if (nextHall) {
+			var nextDoor:Class;
+			var isTile:Boolean = true;
+			if (hallType == 0) {
 				nextBg = AssetsRegistry.greenTiles;
-			} else {
+			} else if (hallType == 1){
 				nextBg = AssetsRegistry.blueTiles;
+			} else if (hallType == 2) {
+				isTile = false;
+				nextBg = AssetsRegistry.woodTiles;
+			} else {
+				isTile = false;
+				nextBg = AssetsRegistry.brickTiles;
 			}
-
-			Registry.halls[nextHall] = new Hallway(AssetsRegistry.doorPic, nextBg, 5, 0);
+			
+			if (isTile) {
+				nextDoor = AssetsRegistry.doorPic;
+			}
+			else {
+				nextDoor = AssetsRegistry.door2Pic;
+			}
+			
+			Registry.halls[nextHall] = new Hallway(nextDoor, nextBg, 5, 0);
+			Registry.halls[nextHall].isTileType = isTile;
 			Registry.currentHall = nextHall;
 			FlxG.switchState(Registry.halls[Registry.currentHall]);
 		}

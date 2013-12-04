@@ -9,7 +9,6 @@ package
 	
     public class Level extends IndestructableFlxState
     {
-		
 		public var originalItemsList:Array;
 		public var items:Array;
 		public var itemText:FlxText;
@@ -25,7 +24,22 @@ package
 
 		public function Level(itemlist:Array)
 		{
-			var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
+			var roomBgType:int = Math.floor(Math.random() * 2);
+			if (Registry.halls[Registry.currentHall].isTileType) {
+				if(roomBgType == 0){
+					var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
+				}
+				else {
+					var roomBackground:Background = new Background(AssetsRegistry.blueTiles);
+				}
+			} else {
+				if(roomBgType == 0){
+					var roomBackground:Background = new Background(AssetsRegistry.woodTiles);
+				}
+				else if (roomBgType == 1) {
+					var roomBackground:Background = new Background(AssetsRegistry.brickTiles);
+				}
+			}
 			add(roomBackground);
 
 			originalItemsList = itemlist;

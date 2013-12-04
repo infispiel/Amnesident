@@ -29,7 +29,9 @@ package
 		
 		//Backgrounds
 		[Embed(source = "assets/art/GenericBackgroundTilesBlue.png")] public static var blueTiles:Class; //1307x573
-		[Embed(source="assets/art/GenericBackgroundTilesGreen-01.png")] public static var greenTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundTilesGreen-01.png")] public static var greenTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundWood.png")] public static var woodTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundBrick.png")] public static var brickTiles:Class; //800 x 400
 		
 		//Boxes
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
