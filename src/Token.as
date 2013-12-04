@@ -52,12 +52,14 @@ package
 			if (completed) {
 				tokenCompleted();
 				Amnesident.story.markCompleted(this);
+				trace("Number of posible tokens "+Story.possibleTokens.length);
 				if (Story.possibleTokens.length != 0 || Story.wantToCompleteTokens.length != 0){
 				    Amnesident.story.chooseNewToken();
 			 	} else {
-				    var end:EndGame = new EndGame();
-			            end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
-			            FlxG.switchState(end);
+//				    var end:EndGame = new EndGame();
+//			            end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+//			            FlxG.switchState(end);
+				    Amnesident.story.gameCompleted = true;
 				}
 			}
 			return completed;
@@ -70,7 +72,7 @@ package
 				if (!item.isSeen) {
 					unseenItems.push(item);
 				}
-			}
+			 }
 			return unseenItems;
 		}
 		public function checkPrereqsComplete():Boolean {

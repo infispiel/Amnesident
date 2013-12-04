@@ -47,7 +47,7 @@ package
 		[Embed(source = "assets/art/Door.png")] public static var doorPic:Class; //127x236
 		[Embed(source = "assets/art/Door2.png")] public static var door2Pic:Class; //148x247
 		[Embed(source = "assets/art/roomExit.png")] public static var roomExit:Class; //148x247
-		[Embed(source = "assets/art/elevator.png")] public static var elevatorImg:Class; //200x320
+		[Embed(source = "assets/art/elevator.png")] public static var elevatorImg:Class; //200x321
 		
 		//Endtable Top Items -- THEY ARE ALL 125x200
 			//Metal:
