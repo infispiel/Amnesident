@@ -19,7 +19,7 @@ package
 			//"When the cursor is read, click to interact with them"
 			//"Get clues from the surroundings"
 			//journal screen - "Fill in the blanks in your journal"
-			//Load Start Scteen
+			//Load Start Screen
 			
 		public var introTimer:Number = 0;
 			
@@ -43,19 +43,19 @@ package
 				title.alignment = "center";
 				add(title);		
 			}
-			else if (state == "room") {
+			else if (state == "viewRoom") {
 				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
 				title.size = 32;
 				title.alignment = "center";
 				add(title);		
 			}
-			else if (state == "blinking") {
+			else if (state == "mouseScreen") {
 				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
 				title.size = 32;
 				title.alignment = "center";
 				add(title);		
 			}
-			else if (state == "blinking") {
+			else if (state == "journalScreen") {
 				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
 				title.size = 32;
 				title.alignment = "center";
@@ -77,7 +77,7 @@ package
 				introTimer = 0;
 			}
 			if (FlxG.mouse.justPressed()) {
-				FlxG.switchState(MainMenuState);
+				FlxG.switchState(new MainMenuState);
 			}
 		}
 	}
