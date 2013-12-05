@@ -32,7 +32,9 @@ package
 		[Embed(source = "assets/art/GenericBackgroundTilesGreen-01.png")] public static var greenTiles:Class; //1307x573
 		[Embed(source = "assets/art/GenericBackgroundWood.png")] public static var woodTiles:Class; //1307x573
 		[Embed(source = "assets/art/GenericBackgroundBrick.png")] public static var brickTiles:Class; //800 x 400
+		[Embed(source = "assets/art/ElevatorInner.png")] public static var elevatorInner:Class; 
 		
+	
 		//Boxes
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
 		[Embed(source = 'assets/art/redbox.png')] public static var redBox:Class; //32x32
@@ -131,7 +133,7 @@ package
 		[Embed(source="assets/art/introVid/Mouse.png")] public static var introMouseScreen:Class;
 		//[Embed(source="assets/art/introVid/Surrounding.png")] public static var introSurroundingScreen:Class;
 		[Embed(source = "assets/art/introVid/SurroudingRoom.png")] public static var introSurroundingRoom:Class;
-		[Embed(source="assets/art/introVid/FiillInBlanks.png")] public static var introJournalScreen:Class;
+		[Embed(source="assets/art/introVid/FillInBlanks.png")] public static var introJournalScreen:Class;
 		
 		public function AssetsRegistry() 
 		{

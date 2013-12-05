@@ -39,7 +39,7 @@ package
 			Amnesident.story = new Story(Tokens.itemList, Tokens.tokenList);
 			Registry.halls[Registry.currentHall] = new Hallway(AssetsRegistry.doorPic, AssetsRegistry.blueTiles, 4, 0);
 			Registry.halls[Registry.currentHall].create();
-
+			
 			FlxG.playMusic(AssetsRegistry.darkDaysBgm, 1);
 
 			// this switches state, nothing after it will be run (probably)
