@@ -79,7 +79,7 @@ package
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			end.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(end);
 		}
 
@@ -92,7 +92,7 @@ package
 			textOverlay = false;
 
 			var journalScrn:Journal = new Journal(this);
-			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			journalScrn.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(journalScrn);
 		}
 
@@ -205,7 +205,7 @@ package
 				}
 				if (Amnesident.story.gameCompleted) {
 					var end:EndGame = new EndGame()
-					end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+					end.addSummaries(Amnesident.story.wantToCompleteTokens, Amnesident.story.completedTokens);
 					FlxG.switchState(end);
 
 				}
@@ -262,9 +262,9 @@ package
 					}
 				}
 			}
+			for each (var t:Token in Amnesident.story.getWantToCompleteTokens()){
+			    t.checkPrereqsComplete();
 
-			for each (var t:Token in Story.wantToCompleteTokens){
-				t.checkPrereqsComplete();
 			    if (t.checkComplete()) {
 					textOverlay = true;
 					add(completionTextBg);

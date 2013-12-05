@@ -70,7 +70,7 @@ package
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			end.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(end);
 			return;
 		}
@@ -115,7 +115,7 @@ package
 			Amnesident.story.pingJournal = false;
 
 			var journalScrn:Journal = new Journal(this);
-			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			journalScrn.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(journalScrn);
 			return;
 		}

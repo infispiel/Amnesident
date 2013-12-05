@@ -84,7 +84,7 @@ package
 			}
 			if (FlxG.mouse.justReleased() && (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn))) {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			end.addSummaries(Amnesident.story.wantToCompleteTokens, Amnesident.story.completedTokens);
 			FlxG.switchState(end);
 			}
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {

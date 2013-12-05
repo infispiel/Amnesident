@@ -8,9 +8,9 @@ package
 	public class Story 
 	{
 		public static var tokens:Array;
-		public static var completedTokens:Array;
-		public static var wantToCompleteTokens:Array;
-		public static var possibleTokens:Array;
+		public var completedTokens:Array = new Array();
+		public var wantToCompleteTokens:Array = new Array();
+		public var possibleTokens:Array = new Array();
 
 		public var items:Array;
 		public var gameCompleted:Boolean = false;
@@ -89,13 +89,6 @@ package
 		
 		// loop through a list of tokens, return list of items player has not already seen
 		public function unseenTokens():Array {
-			// var incompleteTokens:Array = new Array();
-			// for each (var tok:Token in tokens) {
-			// 	if (!tok.checkComplete()) {
-			// 		incompleteTokens.push(tok);
-			// 	}
-			// }
-			
 			var desiredItems:Array = new Array();
 
 			for each (var tok:Token in wantToCompleteTokens) {
@@ -104,6 +97,17 @@ package
 
 			return desiredItems.concat(Tokens.ordinaryItems);
 		}
+
+		public function getCompletedTokens():Array {
+			return this.completedTokens;
+		}
+		public function getWantToCompleteTokens():Array{
+			return this.wantToCompleteTokens;
+		}
+		public function getPossibleTokens():Array {
+			return this.possibleTokens;
+		}
 	}
+		
 
 }

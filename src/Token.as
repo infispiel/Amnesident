@@ -52,13 +52,10 @@ package
 			if (completed) {
 				tokenCompleted();
 				Amnesident.story.markCompleted(this);
-				trace("Number of posible tokens "+Story.possibleTokens.length);
-				if (Story.possibleTokens.length != 0 || Story.wantToCompleteTokens.length != 0){
+
+				if (Amnesident.story.getPossibleTokens().length != 0 || Amnesident.story.getWantToCompleteTokens().length != 0){
 				    Amnesident.story.chooseNewToken();
 			 	} else {
-//				    var end:EndGame = new EndGame();
-//			            end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
-//			            FlxG.switchState(end);
 				    Amnesident.story.gameCompleted = true;
 				}
 			}
@@ -83,12 +80,12 @@ package
 				}
 			} 
 			for each (var incompat:Token in incompatibleWith){
-			    if (Story.wantToCompleteTokens.indexOf(incompat) != -1 && Story.completedTokens.indexOf(incompat) != -1){
+			    if (Amnesident.story.getWantToCompleteTokens().indexOf(incompat) != -1 && Amnesident.story.getCompletedTokens().indexOf(incompat) != -1){
 				completed = false;
 			    }
 			}
-			if (completed && Story.possibleTokens.indexOf(this) == -1 && Story.wantToCompleteTokens.indexOf(this) == -1 && Story.completedTokens.indexOf(this) == -1) {
-				Story.possibleTokens.push(this);
+			if (completed && Amnesident.story.getPossibleTokens().indexOf(this) == -1 && Amnesident.story.getWantToCompleteTokens().indexOf(this) == -1 && Amnesident.story.getCompletedTokens().indexOf(this) == -1) {
+				Amnesident.story.getPossibleTokens().push(this);
 			}
 			return completed;
 		}
