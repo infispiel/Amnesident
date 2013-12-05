@@ -131,7 +131,7 @@ package
 		[Embed(source="assets/art/introVid/ceilingfisheye1.png")] public static var introCeilingFishEye:Class;
 		[Embed(source="assets/art/introVid/ceilingfisheyeblur.png")] public static var introCeilingFishEyeBlur:Class;
 		[Embed(source="assets/art/introVid/Mouse.png")] public static var introMouseScreen:Class;
-		//[Embed(source="assets/art/introVid/Surrounding.png")] public static var introSurroundingScreen:Class;
+		[Embed(source="assets/art/introVid/Surrounding.png")] public static var introSurroundingScreen:Class;
 		[Embed(source = "assets/art/introVid/SurroudingRoom.png")] public static var introSurroundingRoom:Class;
 		[Embed(source="assets/art/introVid/FillInBlanks.png")] public static var introJournalScreen:Class;
 		
@@ -139,7 +139,5 @@ package
 		{
 			
 		}
-		
 	}
-
 }
