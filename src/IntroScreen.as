@@ -7,89 +7,99 @@ package
 		public var gibberish:FlxText;
 		public var escapeVideo:FlxText;
 		public var textWidth:int = 300;
-		private var state:String = "blinking";
+		private var state:String = "blank";
 		private var background:Background;
-		
-		//states
-			//black screen
-			//blinking awake
-			//look at ceiling
-			//see room
-			//add "Ugh...where am I? What room is this?"
-			//add "What's going on?"
-			//mouse screen - "Point at Objects"
-			//"When the cursor is read, click to interact with them"
-			//"Get clues from the surroundings"
-			//journal screen - "Fill in the blanks in your journal"
-			//Load Start Screen
-			
+		private var backgroundNeedsToLoad:Boolean = true;		
 		public var introTimer:Number = 0;
 			
-		public function IntroScreen() {
-			//AssetsRegistry.introCeiling;
-			//AssetsRegistry.introCeilingFishEye;
-			//AssetsRegistry.introCeilingFishEyeBlur;
-			//AssetsRegistry.introMouse;
-			//AssetsRegistry.introSurrounding;
-			
-			if (state == "blank") {
-				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "Black Screen");
-				title.size = 32;
-				title.alignment = "center";
-				add(title);		
+		public function IntroScreen() {		
+		}
+		
+		private function clearBackground():void {
+			if (background != null) {
+				if (background.exists && background.onScreen()) {
+					background.kill();
+				}
 			}
-			else if (state == "blinking") {
-				background = new Background(AssetsRegistry.introCeilingFishEye, false);
+		}
+		
+		private function loadBackground(image:Class):void {
+			if (backgroundNeedsToLoad) {
+				clearBackground();
+				background = new Background(image, false);
 				add(background);
-
-				//title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
-				//title.size = 32;
-				//title.alignment = "center";
-				//add(title);		
-			}
-			else if (state == "ceiling") {
-				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
-				title.size = 32;
-				title.alignment = "center";
-				add(title);		
-			}
-			else if (state == "viewRoom") {
-				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
-				title.size = 32;
-				title.alignment = "center";
-				add(title);		
-			}
-			else if (state == "mouseScreen") {
-				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
-				title.size = 32;
-				title.alignment = "center";
-				add(title);		
-			}
-			else if (state == "journalScreen") {
-				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
-				title.size = 32;
-				title.alignment = "center";
-				add(title);		
-			}
-			else if (state == "blinking") {
-				title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "This is the Intro Video!!!!!!");
-				title.size = 32;
-				title.alignment = "center";
-				add(title);		
+				backgroundNeedsToLoad = false;
 			}
 		}
 		
 		override public function update():void {
 			///Update Timer
 			introTimer += FlxG.elapsed;
-			if (introTimer >= 2)	{
-				// After 2 seconds has passed, the timer will reset.
-				//FlxG.shake();
-				introTimer = 0;
-				background = new Background(AssetsRegistry.introCeiling, false);
-				add(background);
+			if (state == "blank") {
+				if (introTimer >= 1.5) {
+					introTimer = 0;
+					state = "blinking";
+				}
 			}
-			if (FlxG.mouse.justPressed()) {
+			
+			else if (state == "blinking") {
+				if (introTimer >= 0 && introTimer <= 2) {
+					backgroundNeedsToLoad = true;
+					loadBackground(AssetsRegistry.introCeilingFishEyeBlur);				
+				}
+				else if (introTimer > 2 && introTimer < 3)	{
+					backgroundNeedsToLoad = true;
+					loadBackground(AssetsRegistry.introCeilingFishEye);					
+				}
+				else if (introTimer > 3 && introTimer < 3.5)	{
+					clearBackground();
+				}
+				else if (introTimer > 3.5 && introTimer < 4.5)	{
+					backgroundNeedsToLoad = true;
+					loadBackground(AssetsRegistry.introCeiling);
+				}
+				else {
+					state = "viewRoom";
+					backgroundNeedsToLoad = true;
+					introTimer = 0;
+				}
+			}
+			
+			else if (state == "viewRoom") {
+				loadBackground(AssetsRegistry.introSurroundingRoom);
+				if (FlxG.mouse.justPressed() )	{
+					backgroundNeedsToLoad = true;
+					state = "mouseScreen";
+				}
+			}
+			
+			else if (state == "mouseScreen") {
+				loadBackground(AssetsRegistry.introMouseScreen);
+				if (FlxG.mouse.justPressed() )	{
+					backgroundNeedsToLoad = true;
+					state = "surroundingScreen";
+				}
+			}
+			
+			else if (state == "surroundingScreen") {			
+				//loadBackground(AssetsRegistry.introSurroundingScreen);		
+				trace("Surrounding Screen Touches Down!");
+				if (FlxG.mouse.justPressed() )	{
+					backgroundNeedsToLoad = true;
+					state = "journalScreen";
+				}
+			}
+			
+			else if (state == "journalScreen") {
+				loadBackground(AssetsRegistry.introJournalScreen);				
+				if (FlxG.mouse.justPressed() )	{
+					state = null;
+					FlxG.switchState(new MainMenuState());
+				}
+			}
+
+			if (FlxG.keys.ESCAPE) {
+				state = null;
 				FlxG.switchState(new MainMenuState());
 			}
 		}
