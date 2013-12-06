@@ -122,7 +122,6 @@ package
 			
 			else if (state == "surroundingScreen") {			
 				loadBackground(AssetsRegistry.introSurroundingScreen);		
-				trace("Surrounding Screen Touches Down!");
 				if (FlxG.mouse.justPressed() )	{
 					backgroundNeedsToLoad = true;
 					state = "journalScreen";
