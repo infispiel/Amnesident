@@ -71,19 +71,19 @@ package
 					backgroundNeedsToLoad = true;
 					loadBackground(AssetsRegistry.introCeiling);
 				}
-				else if (introTimer > 8 && introTimer <= 11) {
+				else if (introTimer > 8 && introTimer <= 12) {
 					gibberish.size = 32;
 					gibberish.alignment = "center";
 					add(gibberish);
 				}
-				else if (introTimer > 11 && introTimer <= 14) {
+				else if (introTimer > 12 && introTimer <= 16) {
 					clearText();
 					gibberish = new FlxText(0, 30, FlxG.width, "Where am I?");
 					gibberish.size = 32;
 					gibberish.alignment = "center";
 					add(gibberish);
 				}
-				else if (introTimer > 14 && introTimer <= 20) {
+				else if (introTimer > 16 && introTimer <= 25) {
 					clearText();
 					gibberish = new FlxText(0, 30, FlxG.width, "Click to continue...");
 					gibberish.size = 32;
