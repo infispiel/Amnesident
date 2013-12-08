@@ -1,14 +1,17 @@
 package  
 {
 	import org.flixel.*;
+	import org.flixel.plugin.photonstorm.*;
 	
 	public class IntroScreen extends FlxState	{
 		public var gibberish:FlxText = new FlxText(0, 30, FlxG.width, "What?");
 		public var howToSkip:FlxText = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
 		public var textWidth:int = 300;
+
 		private var state:String = "blank";
 		private var background:Background;
 		private var backgroundNeedsToLoad:Boolean = true;		
+		
 		public var introTimer:Number = 0;
 			
 		public function IntroScreen() {		
@@ -185,7 +188,7 @@ package
 			if (FlxG.keys.ESCAPE) {
 				state = null;
 				FlxG.switchState(new MainMenuState());
-			}
+			}		
 		}
 	}
 
