@@ -35,7 +35,7 @@ package
 			}
 		}
 		
-		public function startPlay():void {
+		public static function startPlay():void {
 			var tokens:Tokens = new Tokens();
 			Amnesident.story = new Story(tokens.getItemList(), tokens.getTokenList());
 			Registry.halls[Registry.currentHall] = new Hallway(AssetsRegistry.doorPic, AssetsRegistry.blueTiles, 4, 0);
