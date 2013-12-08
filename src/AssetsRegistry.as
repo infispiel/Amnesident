@@ -134,6 +134,7 @@ package
 
 		// Music
 		[Embed(source = 'assets/music/dark-days.mp3')] public static var darkDaysBgm:Class;
+		[Embed(source = 'assets/music/flowers-and-chocolate.mp3')] public static var flowersAndChocolate:Class;
 		
 		//IntroVid Assets
 		[Embed(source="assets/art/introVid/ceiling.png")] public static var introCeiling:Class;

@@ -40,14 +40,14 @@ package
 			var sprite:FlxSprite = new FlxSprite(300, 30*lineNumber);
 			sprite.loadGraphic(AssetsRegistry.textbox, true, true, 250, 20);
 			sprite.addAnimation("idle", [0]);
-			
+
 			add(sprite);
 			add(staticText);
 			add(dynamicText);
 			lineNumber += 1;
 			trace(lineNumber);
-			
 		}
+
 		// get list of tokens and addSummary for each of them
 		public function addSummaries(progress:Array, complete:Array):void {
 			var tok:Token;
@@ -68,6 +68,7 @@ package
 			if (FlxG.mouse.justReleased()) {
 				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
 					trace("New story");
+					FlxG.music.fadeOut(1);
 					FlxG.switchState(new MainMenuState());
 					// MainMenuState.startPlay();
 				}

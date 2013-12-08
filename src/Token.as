@@ -57,6 +57,8 @@ package
 				    Amnesident.story.chooseNewToken();
 			 	} else {
 				    Amnesident.story.gameCompleted = true;
+					FlxG.music.fadeOut(1);
+					FlxG.playMusic(AssetsRegistry.flowersAndChocolate, 1);
 				}
 			}
 			return completed;
