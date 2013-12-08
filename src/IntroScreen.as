@@ -4,6 +4,7 @@ package
 	
 	public class IntroScreen extends FlxState	{
 		public var gibberish:FlxText = new FlxText(0, 30, FlxG.width, "What?");
+		public var howToSkip:FlxText = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
 		public var textWidth:int = 300;
 		private var state:String = "blank";
 		private var background:Background;
@@ -41,7 +42,15 @@ package
 		override public function update():void {
 			///Update Timer
 			introTimer += FlxG.elapsed;
+					howToSkip.size = 13;
+					howToSkip.alignment = "left";
+					add(howToSkip);
+
 			if (state == "blank") {
+					howToSkip.size = 13;
+					howToSkip.alignment = "left";
+					add(howToSkip);
+
 				if (introTimer >= 1.5) {
 					introTimer = 0;
 					state = "blinking";
@@ -52,24 +61,61 @@ package
 				if (introTimer >= 0 && introTimer <= 1) {
 					backgroundNeedsToLoad = true;
 					loadBackground(AssetsRegistry.introCeilingFishEyeBlur);				
+					howToSkip.kill();
+					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
+					howToSkip.size = 13;
+					howToSkip.alignment = "left";
+					add(howToSkip);
+
 				}
 				else if (introTimer > 1 && introTimer <= 2)	{
 					clearBackground();
+					howToSkip.kill();
+					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
+					howToSkip.size = 13;
+					howToSkip.alignment = "left";
+					add(howToSkip);
+
 				}
 				else if (introTimer >= 2 && introTimer <= 3) {
 					backgroundNeedsToLoad = true;
-					loadBackground(AssetsRegistry.introCeilingFishEyeBlur);				
+					
+					loadBackground(AssetsRegistry.introCeilingFishEyeBlur);		
+					howToSkip.kill();
+					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
+					howToSkip.size = 13;
+					howToSkip.alignment = "left";
+					add(howToSkip);
+
 				}
 				else if (introTimer > 3 && introTimer <= 4)	{
 					clearBackground();
+					howToSkip.kill();
+					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
+					howToSkip.size = 13;
+					howToSkip.alignment = "left";
+					add(howToSkip);
+
 				}
 				else if (introTimer > 4 && introTimer <= 5.5)	{
 					backgroundNeedsToLoad = true;
-					loadBackground(AssetsRegistry.introCeilingFishEye);					
+					loadBackground(AssetsRegistry.introCeilingFishEye);		
+					howToSkip.kill();
+					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");	
+					howToSkip.size = 13;
+					howToSkip.alignment = "left";
+					add(howToSkip);
+
 				}
 				else if (introTimer > 5.5 && introTimer <= 8)	{
 					backgroundNeedsToLoad = true;
 					loadBackground(AssetsRegistry.introCeiling);
+					howToSkip.kill();
+					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
+					howToSkip.size = 13;
+					howToSkip.alignment = "left";
+					add(howToSkip);
+
 				}
 				else if (introTimer > 8 && introTimer <= 12) {
 					gibberish.size = 32;
