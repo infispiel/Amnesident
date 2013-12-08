@@ -32,7 +32,7 @@ package
 			var dynamicText:FlxText = new FlxText(300, 30 * lineNumber, 250, dyn);
 			dynamicText.setFormat(null, 13, 0x000000, "center")
 			
-			var sprite:FlxSprite = new FlxSprite(250, 30*lineNumber);
+			var sprite:FlxSprite = new FlxSprite(300, 30*lineNumber);
 			sprite.loadGraphic(AssetsRegistry.textbox, true, true, 250, 20);
 			sprite.addAnimation("idle", [0]);
 			
