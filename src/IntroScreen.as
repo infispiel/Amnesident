@@ -1,13 +1,14 @@
 package  
 {
 	import org.flixel.*;
+	import org.flixel.plugin.photonstorm.*;
 	
 	public class IntroScreen extends FlxState	{
 		public var title:FlxText;
 		public var gibberish:FlxText;
 		public var escapeVideo:FlxText;
 		public var textWidth:int = 300;
-		private var state:String = "blank";
+		private var state:String = "blank";	
 		//states
 			//black screen
 			//blinking awake
@@ -76,9 +77,9 @@ package
 				// After 2 seconds has passed, the timer will reset.
 				introTimer = 0;
 			}
-			if (FlxG.mouse.justPressed()) {
+		    if (FlxG.mouse.justPressed()) {
 				FlxG.switchState(new MainMenuState());
-			}
+			}		
 		}
 	}
 

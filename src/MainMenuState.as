@@ -3,13 +3,15 @@ package
 	import org.flixel.*;
 	import flash.ui.Mouse;
 	import flash.ui.MouseCursor;
+	import org.flixel.plugin.photonstorm.*;
 	
 	public class MainMenuState extends FlxState 
 	{
 		//Use this command to set the default cursor png...
 		//[Embed(source = "cursor.png")] private var ImgCursor:Class;
 		public var title:FlxText, click:FlxText;
-
+		public var creditBtn:FlxSprite;		
+		public var newStoryBtn:FlxSprite;	
 		public function MainMenuState() 
 		{
 			//Use FlxG.mouse.show(ImgCursor, 16, 16) to show the custom cursor image
@@ -22,17 +24,40 @@ package
 			add(title);
 			
 			//Add Click to Start Text
-			click = new FlxText(0, 230, FlxG.width, "Click to play");
-			click.size = 16;
-			click.alignment = "center";
-			add(click);
+			//click = new FlxText(0, 230, FlxG.width, "Click to play");
+			//click.size = 16;
+			//click.alignment = "center";
+			//add(click);
+			
+			creditBtn = new FlxSprite(610, 10, AssetsRegistry.creditBtnImg);
+			newStoryBtn = new FlxSprite(480, 10, AssetsRegistry.newStoryBtnImg);
+			add(creditBtn);
+			add(newStoryBtn);			
 		}
 
 		override public function update():void
 		{
-			if (FlxG.mouse.justPressed()) {
-				FlxG.fade(0xff000000, 1, startPlay);
+			//if (FlxG.mouse.justPressed()) {
+				//FlxG.fade(0xff000000, 1, startPlay);
+			//}
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, creditBtn)) {
+				creditBtn.loadGraphic(AssetsRegistry.creditBtnImgHover);
+			} else {
+				creditBtn.loadGraphic(AssetsRegistry.creditBtnImg);
 			}
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
+				newStoryBtn.loadGraphic(AssetsRegistry.newStoryBtnImgHover);
+			} else {
+				newStoryBtn.loadGraphic(AssetsRegistry.newStoryBtnImg);
+			}
+			if (FlxG.mouse.justPressed()) {
+				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, creditBtn)) {
+					var credit:CreditsScreen = new CreditsScreen();
+					FlxG.switchState(credit);
+				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
+					FlxG.fade(0xff000000, 1, startPlay);
+				}
+			}			
 		}
 		
 		public function startPlay():void {

@@ -52,6 +52,7 @@ package
 		}
 		
 		override public function create():void {
+			FlxG.play(AssetsRegistry.sfxelevator);
 			FlxG.play(AssetsRegistry.sfxStep2);
 		}
 		
