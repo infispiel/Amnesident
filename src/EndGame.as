@@ -9,16 +9,21 @@ package
 	import mx.core.FlexTextField;
 	import org.flixel.*;
 	import flash.display.BitmapData;
+	import org.flixel.plugin.photonstorm.*;
 	public class EndGame extends FlxState
 	{
 		public var title:FlxText;
 		public var lineNumber:int = 0;
+		public var newStoryBtn:FlxSprite;
 		
 		public function EndGame() 
 		{
 			title = new FlxText(250, 180, 300, "End of game");
 			title.size = 32;
-			add(title);			
+			add(title);
+
+			newStoryBtn = new FlxSprite(250, 300, AssetsRegistry.newStoryBtnImg);
+			add(newStoryBtn);
 		}
 		
 		/**
@@ -32,7 +37,7 @@ package
 			var dynamicText:FlxText = new FlxText(300, 30 * lineNumber, 250, dyn);
 			dynamicText.setFormat(null, 13, 0x000000, "center")
 			
-			var sprite:FlxSprite = new FlxSprite(250, 30*lineNumber);
+			var sprite:FlxSprite = new FlxSprite(300, 30*lineNumber);
 			sprite.loadGraphic(AssetsRegistry.textbox, true, true, 250, 20);
 			sprite.addAnimation("idle", [0]);
 			
@@ -52,6 +57,22 @@ package
 			for each (tok in progress) {
 				addSummary(tok.endStaticText, "");
 			}
+		}
+
+		override public function update():void {
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
+				newStoryBtn.loadGraphic(AssetsRegistry.newStoryBtnImgHover);
+			} else {
+				newStoryBtn.loadGraphic(AssetsRegistry.newStoryBtnImg);
+			}
+			if (FlxG.mouse.justReleased()) {
+				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
+					trace("New story");
+					FlxG.switchState(new MainMenuState());
+					// MainMenuState.startPlay();
+				}
+			}			
+			
 		}
 	}
 }
