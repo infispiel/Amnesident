@@ -35,8 +35,12 @@ package
 		
 		//Backgrounds
 		[Embed(source = "assets/art/GenericBackgroundTilesBlue.png")] public static var blueTiles:Class; //1307x573
-		[Embed(source="assets/art/GenericBackgroundTilesGreen-01.png")] public static var greenTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundTilesGreen-01.png")] public static var greenTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundWood.png")] public static var woodTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundBrick.png")] public static var brickTiles:Class; //800 x 400
+		[Embed(source = "assets/art/ElevatorInner.png")] public static var elevatorInner:Class; 
 		
+	
 		//Boxes
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
 		[Embed(source = 'assets/art/redbox.png')] public static var redBox:Class; //32x32
@@ -51,7 +55,7 @@ package
 		[Embed(source = "assets/art/Door.png")] public static var doorPic:Class; //127x236
 		[Embed(source = "assets/art/Door2.png")] public static var door2Pic:Class; //148x247
 		[Embed(source = "assets/art/roomExit.png")] public static var roomExit:Class; //148x247
-		[Embed(source = "assets/art/elevator.png")] public static var elevatorImg:Class; //200x320
+		[Embed(source = "assets/art/elevator.png")] public static var elevatorImg:Class; //200x321
 		
 		//Endtable Top Items -- THEY ARE ALL 125x200
 			//Metal:
@@ -133,14 +137,14 @@ package
 		[Embed(source="assets/art/introVid/ceiling.png")] public static var introCeiling:Class;
 		[Embed(source="assets/art/introVid/ceilingfisheye1.png")] public static var introCeilingFishEye:Class;
 		[Embed(source="assets/art/introVid/ceilingfisheyeblur.png")] public static var introCeilingFishEyeBlur:Class;
-		[Embed(source="assets/art/introVid/Mouse.png")] public static var introMouse:Class;
-		[Embed(source="assets/art/introVid/Surrounding.png")] public static var introSurrounding:Class;
+		[Embed(source="assets/art/introVid/Mouse.png")] public static var introMouseScreen:Class;
+		[Embed(source="assets/art/introVid/Surrounding.png")] public static var introSurroundingScreen:Class;
+		[Embed(source = "assets/art/introVid/SurroudingRoom.png")] public static var introSurroundingRoom:Class;
+		[Embed(source="assets/art/introVid/FillInBlanks.png")] public static var introJournalScreen:Class;
 		
 		public function AssetsRegistry() 
 		{
 			
 		}
-		
 	}
-
 }

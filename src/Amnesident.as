@@ -3,6 +3,7 @@ package
 	import flash.display.Bitmap;
 	import org.flixel.*;
 	import org.flixel.plugin.photonstorm.*;
+	import org.flixel.system.FlxWindow;
 	/**
 	 *
 	 * NOTES:
@@ -44,7 +45,7 @@ package
 		public function Amnesident() 
 		{
 			super(800, 600, IntroScreen, 1);
-			// super(800, 600, MainMenuState, 1);
+			//super(800, 600, MainMenuState, 1);
 			FlxG.mouse.show();
 		}
 	}

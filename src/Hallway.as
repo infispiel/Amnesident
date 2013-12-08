@@ -6,6 +6,8 @@ package
 	public class Hallway extends IndestructableFlxState {
 		public static var doorImage:Class;
 		public static var roomCount:Number;
+		//boolean which dictates what kind of hallway this is. (true for tiles, false for wood/brick).
+		public var isTileType:Boolean = true;
 		public var currentRoom:Number;
 		public var doors:Array = new Array();
 		public var rooms:Array = new Array();
@@ -28,14 +30,14 @@ package
 				add(hallwayBackground);
 				for (i = 0; i < roomCount; i++) {
 					var space:Number = 127 * 1.15;
-					var door:Door = new Door(10 + i * space, FlxG.height - 236 - Amnesident.interfaceSize, doorImage, "door");
+					var door:Door = new Door(10 + i * space, FlxG.height - 236 - Amnesident.interfaceSize + 5, doorImage, "door");
 					var room:Room = new Room();
 					doors.push(door);
 					rooms.push(room);
 					add(door);
 				}
 
-				elevator = new Door(590, FlxG.height - 320 - Amnesident.interfaceSize, AssetsRegistry.elevatorImg, "elevator");
+				elevator = new Door(590, FlxG.height - 321 - Amnesident.interfaceSize + 5, AssetsRegistry.elevatorImg, "elevator");
 				add(elevator);
 
 				doors.push(elevator);
@@ -69,21 +71,43 @@ package
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			end.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(end);
 			return;
 		}
 
+		private function enterElevator():void {
+			var elevatorEnter:Elevator = new Elevator();
+			FlxG.switchState(elevatorEnter);
+		}
+
 		private function hallway():void {
+			var hallType:int = Math.floor(Math.random() * 4);
 			var nextHall:int = Registry.currentHall ^ 1;
 			var nextBg:Class;
-			if (nextHall) {
+			var nextDoor:Class;
+			var isTile:Boolean = true;
+			if (hallType == 0) {
 				nextBg = AssetsRegistry.greenTiles;
-			} else {
+			} else if (hallType == 1){
 				nextBg = AssetsRegistry.blueTiles;
+			} else if (hallType == 2) {
+				isTile = false;
+				nextBg = AssetsRegistry.woodTiles;
+			} else {
+				isTile = false;
+				nextBg = AssetsRegistry.brickTiles;
 			}
-
-			Registry.halls[nextHall] = new Hallway(AssetsRegistry.doorPic, nextBg, 4, 0);
+			
+			if (isTile) {
+				nextDoor = AssetsRegistry.doorPic;
+			}
+			else {
+				nextDoor = AssetsRegistry.door2Pic;
+			}
+			
+			Registry.halls[nextHall] = new Hallway(nextDoor, nextBg, 4, 0);
+			Registry.halls[nextHall].isTileType = isTile;
 			Registry.currentHall = nextHall;
 			FlxG.switchState(Registry.halls[Registry.currentHall]);
 		}
@@ -92,7 +116,7 @@ package
 			Amnesident.story.pingJournal = false;
 
 			var journalScrn:Journal = new Journal(this);
-			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			journalScrn.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(journalScrn);
 			return;
 		}
@@ -145,7 +169,8 @@ package
 					if (doors[doorNum].doorType == "door") {
 						rooms[doorNum].enter();
 					} else {
-						hallway();
+						enterElevator();
+						//hallway();
 					}
 					// FlxG.switchState(rooms[doorNum].level1);
 				}

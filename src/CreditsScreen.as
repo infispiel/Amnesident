@@ -7,29 +7,54 @@ package
 	public class CreditsScreen extends FlxState	{
 		public var title:FlxText;
 		public var backBtn:FlxSprite;
-		public var coder:FlxText;
+		public var codenames:FlxText;
+		public var code:FlxText;
 		public var music:FlxText;
+		public var musicnames:FlxText;
+		public var soundnames:FlxText;
 		public var sound:FlxText;
 		public var asset:FlxText;
+		public var assetnames:FlxText;
 		public function CreditsScreen():void	{
 			var textWidth:int = 300;
 			title = new FlxText(FlxG.width/2 - textWidth/2, FlxG.height/12, textWidth, "Credits Screen");
 			title.size = 32;
 			title.alignment = "center";
-			backBtn = new FlxSprite(610, 10, AssetsRegistry.backBtnImg);
+			backBtn = new FlxSprite(330, 500, AssetsRegistry.backBtnImg);
 			add(backBtn);
 			add(title);
-			coder = new FlxText(200, 100, 500, "Coders: Alex Willisson, Elizabeth Attaway, ");
-			coder.size = 20;			
-			music = new FlxText(200, 150, 500, "Music: Polina ");
-			music.size = 20;			
 			
-			asset = new FlxText(200, 200, 500, "Artist: Laura Shih ");
-			asset.size = 20;
+		
+			
+			music = new FlxText(50, 35 * 7, 250, "Music & Sound");
+			music.setFormat(null, 20, 0xffffff, "right");
+
+			musicnames = new FlxText(350, 35 * 7, 250, "Polina Shpilker Chau Vu");
+			musicnames.setFormat(null, 20, 0xffffff, "center");
+			
+			asset = new FlxText(50, 35 * 5, 250, "Artist");
+			asset.setFormat(null, 20, 0xffffff, "right");
+
+			assetnames = new FlxText(350, 35 * 5, 250, "Laura Shih");
+			assetnames.setFormat(null, 20, 0xffffff, "center");		
+			
+			code = new FlxText(50, 35 * 9, 250, "Coders");
+			code.setFormat(null, 20, 0xffffff, "right");
+
+			codenames = new FlxText(350, 35 * 9, 250, "Elizabeth Attaway Arturo Gonzalez Faruh Paerhati Benjamin Shaibu Alex Willisson   Chau Vu");
+			codenames.setFormat(null, 20, 0xffffff, "center");				
+			//music = new FlxText(200, 150, 500, "Music: Polina ");
+			//music.size = 20;			
+			//
+			//asset = new FlxText(200, 200, 500, "Artist: Laura Shih ");
+			//asset.size = 20;
 			  
-			add(coder);
+			add(code);
+			add(codenames);
 			add(music);
+			add(musicnames);
 			add(asset);
+			add(assetnames);
 		}
 		
 		override public function update():void {

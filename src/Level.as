@@ -9,7 +9,6 @@ package
 	
     public class Level extends IndestructableFlxState
     {
-		
 		public var originalItemsList:Array;
 		public var items:Array;
 		public var itemText:FlxText;
@@ -22,10 +21,26 @@ package
 		private var journalBtn:FlxSprite;
 		private var completionTextBg:FlxSprite;
 		private var textOverlay:Boolean;
-
 		public function Level(itemlist:Array)
 		{
-			var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
+			var roomBackground:Background;
+
+			var roomBgType:int = Math.floor(Math.random() * 2);
+			if (Registry.halls[Registry.currentHall].isTileType) {
+				if(roomBgType == 0){
+					roomBackground = new Background(AssetsRegistry.greenTiles);
+				}
+				else {
+					roomBackground = new Background(AssetsRegistry.blueTiles);
+				}
+			} else {
+				if(roomBgType == 0){
+					roomBackground = new Background(AssetsRegistry.woodTiles);
+				}
+				else if (roomBgType == 1) {
+					roomBackground = new Background(AssetsRegistry.brickTiles);
+				}
+			}
 			add(roomBackground);
 
 			originalItemsList = itemlist;
@@ -36,7 +51,12 @@ package
 				if (items[ii] != null) {
 					items[ii].x = Amnesident.slotSize * ii
 					//Amnesident.interfaceSize accounts for the UI space.
-					items[ii].y = FlxG.height - Amnesident.interfaceSize - items[ii].height;
+					if (Registry.halls[Registry.currentHall].isTileType) {
+						items[ii].setImage(true);
+					}else {
+						items[ii].setImage(false);
+					}
+					items[ii].y = FlxG.height - Amnesident.interfaceSize + 5 - items[ii].height;
 					add(items[ii]);
 				}
 			}
@@ -59,7 +79,7 @@ package
 
 		private function endGame():void {
 			var end:EndGame = new EndGame();
-			end.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			end.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(end);
 		}
 
@@ -72,7 +92,7 @@ package
 			textOverlay = false;
 
 			var journalScrn:Journal = new Journal(this);
-			journalScrn.addSummaries(Story.wantToCompleteTokens, Story.completedTokens);
+			journalScrn.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
 			FlxG.switchState(journalScrn);
 		}
 
@@ -183,6 +203,12 @@ package
 					remove(completionTextBg);
 					remove(tokenText);
 				}
+				if (Amnesident.story.gameCompleted) {
+					var end:EndGame = new EndGame()
+					end.addSummaries(Amnesident.story.wantToCompleteTokens, Amnesident.story.completedTokens);
+					FlxG.switchState(end);
+
+				}
 			}
 
 			super.update();
@@ -236,9 +262,9 @@ package
 					}
 				}
 			}
+			for each (var t:Token in Amnesident.story.getWantToCompleteTokens()){
+			    t.checkPrereqsComplete();
 
-			for each (var t:Token in Story.wantToCompleteTokens){
-				t.checkPrereqsComplete();
 			    if (t.checkComplete()) {
 					textOverlay = true;
 					add(completionTextBg);
