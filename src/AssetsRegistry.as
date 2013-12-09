@@ -1,9 +1,5 @@
 package  
 {
-	/**
-	 * ...
-	 * @author Benjamin Shaibu
-	 */
 	public class AssetsRegistry 
 	{
 		//Custom Cursor (For hovering over objects)
@@ -16,8 +12,12 @@ package
 		
 		//UI Buttons
 		[Embed(source="/assets/art/UI/endgame.png")] public static var endGameBtnImg:Class; //181x50
+		[Embed(source = "/assets/art/UI/endgame_hover.png")] public static var endGameBtnImgHover:Class; //181x50
+		[Embed(source="/assets/art/UI/creditBtnImg.png")] public static var creditBtnImg:Class; //181x50
+		[Embed(source="/assets/art/UI/creditBtnImgHover.png")] public static var creditBtnImgHover:Class; //181x50
+		[Embed(source="/assets/art/UI/backBtnImg.png")] public static var backBtnImg:Class; //181x50
+		[Embed(source="/assets/art/UI/backBtnImgHover.png")] public static var backBtnImgHover:Class; //181x50
 		[Embed(source="/assets/art/UI/newStoryBtnImg.png")] public static var newStoryBtnImg:Class; //181x50
-		[Embed(source="/assets/art/UI/endgame_hover.png")] public static var endGameBtnImgHover:Class; //181x50
 		[Embed(source="/assets/art/UI/newStoryBtnImgHover.png")] public static var newStoryBtnImgHover:Class; //181x50
 		[Embed(source="/assets/art/UI/hallway.png")] public static var hallwayBtnImg:Class; //106x64
 		[Embed(source="/assets/art/UI/hallway_hover.png")] public static var hallwayBtnImgHover:Class; //106x64
@@ -25,6 +25,8 @@ package
 		[Embed(source="/assets/art/UI/journal_hover.png")] public static var journalBtnImgHover:Class; //65x63
 		[Embed(source="/assets/art/UI/highlightJournal.png")] public static var highlightJournalBtn:Class; //65x63
 		[Embed(source="/assets/art/UI/highlightJournalHover.png")] public static var highlightJournalBtnHover:Class; //65x63
+		[Embed(source="/assets/art/UI/skipIntroBtn.png")] public static var skipIntroBtnImg:Class; //150x35
+		[Embed(source="/assets/art/UI/skipIntroBtnHover.png")] public static var skipIntroBtnHoverImg:Class; //150x35
 
 		//UI background
 		[Embed(source="/assets/art/UI/token_completion_box.png")] public static var tokenCompletionBox:Class; //800x160
@@ -35,8 +37,11 @@ package
 		
 		//Backgrounds
 		[Embed(source = "assets/art/GenericBackgroundTilesBlue.png")] public static var blueTiles:Class; //1307x573
-		[Embed(source="assets/art/GenericBackgroundTilesGreen-01.png")] public static var greenTiles:Class; //1307x573
-		
+		[Embed(source = "assets/art/GenericBackgroundTilesGreen-01.png")] public static var greenTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundWood.png")] public static var woodTiles:Class; //1307x573
+		[Embed(source = "assets/art/GenericBackgroundBrick.png")] public static var brickTiles:Class; //800 x 400
+		[Embed(source = "assets/art/ElevatorInner.png")] public static var elevatorInner:Class; 
+	
 		//Boxes
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
 		[Embed(source = 'assets/art/redbox.png')] public static var redBox:Class; //32x32
@@ -51,6 +56,8 @@ package
 		[Embed(source = "assets/art/Door.png")] public static var doorPic:Class; //127x236
 		[Embed(source = "assets/art/Door2.png")] public static var door2Pic:Class; //148x247
 		[Embed(source = "assets/art/roomExit.png")] public static var roomExit:Class; //148x247
+		[Embed(source = "assets/art/elevator.png")] public static var elevatorImg:Class; //200x321
+		[Embed(source = "assets/art/WoodElevator.png")] public static var woodElevatorImg:Class; //200x321
 		
 		//Endtable Top Items -- THEY ARE ALL 125x200
 			//Metal:
@@ -96,12 +103,13 @@ package
 		[Embed(source = "assets/art/window1wood.png")] public static var woodWindowPic:Class; //200x459
 		
 		//TV
-		[Embed(source = "assets/art/tv.png")] public static var tvPic:Class; //134x375
+		[Embed(source = "assets/art/tv.png")] public static var tvPic:Class; //335x468
 
 		//Desks
 		[Embed(source = "assets/art/desk1basic.png")] public static var desk1BasicPic:Class; //306x150
 		[Embed(source = "assets/art/desk1lamp.png")] public static var desk1LampPic:Class; //306x272
-		[Embed(source="assets/art/desk2basic.png")] public static var desk2BasicPic:Class;  //306x150
+		[Embed(source = "assets/art/desk2basic.png")] public static var desk2BasicPic:Class;  //306x150
+		[Embed(source = "assets/art/desk2lamp.png")] public static var desk2LampPic:Class; //306x272
 		
 		//Tables
 		[Embed(source = "assets/art/table1metal.png")] public static var table_mPic:Class; //125x75
@@ -121,12 +129,25 @@ package
 		[Embed(source = "assets/sound/footstep2.mp3")] public static var sfxStep2:Class;
 		[Embed(source = "assets/sound/openjournal.mp3")] public static var sfxopenjournal:Class;
 		[Embed(source = "assets/sound/opendoor.mp3")] public static var sfxopendoor:Class;
+		[Embed(source = "assets/sound/elevator.mp3")] public static var sfxelevator:Class;
 		[Embed(source = "assets/sound/meowcute.mp3")] public static var sfxmeowcute:Class;
+
+		// Music
+		[Embed(source = 'assets/music/dark-days.mp3')] public static var darkDaysBgm:Class;
+		[Embed(source = 'assets/music/flowers-and-chocolate.mp3')] public static var flowersAndChocolate:Class;
+		
+		//IntroVid Assets
+		[Embed(source="assets/art/introVid/ceiling.png")] public static var introCeiling:Class;
+		[Embed(source="assets/art/introVid/ceilingfisheye1.png")] public static var introCeilingFishEye:Class;
+		[Embed(source="assets/art/introVid/ceilingfisheyeblur.png")] public static var introCeilingFishEyeBlur:Class;
+		[Embed(source="assets/art/introVid/Mouse.png")] public static var introMouseScreen:Class;
+		[Embed(source="assets/art/introVid/Surrounding.png")] public static var introSurroundingScreen:Class;
+		[Embed(source = "assets/art/introVid/SurroudingRoom.png")] public static var introSurroundingRoom:Class;
+		[Embed(source="assets/art/introVid/FillInBlanks.png")] public static var introJournalScreen:Class;
+		
 		public function AssetsRegistry() 
 		{
 			
 		}
-		
 	}
-
 }

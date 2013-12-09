@@ -9,8 +9,6 @@ package
 	
     public class Level extends IndestructableFlxState
     {
-		
-		public var originalItemsList:Array;
 		public var items:Array;
 		public var itemText:FlxText;
 		public var tokenText:FlxText;
@@ -22,26 +20,54 @@ package
 		private var journalBtn:FlxSprite;
 		private var completionTextBg:FlxSprite;
 		private var textOverlay:Boolean;
+		private var timer:Number;
+		private var start:Boolean;
+		private var fadeIn:Boolean;
 
-		public function Level(itemlist:Array)
+		public function Level(tokenItems:Array, ordinaryItems:Array, fade:Boolean)
 		{
-			var roomBackground:Background = new Background(AssetsRegistry.greenTiles);
+			var roomBackground:Background;
+
+			var roomBgType:int = Math.floor(Math.random() * 2);
+			if (Registry.halls[Registry.currentHall].isTileType) {
+				if(roomBgType == 0){
+					roomBackground = new Background(AssetsRegistry.greenTiles);
+				}
+				else {
+					roomBackground = new Background(AssetsRegistry.blueTiles);
+				}
+			} else {
+				if(roomBgType == 0){
+					roomBackground = new Background(AssetsRegistry.woodTiles);
+				}
+				else if (roomBgType == 1) {
+					roomBackground = new Background(AssetsRegistry.brickTiles);
+				}
+			}
 			add(roomBackground);
 
-			originalItemsList = itemlist;
-			items = chooseRandomItems(itemlist);
+			items = chooseRandomItems(tokenItems, ordinaryItems);
 			textOverlay = false;
 
 			for (var ii:int = 0; ii < items.length; ii ++){
 				if (items[ii] != null) {
 					items[ii].x = Amnesident.slotSize * ii
 					//Amnesident.interfaceSize accounts for the UI space.
-					items[ii].y = FlxG.height - Amnesident.interfaceSize - items[ii].height;
+					if (Registry.halls[Registry.currentHall].isTileType) {
+						items[ii].setImage(true);
+					}else {
+						items[ii].setImage(false);
+					}
+					items[ii].y = FlxG.height - Amnesident.interfaceSize + 5 - items[ii].height;
 					add(items[ii]);
 				}
 			}
 
 			buildUi();
+
+			timer = 0;
+			start = true;
+			fadeIn = fade;
 		}
 
 		private function buildUi():void {
@@ -64,6 +90,7 @@ package
 		}
 
 		private function hallway():void {
+			// FlxG.play(AssetsRegistry.sfxStep2);
 			FlxG.switchState(Registry.halls[Registry.currentHall]);
 		}
 
@@ -76,14 +103,11 @@ package
 			FlxG.switchState(journalScrn);
 		}
 
-		override public function create():void {
-			FlxG.play(AssetsRegistry.sfxStep1);
-		}
-
-		public function chooseRandomItems(itemlist:Array):Array
+		public function chooseRandomItems(tokenItems:Array, ordinaryItems:Array):Array
 		{
 			//minimum number of items is 1
 			var numItems:int = Math.floor(Math.random() * 4) + 1;
+			trace(numItems);
 			
 			var resultingItems:Array = new Array(null, null, null, null);
 			var randomIndexes:Array = new Array();
@@ -93,6 +117,10 @@ package
 			var maxTries:int = 100;
 			var numTries:int = 0;
 			var placed:int = 0;
+			var itemList:Array;
+			var first:Boolean = true;
+
+			itemList = tokenItems.concat(Tokens.ordinaryItems);
 
 			while (placed < numItems && numTries < maxTries) {
 				numTries++;
@@ -105,24 +133,25 @@ package
 				var attempts:int = 0;
 				var maxAttempts:int = 100;
 				var done:Boolean = false;
-				while (!done && attempts < maxAttempts) {
-					attempts++;
-					idx = Math.floor(Math.random() * itemlist.length);
-					itm = itemlist[idx];
+				// while (!done && attempts < maxAttempts) {
+				// 	attempts++;
 
-					for (var i:int = 0; i < resultingItems.length; i++) {
-						if (itm == resultingItems[i]) {
-							done = true;
-							break;
-						}
-					}
-				}
+				//TODO make this not pick repeats
+				idx = Math.floor(Math.random() * itemList.length);
+				itm = itemList[idx];
+				itemList.splice(idx, 1);
 
-				if (attempts == maxAttempts) {
-				}
+				// 	for (var i:int = 0; i < resultingItems.length; i++) {
+				// 		if (itm == resultingItems[i]) {
+				// 			done = true;
+				// 			break;
+				// 		}
+				// 	}
+				// }
 
 				fittable = false;
 
+				gap = 0;
 				for (var j:int = 0; j < space.length; j++) {
 					if (space[j]) {
 						gap++;
@@ -161,8 +190,15 @@ package
 					space[n] = 0;
 				}
 
+				trace("tarslot: " + tarSlot);
+				trace("itm: " + itm.itemText);
 				resultingItems[tarSlot] = itm;
 				placed++;
+
+				// if (first) {
+				// 	first = false;
+				// 	itemList = itemList.concat(ordinaryItems);
+				// }
 			}
 
 			return resultingItems;
@@ -170,6 +206,14 @@ package
 		
 		override public function update():void
 		{
+			if (fadeIn && start) {
+				FlxG.flash(0xff000000, 1);
+				start = false;
+			} else if (start) {
+				// FlxG.play(AssetsRegistry.sfxStep2);
+				start = false;
+			}
+
 			if (FlxG.mouse.justReleased()) {
 				remove(itemText);
 				itemText = new FlxText(30, FlxG.height - Amnesident.interfaceSize + 5, FlxG.width - 60, "");
@@ -179,6 +223,12 @@ package
 				if (textOverlay) {
 					remove(completionTextBg);
 					remove(tokenText);
+				}
+				if (Amnesident.story.gameCompleted) {
+					var end:EndGame = new EndGame()
+					end.addSummaries(Amnesident.story.wantToCompleteTokens, Amnesident.story.completedTokens);
+					FlxG.switchState(end);
+
 				}
 			}
 
@@ -235,6 +285,7 @@ package
 			}
 			for each (var t:Token in Amnesident.story.getWantToCompleteTokens()){
 			    t.checkPrereqsComplete();
+
 			    if (t.checkComplete()) {
 					textOverlay = true;
 					add(completionTextBg);

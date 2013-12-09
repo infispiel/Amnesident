@@ -52,12 +52,13 @@ package
 			if (completed) {
 				tokenCompleted();
 				Amnesident.story.markCompleted(this);
+
 				if (Amnesident.story.getPossibleTokens().length != 0 || Amnesident.story.getWantToCompleteTokens().length != 0){
 				    Amnesident.story.chooseNewToken();
 			 	} else {
-				    var end:EndGame = new EndGame();
-			            end.addSummaries(Amnesident.story.getWantToCompleteTokens(), Amnesident.story.getCompletedTokens());
-			            FlxG.switchState(end);
+				    Amnesident.story.gameCompleted = true;
+					FlxG.music.fadeOut(1);
+					FlxG.playMusic(AssetsRegistry.flowersAndChocolate, 1);
 				}
 			}
 			return completed;
@@ -70,7 +71,7 @@ package
 				if (!item.isSeen) {
 					unseenItems.push(item);
 				}
-			}
+			 }
 			return unseenItems;
 		}
 		public function checkPrereqsComplete():Boolean {
