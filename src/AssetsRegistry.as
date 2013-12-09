@@ -25,8 +25,8 @@ package
 		[Embed(source="/assets/art/UI/journal_hover.png")] public static var journalBtnImgHover:Class; //65x63
 		[Embed(source="/assets/art/UI/highlightJournal.png")] public static var highlightJournalBtn:Class; //65x63
 		[Embed(source="/assets/art/UI/highlightJournalHover.png")] public static var highlightJournalBtnHover:Class; //65x63
-		//[Embed(source="/assets/art/UI/newStoryBtnImg.png")] public static var newStoryBtnImg:Class; //65x63
-		//[Embed(source="/assets/art/UI/newStoryBtnImgHover.png")] public static var newStoryBtnImgHover:Class; //65x63
+		[Embed(source="/assets/art/UI/skipIntroBtn.png")] public static var skipIntroBtnImg:Class; //150x35
+		[Embed(source="/assets/art/UI/skipIntroBtnHover.png")] public static var skipIntroBtnHoverImg:Class; //150x35
 
 		//UI background
 		[Embed(source="/assets/art/UI/token_completion_box.png")] public static var tokenCompletionBox:Class; //800x160

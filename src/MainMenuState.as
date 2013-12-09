@@ -37,9 +37,6 @@ package
 
 		override public function update():void
 		{
-			//if (FlxG.mouse.justPressed()) {
-				//FlxG.fade(0xff000000, 1, startPlay);
-			//}
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, creditBtn)) {
 				creditBtn.loadGraphic(AssetsRegistry.creditBtnImgHover);
 			} else {

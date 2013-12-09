@@ -5,8 +5,8 @@ package
 	
 	public class IntroScreen extends FlxState	{
 		public var gibberish:FlxText = new FlxText(0, 30, FlxG.width, "What?");
-		public var howToSkip:FlxText = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
 		public var textWidth:int = 300;
+		private var skipIntro:FlxSprite;
 
 		private var state:String = "blank";
 		private var background:Background;
@@ -15,6 +15,7 @@ package
 		public var introTimer:Number = 0;
 			
 		public function IntroScreen() {		
+			skipIntro = new FlxSprite(645, 5, AssetsRegistry.skipIntroBtnImg);
 		}
 		
 		private function clearBackground():void {
@@ -45,15 +46,10 @@ package
 		override public function update():void {
 			///Update Timer
 			introTimer += FlxG.elapsed;
-					howToSkip.size = 13;
-					howToSkip.alignment = "left";
-					add(howToSkip);
+
+			add(skipIntro);
 
 			if (state == "blank") {
-					howToSkip.size = 13;
-					howToSkip.alignment = "left";
-					add(howToSkip);
-
 				if (introTimer >= 1.5) {
 					introTimer = 0;
 					state = "blinking";
@@ -63,61 +59,43 @@ package
 			else if (state == "blinking") {
 				if (introTimer >= 0 && introTimer <= 1) {
 					backgroundNeedsToLoad = true;
+					remove(skipIntro);
 					loadBackground(AssetsRegistry.introCeilingFishEyeBlur);				
-					howToSkip.kill();
-					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
-					howToSkip.size = 13;
-					howToSkip.alignment = "left";
-					add(howToSkip);
+					add(skipIntro);
 
 				}
 				else if (introTimer > 1 && introTimer <= 2)	{
+					remove(skipIntro);
 					clearBackground();
-					howToSkip.kill();
-					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
-					howToSkip.size = 13;
-					howToSkip.alignment = "left";
-					add(howToSkip);
+					add(skipIntro);
 
 				}
 				else if (introTimer >= 2 && introTimer <= 3) {
 					backgroundNeedsToLoad = true;
 					
+					remove(skipIntro);
 					loadBackground(AssetsRegistry.introCeilingFishEyeBlur);		
-					howToSkip.kill();
-					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
-					howToSkip.size = 13;
-					howToSkip.alignment = "left";
-					add(howToSkip);
+					add(skipIntro);
 
 				}
 				else if (introTimer > 3 && introTimer <= 4)	{
+					remove(skipIntro);
 					clearBackground();
-					howToSkip.kill();
-					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
-					howToSkip.size = 13;
-					howToSkip.alignment = "left";
-					add(howToSkip);
+					add(skipIntro);
 
 				}
 				else if (introTimer > 4 && introTimer <= 5.5)	{
+					remove(skipIntro);
 					backgroundNeedsToLoad = true;
 					loadBackground(AssetsRegistry.introCeilingFishEye);		
-					howToSkip.kill();
-					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");	
-					howToSkip.size = 13;
-					howToSkip.alignment = "left";
-					add(howToSkip);
+					add(skipIntro);
 
 				}
 				else if (introTimer > 5.5 && introTimer <= 8)	{
+					remove(skipIntro);
 					backgroundNeedsToLoad = true;
 					loadBackground(AssetsRegistry.introCeiling);
-					howToSkip.kill();
-					howToSkip = new FlxText(10, 10, FlxG.width, "Press [Esc] to skip");
-					howToSkip.size = 13;
-					howToSkip.alignment = "left";
-					add(howToSkip);
+					add(skipIntro);
 
 				}
 				else if (introTimer > 8 && introTimer <= 12) {
@@ -154,7 +132,9 @@ package
 			}
 			
 			else if (state == "viewRoom") {
+				remove(skipIntro);
 				loadBackground(AssetsRegistry.introSurroundingRoom);
+				add(skipIntro);
 				if (FlxG.mouse.justPressed() )	{
 					backgroundNeedsToLoad = true;
 					state = "mouseScreen";
@@ -162,7 +142,9 @@ package
 			}
 			
 			else if (state == "mouseScreen") {
+				remove(skipIntro);
 				loadBackground(AssetsRegistry.introMouseScreen);
+				add(skipIntro);
 				if (FlxG.mouse.justPressed() )	{
 					backgroundNeedsToLoad = true;
 					state = "surroundingScreen";
@@ -170,7 +152,9 @@ package
 			}
 			
 			else if (state == "surroundingScreen") {			
+				remove(skipIntro);
 				loadBackground(AssetsRegistry.introSurroundingScreen);		
+				add(skipIntro);
 				if (FlxG.mouse.justPressed() )	{
 					backgroundNeedsToLoad = true;
 					state = "journalScreen";
@@ -178,18 +162,27 @@ package
 			}
 			
 			else if (state == "journalScreen") {
+				remove(skipIntro);
 				loadBackground(AssetsRegistry.introJournalScreen);				
+				add(skipIntro);
 				if (FlxG.mouse.justPressed() )	{
 					state = null;
 					FlxG.switchState(new MainMenuState());
 				}
 			}
 
-			if (FlxG.keys.ESCAPE) {
-				state = null;
-				FlxG.switchState(new MainMenuState());
-			}		
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, skipIntro)) {
+				skipIntro.loadGraphic(AssetsRegistry.skipIntroBtnHoverImg);
+			} else {
+				skipIntro.loadGraphic(AssetsRegistry.skipIntroBtnImg);
+			}
+
+			if (FlxG.mouse.justPressed()) {
+				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, skipIntro)) {
+					state = null;
+					FlxG.switchState(new MainMenuState());
+				}
+			}
 		}
 	}
-
 }
