@@ -110,19 +110,6 @@ package
 					gibberish.alignment = "center";
 					add(gibberish);
 				}
-				else if (introTimer > 16 && introTimer <= 25) {
-					clearText();
-					gibberish = new FlxText(0, 30, FlxG.width, "Click to continue...");
-					gibberish.size = 32;
-					gibberish.alignment = "center";
-					add(gibberish);
-					if (FlxG.mouse.justPressed()) {
-						clearText();
-						state = "viewRoom";
-						backgroundNeedsToLoad = true;
-						introTimer = 0;	
-					}
-				}
 				else {
 					clearText();
 					state = "viewRoom";

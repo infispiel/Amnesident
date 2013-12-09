@@ -18,14 +18,13 @@ package
 		private var journalBtn:FlxSprite;
 		private var elevator:Door;
 
-		public function Hallway(doorImg:Class, bgImg:Class, count:int, startingRoom:Number) {
+		public function Hallway(doorImg:Class, elevatorImg:Class, bgImg:Class, count:int, startingRoom:Number) {
 			doorImage = doorImg;
 			roomCount = count;
 			currentRoom = startingRoom;	
 
 			var i:int = 0;
 			if (!createdBefore) {
-				//Create Tiled Background
 				var hallwayBackground:Background = new Background(bgImg);
 				add(hallwayBackground);
 				for (i = 0; i < roomCount; i++) {
@@ -37,7 +36,7 @@ package
 					add(door);
 				}
 
-				elevator = new Door(590, FlxG.height - 321 - Amnesident.interfaceSize + 5, AssetsRegistry.elevatorImg, "elevator");
+				elevator = new Door(590, FlxG.height - 321 - Amnesident.interfaceSize + 5, elevatorImg, "elevator");
 				add(elevator);
 
 				doors.push(elevator);
@@ -86,6 +85,7 @@ package
 			var nextHall:int = Registry.currentHall ^ 1;
 			var nextBg:Class;
 			var nextDoor:Class;
+			var nextElevator:Class;
 			var isTile:Boolean = true;
 			if (hallType == 0) {
 				nextBg = AssetsRegistry.greenTiles;
@@ -101,12 +101,13 @@ package
 			
 			if (isTile) {
 				nextDoor = AssetsRegistry.doorPic;
-			}
-			else {
+				nextElevator = AssetsRegistry.elevatorImg;
+			} else {
 				nextDoor = AssetsRegistry.door2Pic;
+				nextElevator = AssetsRegistry.woodElevatorImg;
 			}
 			
-			Registry.halls[nextHall] = new Hallway(nextDoor, nextBg, 4, 0);
+			Registry.halls[nextHall] = new Hallway(nextDoor, nextElevator, nextBg, 4, 0);
 			Registry.halls[nextHall].isTileType = isTile;
 			Registry.currentHall = nextHall;
 			FlxG.switchState(Registry.halls[Registry.currentHall]);

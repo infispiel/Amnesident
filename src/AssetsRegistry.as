@@ -41,7 +41,6 @@ package
 		[Embed(source = "assets/art/GenericBackgroundWood.png")] public static var woodTiles:Class; //1307x573
 		[Embed(source = "assets/art/GenericBackgroundBrick.png")] public static var brickTiles:Class; //800 x 400
 		[Embed(source = "assets/art/ElevatorInner.png")] public static var elevatorInner:Class; 
-		
 	
 		//Boxes
 		[Embed(source = 'assets/art/graybox.png')] public static var grayBox:Class; //32x32
@@ -58,6 +57,7 @@ package
 		[Embed(source = "assets/art/Door2.png")] public static var door2Pic:Class; //148x247
 		[Embed(source = "assets/art/roomExit.png")] public static var roomExit:Class; //148x247
 		[Embed(source = "assets/art/elevator.png")] public static var elevatorImg:Class; //200x321
+		[Embed(source = "assets/art/WoodElevator.png")] public static var woodElevatorImg:Class; //200x321
 		
 		//Endtable Top Items -- THEY ARE ALL 125x200
 			//Metal:

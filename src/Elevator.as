@@ -17,6 +17,7 @@ package
 			var nextHall:int = Registry.currentHall ^ 1;
 			var nextBg:Class;
 			var nextDoor:Class;
+			var nextElevator:Class;
 			var isTile:Boolean = true;
 			if (hallType == 0) {
 				nextBg = AssetsRegistry.greenTiles;
@@ -32,12 +33,14 @@ package
 			
 			if (isTile) {
 				nextDoor = AssetsRegistry.doorPic;
+				nextElevator = AssetsRegistry.elevatorImg;
 			}
 			else {
 				nextDoor = AssetsRegistry.door2Pic;
+				nextElevator = AssetsRegistry.woodElevatorImg;
 			}
 			
-			Registry.halls[nextHall] = new Hallway(nextDoor, nextBg, 5, 0);
+			Registry.halls[nextHall] = new Hallway(nextDoor, nextElevator, nextBg, 5, 0);
 			Registry.halls[nextHall].isTileType = isTile;
 			Registry.currentHall = nextHall;
 			FlxG.switchState(Registry.halls[Registry.currentHall]);

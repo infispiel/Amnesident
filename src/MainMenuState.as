@@ -60,7 +60,7 @@ package
 		public static function startPlay():void {
 			var tokens:Tokens = new Tokens();
 			Amnesident.story = new Story(tokens.getItemList(), tokens.getTokenList());
-			Registry.halls[Registry.currentHall] = new Hallway(AssetsRegistry.doorPic, AssetsRegistry.blueTiles, 4, 0);
+			Registry.halls[Registry.currentHall] = new Hallway(AssetsRegistry.doorPic, AssetsRegistry.elevatorImg, AssetsRegistry.blueTiles, 4, 0);
 			Registry.halls[Registry.currentHall].create();
 			
 			FlxG.playMusic(AssetsRegistry.darkDaysBgm, 1);
