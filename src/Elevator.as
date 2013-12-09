@@ -16,6 +16,7 @@ package
 			super.update();
 
 			if (timer == 0) {
+				FlxG.play(AssetsRegistry.sfxelevator);
 				FlxG.flash(0xff000000, 1);
 			} else if (timer > 1.5) {
 				FlxG.fade(0xff000000, 1, hallway);
@@ -51,7 +52,7 @@ package
 				nextElevator = AssetsRegistry.woodElevatorImg;
 			}
 			
-			Registry.halls[nextHall] = new Hallway(nextDoor, nextElevator, nextBg, 5, 0);
+			Registry.halls[nextHall] = new Hallway(nextDoor, nextElevator, nextBg, 4, 0);
 			Registry.halls[nextHall].isTileType = isTile;
 			Registry.currentHall = nextHall;
 			FlxG.switchState(Registry.halls[Registry.currentHall]);

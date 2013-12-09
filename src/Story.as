@@ -95,7 +95,7 @@ package
 				desiredItems = desiredItems.concat(tok.unseenItems());
 			}
 
-			return desiredItems.concat(Tokens.ordinaryItems);
+			return desiredItems;
 		}
 
 		public function getCompletedTokens():Array {

@@ -13,7 +13,7 @@ package
 
 		public function enter(fadeIn:Boolean):void {
 			if (level == null) {
-				level = new Level(Amnesident.story.unseenTokens(), fadeIn);
+				level = new Level(Amnesident.story.unseenTokens(), Tokens.ordinaryItems, fadeIn);
 			}
 			FlxG.play(AssetsRegistry.sfxopendoor);
 			FlxG.switchState(level);

@@ -9,7 +9,6 @@ package
 	
     public class Level extends IndestructableFlxState
     {
-		public var originalItemsList:Array;
 		public var items:Array;
 		public var itemText:FlxText;
 		public var tokenText:FlxText;
@@ -22,10 +21,10 @@ package
 		private var completionTextBg:FlxSprite;
 		private var textOverlay:Boolean;
 		private var timer:Number;
-		private var faded:Boolean;
+		private var start:Boolean;
 		private var fadeIn:Boolean;
 
-		public function Level(itemlist:Array, fade:Boolean)
+		public function Level(tokenItems:Array, ordinaryItems:Array, fade:Boolean)
 		{
 			var roomBackground:Background;
 
@@ -47,8 +46,7 @@ package
 			}
 			add(roomBackground);
 
-			originalItemsList = itemlist;
-			items = chooseRandomItems(itemlist);
+			items = chooseRandomItems(tokenItems, ordinaryItems);
 			textOverlay = false;
 
 			for (var ii:int = 0; ii < items.length; ii ++){
@@ -68,7 +66,7 @@ package
 			buildUi();
 
 			timer = 0;
-			faded = false;
+			start = true;
 			fadeIn = fade;
 		}
 
@@ -92,6 +90,7 @@ package
 		}
 
 		private function hallway():void {
+			// FlxG.play(AssetsRegistry.sfxStep2);
 			FlxG.switchState(Registry.halls[Registry.currentHall]);
 		}
 
@@ -104,11 +103,7 @@ package
 			FlxG.switchState(journalScrn);
 		}
 
-		override public function create():void {
-			FlxG.play(AssetsRegistry.sfxStep1);
-		}
-
-		public function chooseRandomItems(itemlist:Array):Array
+		public function chooseRandomItems(tokenItems:Array, ordinaryItems:Array):Array
 		{
 			//minimum number of items is 1
 			var numItems:int = Math.floor(Math.random() * 4) + 1;
@@ -122,6 +117,10 @@ package
 			var maxTries:int = 100;
 			var numTries:int = 0;
 			var placed:int = 0;
+			var itemList:Array;
+			var first:Boolean = true;
+
+			itemList = tokenItems.concat(Tokens.ordinaryItems);
 
 			while (placed < numItems && numTries < maxTries) {
 				numTries++;
@@ -138,8 +137,9 @@ package
 				// 	attempts++;
 
 				//TODO make this not pick repeats
-				idx = Math.floor(Math.random() * itemlist.length);
-				itm = itemlist[idx];
+				idx = Math.floor(Math.random() * itemList.length);
+				itm = itemList[idx];
+				itemList.splice(idx, 1);
 
 				// 	for (var i:int = 0; i < resultingItems.length; i++) {
 				// 		if (itm == resultingItems[i]) {
@@ -194,6 +194,11 @@ package
 				trace("itm: " + itm.itemText);
 				resultingItems[tarSlot] = itm;
 				placed++;
+
+				// if (first) {
+				// 	first = false;
+				// 	itemList = itemList.concat(ordinaryItems);
+				// }
 			}
 
 			return resultingItems;
@@ -201,9 +206,12 @@ package
 		
 		override public function update():void
 		{
-			if (fadeIn && !faded) {
+			if (fadeIn && start) {
 				FlxG.flash(0xff000000, 1);
-				faded = true;
+				start = false;
+			} else if (start) {
+				// FlxG.play(AssetsRegistry.sfxStep2);
+				start = false;
 			}
 
 			if (FlxG.mouse.justReleased()) {

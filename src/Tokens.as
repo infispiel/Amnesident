@@ -49,12 +49,11 @@ package
 			var allergyDesk:Item = new Item(AssetsRegistry.desk2BasicPic, AssetsRegistry.desk1BasicPic,306, 150, "A note from the Vice President: 'Don't you think you spend too much time with Mr. Cat?' How dare she?");
 			var windowOrdinary:Item = new Item(AssetsRegistry.windowPic,AssetsRegistry.woodWindowPic, 200, 459, "This window really needs to be washed. I can't even see out of it!");
 			var tvOrdinary:Item = new Item(AssetsRegistry.tvPic, AssetsRegistry.tvPic,335, 468, "All it has are kids channels, and those gave me a headache the moment they started.");
-			var razorOrdinary:Item = new Item(AssetsRegistry.table_m_razorPic, AssetsRegistry.table_w_razorPic,125, 200, "Who would leave their razor lying around? This isn't even a bathroom!");
 			var tableBigOrdinary:Item = new Item(AssetsRegistry.desk2BasicPic, AssetsRegistry.desk1BasicPic,306, 150, "Just a bunch of really boring paperwork. I think I'm breaking some confidentiality agreements just by breathing on them.");
 			var tableBigOrdinaryLamp:Item = new Item(AssetsRegistry.desk2LampPic,AssetsRegistry.desk1LampPic, 306, 272, "It's a Desk.");
 
 			// Add items which don't have a connection to tokens here.
-			ordinaryItems = new Array(windowOrdinary, tvOrdinary, razorOrdinary, tableBigOrdinary, tableBigOrdinaryLamp);
+			ordinaryItems = new Array(windowOrdinary, tvOrdinary, tableBigOrdinary, tableBigOrdinaryLamp);
 
 			// Add items which are used in story tokens here.
 			itemList = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, moldyYogurtJanitor, presPicJanitor, bedNewsJanitor, mrCatRulesPic, windowCatBad, windowCatGood, vpLetter, vpTvNews, grayboxHouse, grayboxRulesTvNews, grayboxBooks, youRuleTvNews, youRuleWindow, tenMinDesk, tenMinNews, weekRazor, weekNews, hundredYearYogurt, hundredYearWindow, hundredYearGraybox, amnesiaSelfTvNews, amnesiaSelfNote, amnesiaVpNote, amnesiaVpJournal, amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook, allergyCatPic, allergyBook, allergyDesk);
