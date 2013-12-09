@@ -6,8 +6,9 @@ package
     public class Elevator extends IndestructableFlxState {
 		private var timer:Number;
 
-	    public function Elevator(){
-			var elevBG:Background = new Background(AssetsRegistry.elevatorInner);
+	    public function Elevator() {
+			var elevBG:FlxSprite = new FlxSprite(0, 0, AssetsRegistry.elevatorInner);
+			//var elevBG:Background = new Background(AssetsRegistry.elevatorInner);
 			add(elevBG);
 			timer = 0;
 	    }
