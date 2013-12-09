@@ -11,9 +11,9 @@ package
 			level = null;
 		}		
 
-		public function enter():void {
+		public function enter(fadeIn:Boolean):void {
 			if (level == null) {
-				level = new Level(Amnesident.story.unseenTokens());
+				level = new Level(Amnesident.story.unseenTokens(), fadeIn);
 			}
 			FlxG.play(AssetsRegistry.sfxopendoor);
 			FlxG.switchState(level);

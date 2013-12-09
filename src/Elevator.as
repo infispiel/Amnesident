@@ -1,16 +1,27 @@
 package
 {
-        import org.flixel.*;
-        import org.flixel.plugin.photonstorm.*;
+    import org.flixel.*;
+    import org.flixel.plugin.photonstorm.*;
 
-        public class Elevator extends IndestructableFlxState {
+    public class Elevator extends IndestructableFlxState {
+		private var timer:Number;
+
 	    public function Elevator(){
-		var elevBG:Background = new Background(AssetsRegistry.elevatorInner);
-		add(elevBG);
+			var elevBG:Background = new Background(AssetsRegistry.elevatorInner);
+			add(elevBG);
+			timer = 0;
 	    }
-	
+		
 	    override public function update():void {
-		FlxG.fade(0xff000000, 1, hallway);
+			super.update();
+
+			if (timer == 0) {
+				FlxG.flash(0xff000000, 1);
+			} else if (timer > 1.5) {
+				FlxG.fade(0xff000000, 1, hallway);
+			}
+
+			timer += FlxG.elapsed;
 	    }
 		private function hallway():void {
 			var hallType:int = Math.floor(Math.random() * 4);

@@ -17,6 +17,8 @@ package
 		// private var hallBtn:FlxSprite;
 		private var journalBtn:FlxSprite;
 		private var elevator:Door;
+		private var enteringElevator:Boolean;
+		private var startedFade:Boolean;
 
 		public function Hallway(doorImg:Class, elevatorImg:Class, bgImg:Class, count:int, startingRoom:Number) {
 			doorImage = doorImg;
@@ -48,6 +50,9 @@ package
 					add(doors[i]);
 				}
 			}
+
+			enteringElevator = false;
+			startedFade = false;
 
 			buildUi();
 		}
@@ -124,12 +129,15 @@ package
 
 		override public function update():void	{
 			super.update();
-			
-			// if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {
-			// 	hallBtn.loadGraphic(AssetsRegistry.hallwayBtnImgHover);
-			// } else {
-			// 	hallBtn.loadGraphic(AssetsRegistry.hallwayBtnImg);
-			// }
+
+			if (enteringElevator) {
+				if (!startedFade) {
+					FlxG.fade(0xff000000, 1, enterElevator);
+					startedFade = false;
+				}
+
+				return;
+			}
 
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
 				if (Amnesident.story.pingJournal) {
@@ -168,9 +176,9 @@ package
 				//Check If Door Just Clicked, If So Load a Random Room
 				if (doors[doorNum].justClicked()) {
 					if (doors[doorNum].doorType == "door") {
-						rooms[doorNum].enter();
+						rooms[doorNum].enter(false);
 					} else {
-						enterElevator();
+						enteringElevator = true;
 						//hallway();
 					}
 					// FlxG.switchState(rooms[doorNum].level1);

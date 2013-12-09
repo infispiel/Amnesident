@@ -21,7 +21,11 @@ package
 		private var journalBtn:FlxSprite;
 		private var completionTextBg:FlxSprite;
 		private var textOverlay:Boolean;
-		public function Level(itemlist:Array)
+		private var timer:Number;
+		private var faded:Boolean;
+		private var fadeIn:Boolean;
+
+		public function Level(itemlist:Array, fade:Boolean)
 		{
 			var roomBackground:Background;
 
@@ -62,6 +66,10 @@ package
 			}
 
 			buildUi();
+
+			timer = 0;
+			faded = false;
+			fadeIn = fade;
 		}
 
 		private function buildUi():void {
@@ -193,6 +201,11 @@ package
 		
 		override public function update():void
 		{
+			if (fadeIn && !faded) {
+				FlxG.flash(0xff000000, 1);
+				faded = true;
+			}
+
 			if (FlxG.mouse.justReleased()) {
 				remove(itemText);
 				itemText = new FlxText(30, FlxG.height - Amnesident.interfaceSize + 5, FlxG.width - 60, "");

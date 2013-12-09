@@ -66,7 +66,7 @@ package
 			FlxG.playMusic(AssetsRegistry.darkDaysBgm, 1);
 
 			// this switches state, nothing after it will be run (probably)
-			Registry.halls[Registry.currentHall].rooms[0].enter();
+			Registry.halls[Registry.currentHall].rooms[0].enter(true);
 		}
 	}
 }
