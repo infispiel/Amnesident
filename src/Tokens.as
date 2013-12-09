@@ -35,7 +35,7 @@ package
 			var weekRazor:Item = new Item(AssetsRegistry.table_m_razorPic, AssetsRegistry.table_w_razorPic,125, 200, "Come to think of it, I could use a shave.");
 			var weekNews:Item = new Item(AssetsRegistry.bedWithnewsPic, AssetsRegistry.bedWoodWithnewsPic,307, 115, "Nothing much of interest: the comics are already missing. It's dated July 20, 2013.");
 			var hundredYearYogurt:Item = new Item(AssetsRegistry.table_m_moldPic, AssetsRegistry.table_w_moldPic,125, 200, "It looks like a cup of mold to me, but it's marked 'Yogurt'. Maybe it's a new flavor?");
-			var hundredYearWindow:Item = new Item(AssetsRegistry.windowPic, AssetsRegistry.windowPic,200, 459, "A car is flying around outside. Its wings are truly majestic.");
+			var hundredYearWindow:Item = new Item(AssetsRegistry.windowPic, AssetsRegistry.woodWindowPic,200, 459, "A car is flying around outside. Its wings are truly majestic.");
 			var hundredYearGraybox:Item = new Item(AssetsRegistry.grayboxBeardPic, AssetsRegistry.grayboxBeardPic,171, 171, "It's marked 'Graybox Corp. Beard Annihilator'...my hair may have grown while I was asleep, but I'd rather not try this out.");
 			var amnesiaSelfTvNews:Item = new Item(AssetsRegistry.tvPic, AssetsRegistry.tvPic,335, 468,"The world is half lava, half cat hair? Hiding in boxes is our only hope of survival? Who could have been so irresponsible?");
 			var amnesiaSelfNote:Item = new Item(AssetsRegistry.table_m_chargerPic, AssetsRegistry.table_w_chargerPic,125, 200, "This note...it's in my handwriting and seems familiar...too bad my handwriting is so terrible. I can't read a word of this.");
