@@ -15,14 +15,22 @@ package
 		public var title:FlxText;
 		public var lineNumber:int = 0;
 		public var newStoryBtn:FlxSprite;
+		public var journalBG:FlxSprite;
 		
 		public function EndGame() 
 		{
-			title = new FlxText(250, 180, 300, "End of game");
-			title.size = 32;
-			add(title);
 
-			newStoryBtn = new FlxSprite(250, 300, AssetsRegistry.newStoryBtnImg);
+			title = new FlxText(250, 20, 300, "End of Game");
+			title.size = 32;
+			title.alignment = "center";
+			add(title);	
+			
+			
+			
+			journalBG = new FlxSprite(0, 80, AssetsRegistry.journalBGImg);
+			add(journalBG);
+
+			newStoryBtn = new FlxSprite(350, 500, AssetsRegistry.newStoryBtnImg);
 			add(newStoryBtn);
 		}
 		
@@ -31,17 +39,17 @@ package
 		 */
 		public function addSummary(stat:String, dyn:String):void {
 			
-			var staticText:FlxText = new FlxText(0, 30 * lineNumber, 250, stat);
-			staticText.setFormat(null, 13, 0xffffff, "right")
+			var staticText:FlxText = new FlxText(20, 110+23 + 38 * lineNumber, 350, stat);
+			staticText.setFormat(null, 18, 0x000000, "right")
 
-			var dynamicText:FlxText = new FlxText(300, 30 * lineNumber, 250, dyn);
-			dynamicText.setFormat(null, 13, 0x000000, "center")
+			var dynamicText:FlxText = new FlxText(400, 110+18 + 38 * lineNumber, 250, dyn);
+			dynamicText.setFormat("Architects Daughter", 25, 0x000000, "left")
 			
-			var sprite:FlxSprite = new FlxSprite(300, 30*lineNumber);
-			sprite.loadGraphic(AssetsRegistry.textbox, true, true, 250, 20);
-			sprite.addAnimation("idle", [0]);
-
-			add(sprite);
+			//var sprite:FlxSprite = new FlxSprite(400, 30*lineNumber);
+			//sprite.loadGraphic(AssetsRegistry.textbox, true, true, 250, 20);
+			//sprite.addAnimation("idle", [0]);
+			
+			//add(sprite);
 			add(staticText);
 			add(dynamicText);
 			lineNumber += 1;

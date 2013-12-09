@@ -17,13 +17,15 @@ package
 		public var lineNumber:int = 4;
 		public var prevScreen:FlxState;
 		public var hallBtn:FlxSprite;
-		public var endGameBtn:FlxSprite;		
+		public var endGameBtn:FlxSprite;
+		public var journalBG:FlxSprite;
 		public function Journal(prevScrn:FlxState)
 		{
 			prevScreen = prevScrn;
 
 			title = new FlxText(250, 20, 300, "Journal");
 			title.size = 32;
+			title.alignment = "center";
 			add(title);			
 
 		//	instruct = new FlxText(250, 500, 350, "Press Esc to return to game");
@@ -38,6 +40,9 @@ package
 
 			endGameBtn = new FlxSprite(610, 10, AssetsRegistry.endGameBtnImg);
 			add(endGameBtn);
+			
+			journalBG = new FlxSprite(0, 80, AssetsRegistry.journalBGImg);
+			add(journalBG);
 
 		}
 
@@ -46,17 +51,17 @@ package
 		 */
 		public function addSummary(stat:String, dyn:String):void {
 			
-			var staticText:FlxText = new FlxText(0, 30 * lineNumber, 250, stat);
-			staticText.setFormat(null, 13, 0xffffff, "right")
+			var staticText:FlxText = new FlxText(20, 23 + 38 * lineNumber, 350, stat);
+			staticText.setFormat(null, 18, 0x000000, "right")
 
-			var dynamicText:FlxText = new FlxText(300, 30 * lineNumber, 250, dyn);
-			dynamicText.setFormat(null, 13, 0x000000, "center")
+			var dynamicText:FlxText = new FlxText(400, 18 + 38 * lineNumber, 250, dyn);
+			dynamicText.setFormat("Architects Daughter", 25, 0x000000, "left")
 			
-			var sprite:FlxSprite = new FlxSprite(300, 30*lineNumber);
-			sprite.loadGraphic(AssetsRegistry.textbox, true, true, 250, 20);
-			sprite.addAnimation("idle", [0]);
+			//var sprite:FlxSprite = new FlxSprite(400, 30*lineNumber);
+			//sprite.loadGraphic(AssetsRegistry.textbox, true, true, 250, 20);
+			//sprite.addAnimation("idle", [0]);
 			
-			add(sprite);
+			//add(sprite);
 			add(staticText);
 			add(dynamicText);
 			lineNumber += 1;

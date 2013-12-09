@@ -2,6 +2,12 @@ package
 {
 	public class AssetsRegistry 
 	{
+		//Journal BG
+		[Embed(source = "assets/art/journalBG.png")] public static var journalBGImg:Class;
+		
+		//Font
+		[Embed(source="/assets/ArchitectsDaughter.ttf", fontFamily="Architects Daughter", embedAsCFF="false")] 	public	var	FontArch:String;
+		
 		//Custom Cursor (For hovering over objects)
 		[Embed(source = "assets/art/hoverCursorImg.png")] public static var hoverCursor:Class;
 		[Embed(source = "assets/art/cursor.png")] public static var normalCursor:Class;
