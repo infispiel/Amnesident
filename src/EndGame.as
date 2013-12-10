@@ -42,7 +42,7 @@ package
 			var staticText:FlxText = new FlxText(20, 110+23 + 38 * lineNumber, 350, stat);
 			staticText.setFormat(null, 18, 0x000000, "right")
 
-			var dynamicText:FlxText = new FlxText(400, 110+18 + 38 * lineNumber, 250, dyn);
+			var dynamicText:FlxText = new FlxText(400, 110+18 + 38 * lineNumber, 400, dyn);
 			dynamicText.setFormat("Architects Daughter", 25, 0x000000, "left")
 			
 			//var sprite:FlxSprite = new FlxSprite(400, 30*lineNumber);
