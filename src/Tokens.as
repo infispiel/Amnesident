@@ -50,19 +50,47 @@ package
 			var windowOrdinary:Item = new Item(AssetsRegistry.windowPic,AssetsRegistry.woodWindowPic, 200, 459, "This window really needs to be washed. I can't even see out of it!");
 			var tvOrdinary:Item = new Item(AssetsRegistry.tvPic, AssetsRegistry.tvPic,335, 468, "All it has are kids channels, and those gave me a headache the moment they started.");
 			var tableBigOrdinary:Item = new Item(AssetsRegistry.desk2BasicPic, AssetsRegistry.desk1BasicPic,306, 150, "Just a bunch of really boring paperwork. I think I'm breaking some confidentiality agreements just by breathing on them.");
-			var tableBigOrdinaryLamp:Item = new Item(AssetsRegistry.desk2LampPic,AssetsRegistry.desk1LampPic, 306, 272, "It's a Desk.");
+			var tableBigOrdinaryLamp:Item = new Item(AssetsRegistry.desk2LampPic, AssetsRegistry.desk1LampPic, 306, 272, "It's a Desk.");
+			var trickTable:Item = new Item(AssetsRegistry.desk2BasicPic, AssetsRegistry.desk1BasicPic, 306, 150, "There's a note on the desk. It says 'ELEVATOR. 7 TIMES. REWARDS.' What could it mean?");
+			var trickTable2:Item = new Item(AssetsRegistry.desk2BasicPic, AssetsRegistry.desk1BasicPic, 306, 150, "Yuck, there's a dirty looking paper here. It says 'Hey Anne, I left a paper on Bob's desk telling him to ride the broken elevator like 7 times. Think he'll do it? lol'");
+			var dotaNews:Item = new Item(AssetsRegistry.bedWithnewsPic, AssetsRegistry.bedWoodWithnewsPic, 307, 115, "'BREAKING NEWS - Tabuss of Truth suspended from DOTA Finals for doping. Fans shoked!' This doesn't help me.");
+			var lottoTV:Item = new Item(AssetsRegistry.tvPic, AssetsRegistry.tvPic, 335, 468, "And the winning lotto numbers are 10 10 10 10 12.");
+			var directorsNote:Item = new Item(AssetsRegistry.table_m_chargerPic, AssetsRegistry.table_w_chargerPic, 125, 200, "A note... 'Staff, please be aware the reports of a dangerous lunatic wandering the halls are unfounded. Remain at your posts. - Director James'");
+			var directorsNote2:Item = new Item(AssetsRegistry.table_m_chargerPic, AssetsRegistry.table_w_chargerPic, 125, 200, "A note... 'Baby, I love you so I'm letting you know first...there's a nutjob in the hallways. Get out!'");
+			var directorsNote3:Item = new Item(AssetsRegistry.table_m_chargerPic, AssetsRegistry.table_w_chargerPic, 125, 200, "A scented letter ... 'Dear Bob, About last night...please don't tell my wife.'");
+			var lonelyTV:Item = new Item(AssetsRegistry.tvPic, AssetsRegistry.tvPic, 335, 468, "Where is everybody?");
+			var funnyTV:Item = new Item(AssetsRegistry.tvPic, AssetsRegistry.tvPic, 335, 468, "Ha ha ha ha. Ok, back to looking around.");
+			var restTable:Item = new Item(AssetsRegistry.desk2LampPic, AssetsRegistry.desk1LampPic, 306, 272, "I should probably try to find some way out.");
+			var bed2:Item = new Item(AssetsRegistry.bedPic, AssetsRegistry.bedWoodPic, 307, 115, "Maybe I should just go back to sleep...");
+			var deadlyRazor:Item = new Item(AssetsRegistry.table_m_razorPic, AssetsRegistry.table_w_razorPic,125, 200, "Ow! Ow! Ow! I just cut off my finger. Why would anyone just grab a razor? Wait...actually that didn't hurt.");
+			var kickTable:Item = new Item(AssetsRegistry.desk2LampPic, AssetsRegistry.desk1LampPic, 306, 272, "Woah, I just stubbed my toe and it didn't hurt at all. Awesome! I'm going to kick it again.");
+			var bookShelf:Item = new Item(AssetsRegistry.bookshelf1Pic, AssetsRegistry.bookshelf1Pic, 200, 382, "Just some books on some stuff.");
+			var bookShelf2:Item = new Item(AssetsRegistry.bookshelf1Pic, AssetsRegistry.bookshelf1Pic, 200, 382, "Wait, there's a note hidden between these pages. 'Does the order I visit the rooms matter?' ...who wrote this?");
+			var windowView:Item = new Item(AssetsRegistry.windowPic, AssetsRegistry.woodWindowPic, 200, 459, "Wow, what a fantastic view ... of that wall.");
+			var trickShelf:Item = new Item(AssetsRegistry.bookshelf1Pic, AssetsRegistry.bookshelf1Pic, 200, 382, "'The Socratic Method' Hold on, a hidden door? There's a safe in here, but I don't know the code...");
+			var bookBook:Item = new Item(AssetsRegistry.table_m_yellowbookPic, AssetsRegistry.table_w_yellowbookPic, 125, 200, "What a fascinating book...there's words on these pages.");
+			var bed3:Item = new Item(AssetsRegistry.bedPic, AssetsRegistry.bedWoodPic, 307, 115, "Come on, has anyone in this hospital ever heard of Feng Shui?");
+			var bed4:Item = new Item(AssetsRegistry.bedPic, AssetsRegistry.bedWoodPic, 307, 115, "I see beds, I see TVS, I see desks, but this hospital's missing something.");
 
 			// Add items which don't have a connection to tokens here.
-			ordinaryItems = new Array(windowOrdinary, tvOrdinary, tableBigOrdinary, tableBigOrdinaryLamp);
+			ordinaryItems = new Array(windowOrdinary, tvOrdinary, tableBigOrdinary, tableBigOrdinaryLamp, trickTable, trickTable2, dotaNews, 
+				lottoTV, directorsNote, directorsNote2, directorsNote3, lonelyTV, bed2, bookShelf, bookShelf2, windowView, trickShelf,
+				funnyTV, restTable, bookBook, bed3, bed4);
 
 			// Add items which are used in story tokens here.
-			itemList = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, moldyYogurtJanitor, presPicJanitor, bedNewsJanitor, mrCatRulesPic, windowCatBad, windowCatGood, vpLetter, vpTvNews, grayboxHouse, grayboxRulesTvNews, grayboxBooks, youRuleTvNews, youRuleWindow, tenMinDesk, tenMinNews, weekRazor, weekNews, hundredYearYogurt, hundredYearWindow, hundredYearGraybox, amnesiaSelfTvNews, amnesiaSelfNote, amnesiaVpNote, amnesiaVpJournal, amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook, allergyCatPic, allergyBook, allergyDesk);
+			itemList = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, 
+				moldyYogurtJanitor, presPicJanitor, bedNewsJanitor, mrCatRulesPic, windowCatBad, windowCatGood, vpLetter, vpTvNews, grayboxHouse, 
+				grayboxRulesTvNews, grayboxBooks, youRuleTvNews, youRuleWindow, tenMinDesk, tenMinNews, weekRazor, weekNews, 
+				hundredYearYogurt, hundredYearWindow, hundredYearGraybox, amnesiaSelfTvNews, amnesiaSelfNote, amnesiaVpNote, amnesiaVpJournal, 
+				amnesiaGrayboxTvNews, amnesiaGrayboxNews, amnesiaGrayboxBook, allergyCatPic, allergyBook, allergyDesk, 
+				deadlyRazor, kickTable);
 
 			// TOKENS
 			var youArePres:Token = new Token("Hey, I've seen that face before! I must be the President!", "You are", "the President", new Array(mirror, bedNewsPres));
 			var youAreClone:Token = new Token("I look just like the president, but he was just on TV...I must be a president with the power to create projections of myself! No, that makes no sense. I must be a clone!", "You are", "a clone of the President", new Array(mirror, presPic, cloneTvNews));
 			var youAreCat:Token = new Token("Now that I remember my elegantly-coiffed fur and impeccable culinary preferences, it's clear to me who I am. How could I be anyone other than Mr. Cat himself?", "You are", "Mr. Cat", new Array(catRazor, mrCatPic, grayCatFood));
 			var youAreJanitor:Token = new Token("No! I...I'm the president! I must be! I'm not some lousy janitor! That's what they WANT you to think! It's all a conspiracy!", "You are", "a deluded janitor", new Array(moldyYogurtJanitor, presPicJanitor, bedNewsJanitor));
+			var youAreDreaming:Token = new Token("Wait...I'm not tired either. And none of this makes sense. Could I be dreaming?", "You are", "in a dream.", new Array(deadlyRazor, kickTable));
 
 			var rulerCatBad:Token = new Token("How...how could he? Mr. Cat, my beloved pet, must have taken over the world. It's the only logical conclusion. He's made such a mess of it, too. Odd, he always gave me the best advice...", "The world", "is ruled poorly by Mr. Cat", new Array(mrCatRulesPic, windowCatBad));
 			var rulerCatGood:Token = new Token("The cat portrait...cats and people acting as equal citizens...oh no! My pet kitty has taken over the world!", "The world", "is ruled well by Mr. Cat", new Array(mrCatRulesPic, windowCatGood));
@@ -107,6 +135,9 @@ package
 			youAreClone.addIncompatible(youAreCat);
 			youAreClone.addIncompatible(youAreJanitor);
 			youAreCat.addIncompatible(youAreJanitor);
+			youAreDreaming.addIncompatible(youAreClone);
+			youAreDreaming.addIncompatible(youAreJanitor);
+			youAreDreaming.addIncompatible(youArePres);
 
 			timeTenMin.addIncompatible(timeWeek);
 			timeTenMin.addIncompatible(timeHundredYears);
@@ -123,7 +154,7 @@ package
 			amnesiaGraybox.addIncompatible(amnesiaMrCatAllergies);
 			amnesiaAllergies.addIncompatible(amnesiaMrCatAllergies);
 			
-			tokenList = new Array(youArePres, youAreClone, youAreCat, youAreJanitor, rulerCatBad, rulerCatGood, rulerVp, rulerYou, rulerGraybox, timeTenMin, timeWeek, timeHundredYears, amnesiaSelf, amnesiaVp, amnesiaGraybox, amnesiaAllergies, amnesiaMrCatAllergies);
+			tokenList = new Array(youArePres, youAreClone, youAreCat, youAreJanitor, youAreDreaming, rulerCatBad, rulerCatGood, rulerVp, rulerYou, rulerGraybox, timeTenMin, timeWeek, timeHundredYears, amnesiaSelf, amnesiaVp, amnesiaGraybox, amnesiaAllergies, amnesiaMrCatAllergies);
 		}
 		
 		public function getItemList():Array {
