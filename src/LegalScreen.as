@@ -15,6 +15,8 @@ package
 		public var musicurl:FlxText;
 		public var sound:FlxText;
 		public var soundurl:FlxText;
+		public var font:FlxText;
+		public var fonturl:FlxText;
 
 		public function LegalScreen():void	{
 			var textWidth:int = 300;
@@ -51,6 +53,12 @@ package
 			soundurl = new FlxText(350, 35 * 9, 400, "http://freesound.org/");
 			soundurl.setFormat(null, 20, 0xffffff, "center");			
 
+			font = new FlxText(50, 35 * 11, 250, "Journal Font");
+			font.setFormat(null, 20, 0xffffff, "right");
+
+			fonturl = new FlxText(350, 35 * 11, 400, "Architects Daughter from Google Fonts")
+			fonturl.setFormat(null, 20, 0xffffff, "center");
+
 			add(engine);
 			add(engineurl);
 			add(plugin);
@@ -59,6 +67,8 @@ package
 			add(musicurl);
 			add(sound);
 			add(soundurl);
+			add(font);
+			add(fonturl);
 		}
 		
 		override public function update():void {
