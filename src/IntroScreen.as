@@ -7,6 +7,7 @@ package
 		public var gibberish:FlxText = new FlxText(0, 30, FlxG.width, "What?");
 		public var textWidth:int = 300;
 		private var skipIntro:FlxSprite;
+		private var nextBtn:FlxSprite;
 
 		private var state:String = "blank";
 		private var background:Background;
@@ -16,6 +17,7 @@ package
 			
 		public function IntroScreen() {		
 			skipIntro = new FlxSprite(645, 5, AssetsRegistry.skipIntroBtnImg);
+			nextBtn = new FlxSprite(310, 550, AssetsRegistry.nextBtnImg);
 		}
 		
 		private function clearBackground():void {
@@ -68,7 +70,6 @@ package
 					remove(skipIntro);
 					clearBackground();
 					add(skipIntro);
-
 				}
 				else if (introTimer >= 2 && introTimer <= 3) {
 					backgroundNeedsToLoad = true;
@@ -76,7 +77,6 @@ package
 					remove(skipIntro);
 					loadBackground(AssetsRegistry.introCeilingFishEyeBlur);		
 					add(skipIntro);
-
 				}
 				else if (introTimer > 3 && introTimer <= 4)	{
 					remove(skipIntro);
@@ -89,14 +89,12 @@ package
 					backgroundNeedsToLoad = true;
 					loadBackground(AssetsRegistry.introCeilingFishEye);		
 					add(skipIntro);
-
 				}
 				else if (introTimer > 5.5 && introTimer <= 8)	{
 					remove(skipIntro);
 					backgroundNeedsToLoad = true;
 					loadBackground(AssetsRegistry.introCeiling);
 					add(skipIntro);
-
 				}
 				else if (introTimer > 8 && introTimer <= 12) {
 					gibberish.size = 32;
@@ -119,42 +117,57 @@ package
 			}
 			
 			else if (state == "viewRoom") {
-				remove(skipIntro);
+				remove(nextBtn);
 				loadBackground(AssetsRegistry.introSurroundingRoom);
 				add(skipIntro);
+				add(nextBtn);
 				if (FlxG.mouse.justPressed() )	{
-					backgroundNeedsToLoad = true;
-					state = "mouseScreen";
+					if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, nextBtn)) {
+						backgroundNeedsToLoad = true;
+						state = "mouseScreen";
+					}
 				}
 			}
 			
 			else if (state == "mouseScreen") {
 				remove(skipIntro);
+				remove(nextBtn);
 				loadBackground(AssetsRegistry.introMouseScreen);
 				add(skipIntro);
+				add(nextBtn);
 				if (FlxG.mouse.justPressed() )	{
-					backgroundNeedsToLoad = true;
-					state = "surroundingScreen";
+					if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, nextBtn)) {
+						backgroundNeedsToLoad = true;
+						state = "surroundingScreen";
+					}
 				}
 			}
 			
 			else if (state == "surroundingScreen") {			
 				remove(skipIntro);
+				remove(nextBtn);
 				loadBackground(AssetsRegistry.introSurroundingScreen);		
 				add(skipIntro);
+				add(nextBtn);
 				if (FlxG.mouse.justPressed() )	{
-					backgroundNeedsToLoad = true;
-					state = "journalScreen";
+					if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, nextBtn)) {
+						backgroundNeedsToLoad = true;
+						state = "journalScreen";
+					}
 				}
 			}
 			
 			else if (state == "journalScreen") {
 				remove(skipIntro);
+				remove(nextBtn);
 				loadBackground(AssetsRegistry.introJournalScreen);				
 				add(skipIntro);
+				add(nextBtn);
 				if (FlxG.mouse.justPressed() )	{
-					state = null;
-					FlxG.switchState(new MainMenuState());
+					if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, nextBtn)) {
+						state = null;
+						FlxG.switchState(new MainMenuState());
+					}
 				}
 			}
 
@@ -162,6 +175,12 @@ package
 				skipIntro.loadGraphic(AssetsRegistry.skipIntroBtnHoverImg);
 			} else {
 				skipIntro.loadGraphic(AssetsRegistry.skipIntroBtnImg);
+			}
+
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, nextBtn)) {
+				nextBtn.loadGraphic(AssetsRegistry.nextBtnHoverImg);
+			} else {
+				nextBtn.loadGraphic(AssetsRegistry.nextBtnImg);
 			}
 
 			if (FlxG.mouse.justPressed()) {
