@@ -70,12 +70,15 @@ package
 			var trickShelf:Item = new Item(AssetsRegistry.bookshelf1Pic, AssetsRegistry.bookshelf1Pic, 200, 382, "'The Socratic Method' Hold on, a hidden door? There's a safe in here, but I don't know the code...");
 			var bookBook:Item = new Item(AssetsRegistry.table_m_yellowbookPic, AssetsRegistry.table_w_yellowbookPic, 125, 200, "What a fascinating book...there's words on these pages.");
 			var bed3:Item = new Item(AssetsRegistry.bedPic, AssetsRegistry.bedWoodPic, 307, 115, "Come on, has anyone in this hospital ever heard of Feng Shui?");
-			var bed4:Item = new Item(AssetsRegistry.bedPic, AssetsRegistry.bedWoodPic, 307, 115, "I see beds, I see TVS, I see desks, but this hospital's missing something.");
+			var bed4:Item = new Item(AssetsRegistry.bedPic, AssetsRegistry.bedWoodPic, 307, 115, "I see beds, I see TVs, I see desks, but this hospital's missing something.");
 
 			// Add items which don't have a connection to tokens here.
-			ordinaryItems = new Array(windowOrdinary, tvOrdinary, tableBigOrdinary, tableBigOrdinaryLamp, trickTable, trickTable2, dotaNews, 
-				lottoTV, directorsNote, directorsNote2, directorsNote3, lonelyTV, bed2, bookShelf, bookShelf2, windowView, trickShelf,
-				funnyTV, restTable, bookBook, bed3, bed4);
+			ordinaryItems = new Array(windowOrdinary, tvOrdinary, tableBigOrdinary, tableBigOrdinaryLamp, directorsNote, windowView);
+
+			// ordinaryItems = new Array(windowOrdinary, tvOrdinary, tableBigOrdinary, tableBigOrdinaryLamp, trickTable, trickTable2, dotaNews, 
+			// 	lottoTV, directorsNote, directorsNote2, directorsNote3, lonelyTV, bed2, bookShelf, bookShelf2, windowView, trickShelf,
+			// 	funnyTV, restTable, bookBook, bed3, bed4);
+
 
 			// Add items which are used in story tokens here.
 			itemList = new Array(moldyYogurtWeek, freshYogurt, bed, mrCatPic, presPic, bedNewsPres, mirror, catRazor, grayCatFood, cloneTvNews, 
