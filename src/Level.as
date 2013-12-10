@@ -224,12 +224,6 @@ package
 					remove(completionTextBg);
 					remove(tokenText);
 				}
-				if (Amnesident.story.gameCompleted) {
-					var end:EndGame = new EndGame()
-					end.addSummaries(Amnesident.story.wantToCompleteTokens, Amnesident.story.completedTokens);
-					FlxG.switchState(end);
-
-				}
 			}
 
 			super.update();
@@ -263,10 +257,25 @@ package
 			}
 
 			if (FlxG.mouse.justReleased()) {
+				if (Amnesident.story.gameCompleted) {
+					var end:EndGame = new EndGame()
+					end.addSummaries(Amnesident.story.wantToCompleteTokens, Amnesident.story.completedTokens);
+					FlxG.switchState(end);
+
+				}
+
 				if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, hallBtn)) {
-					hallway();
+					if (!Amnesident.story.gameCompleted) {
+						hallway();
+					} else {
+						endGame();
+					}
 				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, journalBtn)) {
-					journal();
+					if (!Amnesident.story.gameCompleted) {
+						journal();
+					} else {
+						endGame();
+					}
 				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, endGameBtn)) {
 					endGame();
 				}
@@ -283,6 +292,7 @@ package
 					}
 				}
 			}
+
 			for each (var t:Token in Amnesident.story.getWantToCompleteTokens()){
 			    t.checkPrereqsComplete();
 

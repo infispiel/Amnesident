@@ -10,8 +10,9 @@ package
 		//Use this command to set the default cursor png...
 		//[Embed(source = "cursor.png")] private var ImgCursor:Class;
 		public var title:FlxText, click:FlxText;
-		public var creditBtn:FlxSprite;		
-		public var newStoryBtn:FlxSprite;	
+		public var creditBtn:FlxSprite;
+		public var legalBtn:FlxSprite;
+		public var newStoryBtn:FlxSprite;
 		public function MainMenuState() 
 		{
 			//Use FlxG.mouse.show(ImgCursor, 16, 16) to show the custom cursor image
@@ -29,9 +30,12 @@ package
 			//click.alignment = "center";
 			//add(click);
 			
-			creditBtn = new FlxSprite(410, 500, AssetsRegistry.creditBtnImg);
-			newStoryBtn = new FlxSprite(270, 500, AssetsRegistry.newStoryBtnImg);
+			newStoryBtn = new FlxSprite(340, 500, AssetsRegistry.newStoryBtnImg);
+			creditBtn = new FlxSprite(280, 560, AssetsRegistry.creditBtnImg);
+			legalBtn = new FlxSprite(410, 560, AssetsRegistry.legalBtnImg);
+
 			add(creditBtn);
+			add(legalBtn);
 			add(newStoryBtn);			
 		}
 
@@ -42,6 +46,13 @@ package
 			} else {
 				creditBtn.loadGraphic(AssetsRegistry.creditBtnImg);
 			}
+
+			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, legalBtn)) {
+				legalBtn.loadGraphic(AssetsRegistry.legalBtnImgHover);
+			} else {
+				legalBtn.loadGraphic(AssetsRegistry.legalBtnImg);
+			}
+
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
 				newStoryBtn.loadGraphic(AssetsRegistry.newStoryBtnImgHover);
 			} else {
@@ -53,6 +64,9 @@ package
 					FlxG.switchState(credit);
 				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
 					FlxG.fade(0xff000000, 1, startPlay);
+				} else if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, legalBtn)) {
+					var legal:LegalScreen = new LegalScreen();
+					FlxG.switchState(legal);
 				}
 			}			
 		}
