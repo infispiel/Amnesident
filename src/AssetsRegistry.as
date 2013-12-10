@@ -35,6 +35,8 @@ package
 		[Embed(source="/assets/art/UI/skipIntroBtnHover.png")] public static var skipIntroBtnHoverImg:Class; //150x35
 		[Embed(source="/assets/art/UI/continueImg.png")] public static var nextBtnImg:Class; //135x44
 		[Embed(source="/assets/art/UI/continueHoverImg.png")] public static var nextBtnHoverImg:Class; //135x44
+		[Embed(source="/assets/art/UI/legalBtn.png")] public static var legalBtnImg:Class; //115x44
+		[Embed(source="/assets/art/UI/legalHoverBtn.png")] public static var legalBtnImgHover:Class; //115x44
 
 		//UI background
 		[Embed(source="/assets/art/UI/token_completion_box.png")] public static var tokenCompletionBox:Class; //800x160
