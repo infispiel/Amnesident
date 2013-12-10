@@ -135,12 +135,19 @@ package
 			youArePres.addIncompatible(youAreClone);
 			youArePres.addIncompatible(youAreCat);
 			youArePres.addIncompatible(youAreJanitor);
+			youArePres.addIncompatible(youAreDreaming);
 			youAreClone.addIncompatible(youAreCat);
 			youAreClone.addIncompatible(youAreJanitor);
+			youAreClone.addIncompatible(youAreDreaming);
+			youAreClone.addIncompatible(youArePres);
 			youAreCat.addIncompatible(youAreJanitor);
+			youAreCat.addIncompatible(youAreCat);
+			youAreCat.addIncompatible(youAreDreaming);
+			youAreCat.addIncompatible(youArePres);
 			youAreDreaming.addIncompatible(youAreClone);
 			youAreDreaming.addIncompatible(youAreJanitor);
 			youAreDreaming.addIncompatible(youArePres);
+			youAreDreaming.addIncompatible(youAreCat);
 
 			timeTenMin.addIncompatible(timeWeek);
 			timeTenMin.addIncompatible(timeHundredYears);
