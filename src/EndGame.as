@@ -68,6 +68,8 @@ package
 		}
 
 		override public function update():void {
+			FlxG.mouse.show(AssetsRegistry.normalCursor);
+
 			if (FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, newStoryBtn)) {
 				newStoryBtn.loadGraphic(AssetsRegistry.newStoryBtnImgHover);
 			} else {

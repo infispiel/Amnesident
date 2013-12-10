@@ -169,6 +169,7 @@ package
 			}
 
 			Amnesident.checkMouseHover(doors);
+
 			// switch to End Screen when press ESCAPE 
 			for (var doorNum:int = 0; doorNum < doors.length; doorNum++) {
 				//Check If Door Just Clicked, If So Load a Random Room
@@ -176,6 +177,7 @@ package
 					if (doors[doorNum].doorType == "door") {
 						rooms[doorNum].enter(false);
 					} else {
+						FlxG.mouse.show(AssetsRegistry.normalCursor);
 						enteringElevator = true;
 						//hallway();
 					}
