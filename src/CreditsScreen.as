@@ -31,13 +31,13 @@ package
 			music = new FlxText(50, 35 * 7, 250, "Music & Sound");
 			music.setFormat(null, 20, 0xffffff, "right");
 
-			musicnames = new FlxText(350, 35 * 7, 250, "Polina Shpilker Chau Vu");
+			musicnames = new FlxText(350, 35 * 7, 250, "Chau Vu         Anonymous");
 			musicnames.setFormat(null, 20, 0xffffff, "center");
 			
 			asset = new FlxText(50, 35 * 5, 250, "Artist");
 			asset.setFormat(null, 20, 0xffffff, "right");
 
-			assetnames = new FlxText(350, 35 * 5, 250, "Laura Shih       Polina Shpilker");
+			assetnames = new FlxText(350, 35 * 5, 250, "Laura Shih       Anonymous");
 			assetnames.setFormat(null, 20, 0xffffff, "center");		
 			
 			code = new FlxText(50, 35 * 9, 250, "Coders");
